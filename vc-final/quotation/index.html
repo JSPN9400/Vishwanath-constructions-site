@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vishwanath Construction — Quotation Generator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════
+   VISHWANATH CONSTRUCTION — QUOTATION
+   Mithila / Madhubani inspired — Bihar chatak-matak
+   Gold · Maroon · Cream · Mithila Black border motifs
+═══════════════════════════════════════════════════ */
+:root {
+  --maroon:  #7B1C1C;
+  --maroon2: #5c1414;
+  --gold:    #C8952A;
+  --gold2:   #a07520;
+  --ink:     #1A1208;
+  --cream:   #FBF7F0;
+  --paper:   #FFFCF7;
+  --muted:   #6B5B45;
+  --line:    #E0D4C0;
+  --soft:    #F5EEE2;
+  --green:   #1E5C38;
+  --mithila-red: #C0392B;
+  --mithila-gold: #D4AC0D;
+  --mithila-blue: #1A4480;
+  --shadow:  0 20px 60px rgba(90,40,10,.14);
+}
+*{box-sizing:border-box;min-width:0}
+html,body{margin:0;overflow-x:hidden}
+body {
+  font-family:'DM Sans',sans-serif;
+  color:var(--ink);
+  background: var(--cream);
+  background-image:
+    radial-gradient(ellipse at 0% 0%, rgba(200,149,42,.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 100% 100%, rgba(123,28,28,.07) 0%, transparent 50%);
+}
+body[data-theme="dark"]{
+  --ink:#F8F1DF;
+  --cream:#140f0a;
+  --paper:#20170d;
+  --muted:#d4bf93;
+  --line:rgba(255,248,231,.14);
+  --soft:#2a1f13;
+  --shadow:0 20px 60px rgba(0,0,0,.35);
+}
+body[data-theme="dark"] .panel,
+body[data-theme="dark"] .q-sheet,
+body[data-theme="dark"] .ic,
+body[data-theme="dark"] .sh-card,
+body[data-theme="dark"] .sum-box,
+body[data-theme="dark"] .cc,
+body[data-theme="dark"] .pc,
+body[data-theme="dark"] .sc,
+body[data-theme="dark"] .meta-box,
+body[data-theme="dark"] .modal,
+body[data-theme="dark"] input,
+body[data-theme="dark"] textarea,
+body[data-theme="dark"] select{
+  background:var(--paper)!important;
+  color:var(--ink)!important;
+  border-color:var(--line)!important;
+}
+body[data-theme="dark"] .pc.active,
+body[data-theme="dark"] .sc.active,
+body[data-theme="dark"] .sum-box,
+body[data-theme="dark"] .cc.accent{
+  background:linear-gradient(180deg,#2b1d12,#24170f)!important;
+}
+body[data-theme="dark"] .dtbl td,
+body[data-theme="dark"] .dtbl th,
+body[data-theme="dark"] .terms-list li,
+body[data-theme="dark"] .helper,
+body[data-theme="dark"] .sec-note,
+body[data-theme="dark"] .ic-line,
+body[data-theme="dark"] .gst-note,
+body[data-theme="dark"] .q-foot-l,
+body[data-theme="dark"] .field span{
+  color:var(--ink)!important;
+}
+body[data-theme="dark"] .fn,
+body[data-theme="dark"] .sr span,
+body[data-theme="dark"] .pc p,
+body[data-theme="dark"] .sc p,
+body[data-theme="dark"] .sheet-bar-l p{
+  color:var(--muted)!important;
+}
+body[data-theme="dark"] .dtbl th,
+body[data-theme="dark"] .gr td,
+body[data-theme="dark"] .fh td,
+body[data-theme="dark"] .pkg-banner,
+body[data-theme="dark"] .pdf-hdr,
+body[data-theme="dark"] .sheet-bar{
+  color:#fff!important;
+}
+body[data-theme="dark"] .dtbl th{background:#6f241c!important}
+body[data-theme="dark"] .fh td{background:#332114!important}
+body[data-theme="dark"] .gr td{background:#7B1C1C!important}
+body[data-theme="dark"] .gst-chip{
+  background:#213424;
+  border-color:#2f6d39;
+  color:#d8f3dc;
+}
+body[data-theme="dark"] .btn-dark{
+  background:#f0e6cf;
+  color:#1A1208;
+}
+a,button,input,textarea,select{font:inherit}
+.is-hidden{display:none!important}
+
+/* ── MITHILA BORDER MOTIF (top nav bar) ── */
+.mithila-bar {
+  height: 12px;
+  background: var(--maroon);
+  position: relative;
+  overflow: hidden;
+}
+.mithila-bar::before {
+  content:'';
+  position:absolute; inset:0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0px, transparent 16px,
+    rgba(200,149,42,.6) 16px, rgba(200,149,42,.6) 18px
+  );
+}
+
+/* ── TOP NAV ── */
+.topnav {
+  background: var(--ink);
+  padding: 0.9rem 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap;
+}
+.topnav-brand {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem; font-weight:600; color:#fff;
+  text-decoration:none; letter-spacing:.06em;
+}
+.topnav-brand span { color: var(--gold); font-style: italic; }
+.topnav-back {
+  font-size:.78rem; color:rgba(255,255,255,.6); text-decoration:none;
+  letter-spacing:.1em; text-transform:uppercase;
+  border:1px solid rgba(255,255,255,.2); padding:.4rem 1rem; border-radius:2px;
+  transition: all .2s;
+}
+.topnav-back:hover { border-color:var(--gold); color:var(--gold); }
+.topnav-actions{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}
+.topnav-toggle,.topnav-lang{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:rgba(255,255,255,.86);border-radius:4px}
+.topnav-toggle{padding:.42rem .85rem;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.topnav-lang{display:inline-flex;overflow:hidden}
+.topnav-lang button{border:none;background:transparent;color:inherit;padding:.42rem .7rem;cursor:pointer;font-size:.76rem;font-weight:700}
+.topnav-lang button.active{background:var(--gold);color:#1A1208}
+
+/* ── APP SHELL ── */
+.app{width:min(1320px,calc(100% - 24px));margin:18px auto 60px}
+
+/* ── HERO ── */
+.hero {
+  border-radius: 0 0 20px 20px;
+  background: linear-gradient(135deg,#1A0808 0%,#5c1414 55%,#7B1C1C 100%);
+  padding: 32px 40px 28px;
+  color:#fff;
+  box-shadow: var(--shadow);
+  position:relative; overflow:hidden;
+  /* Mithila SVG border */
+  border-top: 5px solid var(--gold);
+}
+.hero::before {
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C8952A' fill-opacity='0.06'%3E%3Ccircle cx='40' cy='40' r='4'/%3E%3Ccircle cx='0' cy='0' r='4'/%3E%3Ccircle cx='80' cy='0' r='4'/%3E%3Ccircle cx='0' cy='80' r='4'/%3E%3Ccircle cx='80' cy='80' r='4'/%3E%3Cpath d='M40 0 L50 20 L40 15 L30 20 Z'/%3E%3Cpath d='M0 40 L20 50 L15 40 L20 30 Z'/%3E%3Cpath d='M80 40 L60 50 L65 40 L60 30 Z'/%3E%3Cpath d='M40 80 L50 60 L40 65 L30 60 Z'/%3E%3C/g%3E%3C/svg%3E");
+}
+.hero::after {
+  content:'';position:absolute;width:460px;height:460px;right:-130px;bottom:-200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(200,149,42,.18),transparent 65%);
+}
+.hero-in{position:relative;z-index:1;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.hero-badges { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+.badge {
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(200,149,42,.18);border:1px solid rgba(200,149,42,.35);
+  border-radius:999px;padding:4px 13px;
+  font-size:.7rem;font-weight:700;color:#f5d89a;letter-spacing:.08em;text-transform:uppercase;
+}
+.badge-gst {
+  background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.85);
+  font-size:.75rem; padding:5px 14px;
+}
+.hero h1 {
+  margin:0;
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,5vw,3.5rem);font-weight:600;line-height:1.05;color:#fff;
+}
+.hero h1 em{font-style:italic;color:#f5c842}
+.hero-sub{margin:8px 0 0;color:rgba(255,255,255,.68);font-size:.9rem;line-height:1.65}
+.hero-meta { margin-top:14px; display:flex; flex-wrap:wrap; gap:10px; }
+.hero-pill {
+  display:inline-flex; align-items:center; gap:7px;
+  background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);
+  border-radius:8px;padding:6px 13px;font-size:.8rem;font-weight:600;color:rgba(255,255,255,.88);
+}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+
+/* ── MITHILA MOTIF STRIP ── */
+.mithila-strip {
+  background: var(--ink);
+  padding: 10px 0;
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  gap: 0;
+}
+.mithila-strip svg { height: 36px; }
+
+/* ── BUTTONS ── */
+.btn{border:none;border-radius:8px;padding:11px 22px;font-weight:600;cursor:pointer;font-size:.88rem;transition:filter .15s,transform .12s;letter-spacing:.02em;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn-gold{background:linear-gradient(135deg,#d4a030,#c8952a);color:#fff;box-shadow:0 4px 18px rgba(200,149,42,.35)}
+.btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.22)}
+.btn-dark{background:#1A1208;color:#fff}
+.btn-maroon{background:linear-gradient(135deg,#7B1C1C,#5c1414);color:#fff}
+.btn-green{background:linear-gradient(135deg,#34a853,#2d9247);color:#fff;box-shadow:0 4px 14px rgba(52,168,83,.3)}
+.btn-sm{padding:8px 16px;font-size:.82rem}
+.btn-green:disabled{opacity:.5;cursor:not-allowed;filter:none;transform:none}
+
+/* ── WORKSPACE ── */
+.workspace{display:grid;grid-template-columns:1fr;gap:18px;margin-top:20px;align-items:start;position:relative}
+.workspace::before{
+  content:"";
+  position:absolute;
+  inset:-10px;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(200,149,42,.08), transparent 24%),
+    radial-gradient(circle at 86% 18%, rgba(123,28,28,.08), transparent 22%),
+    radial-gradient(circle at 72% 80%, rgba(30,92,56,.06), transparent 20%);
+  z-index:0;
+  pointer-events:none;
+}
+.panel{
+  background:var(--paper);border:1px solid var(--line);border-radius:20px;
+  box-shadow:var(--shadow);padding:24px;
+  position:static;max-height:none;overflow:visible;
+  /* Mithila left border accent */
+  border-left: 4px solid var(--gold);
+  z-index:1;
+}
+.panel::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(200,149,42,.05), transparent 24%);
+  pointer-events:none;
+}
+.panel::-webkit-scrollbar{width:5px}
+.panel::-webkit-scrollbar-track{background:transparent}
+.panel::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}
+
+/* ── SECTIONS ── */
+.sec+.sec{margin-top:22px;padding-top:22px;border-top:1px dashed var(--line)}
+.eyebrow{margin:0 0 5px;color:var(--gold);text-transform:uppercase;letter-spacing:.14em;font-size:.68rem;font-weight:800}
+.sec h2{margin:0 0 10px;font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600}
+.sec h3{margin:0 0 10px;font-size:1.02rem;font-weight:700}
+.sec-note{margin:0 0 14px;color:var(--muted);line-height:1.6;font-size:.87rem}
+
+/* ── FIELDS ── */
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.fg.one{grid-template-columns:1fr;margin-top:11px}
+.field{display:grid;gap:5px}
+.field span{font-size:.82rem;font-weight:700;color:var(--ink)}
+.field input,.field textarea,.field select{
+  width:100%;border:1.5px solid var(--line);border-radius:10px;
+  background:#fff;padding:9px 12px;color:var(--ink);outline:none;
+  transition:border-color .15s;
+}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--gold)}
+.field textarea{min-height:78px;resize:vertical}
+
+/* ── SELECTOR CARDS ── */
+.cg{display:grid;gap:9px}
+.sc{
+  border:1.5px solid var(--line);border-radius:13px;padding:12px;
+  background:#fff;cursor:pointer;
+  transition:border-color .18s,box-shadow .18s,transform .15s;
+}
+.sc:hover{transform:translateY(-2px)}
+.sc.active{border-color:var(--maroon);box-shadow:0 6px 20px rgba(123,28,28,.14);background:#fff9f4}
+.sc h4{margin:0 0 3px;font-size:.94rem;font-weight:700}
+.sc p{margin:0;color:var(--muted);font-size:.83rem;line-height:1.5}
+
+/* ── PACKAGE CARDS ── */
+.pc{border:1.5px solid var(--line);border-radius:13px;padding:13px;background:#fff;cursor:pointer;transition:border-color .18s,box-shadow .18s,transform .15s}
+.pc:hover{transform:translateY(-2px)}
+.pc.active{border-color:var(--gold);box-shadow:0 6px 22px rgba(200,149,42,.18);background:#fffbf0}
+.pc.active.high{border-color:var(--maroon)}
+.pc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:7px}
+.pc-rate{margin:2px 0 0;font-size:1.35rem;font-weight:800;letter-spacing:-.03em;font-family:'Cormorant Garamond',serif}
+.pc-badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;color:#fff;font-size:.7rem;font-weight:800;white-space:nowrap}
+.low .pc-badge{background:var(--green)}
+.mid .pc-badge{background:var(--gold)}
+.high .pc-badge{background:var(--maroon)}
+.pc p{margin:0;color:var(--muted);font-size:.82rem;line-height:1.5}
+.pc-pts{margin:8px 0 0;padding-left:15px;color:var(--muted);font-size:.79rem}
+.pc-pts li+li{margin-top:3px}
+
+/* ── SUMMARY ── */
+.sum-box{border:1.5px solid var(--line);border-radius:14px;background:linear-gradient(180deg,#fff9ee,#fffdf8);padding:15px}
+.sr{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.sr+.sr{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line)}
+.sr span{color:var(--muted);font-size:.88rem}
+.sr strong{font-weight:700;text-align:right;font-size:.9rem}
+.sr-total{margin-top:12px;padding-top:12px;border-top:2px solid var(--maroon);display:flex;justify-content:space-between;align-items:baseline}
+.sr-total span{font-weight:700;color:var(--maroon);font-size:.95rem}
+.sr-total strong{font-family:'Cormorant Garamond',serif;font-size:1.55rem;color:var(--maroon)}
+.act-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}
+.helper{margin:10px 0 0;color:var(--muted);font-size:.8rem;line-height:1.55}
+
+/* ═══════════════════════════════
+   QUOTATION PREVIEW — MITHILA INSPIRED
+═══════════════════════════════ */
+.q-sheet{
+  background:var(--paper);
+  border:1px solid var(--line);border-radius:20px;
+  box-shadow:var(--shadow);overflow:hidden;
+  position:relative;
+  z-index:1;
+}
+.q-sheet::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at top right, rgba(200,149,42,.09), transparent 24%),
+    linear-gradient(180deg, rgba(255,255,255,.35), transparent 18%);
+  pointer-events:none;
+}
+.q-inner{position:relative;padding:32px;isolation:isolate}
+.preview-stage{display:grid;gap:18px}
+.preview-placeholder{
+  border:1px dashed rgba(123,28,28,.22);
+  background:
+    linear-gradient(135deg, rgba(255,252,247,.96), rgba(249,239,224,.92));
+  border-radius:20px;
+  padding:28px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+  z-index:1;
+}
+.preview-placeholder::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 85% 18%, rgba(200,149,42,.18), transparent 20%),
+    radial-gradient(circle at 12% 84%, rgba(123,28,28,.1), transparent 22%);
+  pointer-events:none;
+}
+.preview-placeholder > *{position:relative;z-index:1}
+.preview-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--maroon);
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-size:.72rem;
+  font-weight:800;
+  margin-bottom:10px;
+}
+.preview-kicker::before,
+.preview-kicker::after{
+  content:"";
+  width:16px;
+  height:2px;
+  background:var(--gold);
+}
+.preview-placeholder h3{
+  margin:0 0 8px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:2rem;
+  font-weight:600;
+  color:var(--ink);
+}
+.preview-placeholder p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.7;
+}
+.placeholder-points{
+  margin:18px 0 0;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+.placeholder-pill{
+  padding:12px 14px;
+  border-radius:14px;
+  background:rgba(255,255,255,.78);
+  border:1px solid var(--line);
+  color:var(--ink);
+  font-size:.84rem;
+  font-weight:700;
+}
+
+/* Mithila border frame inside quotation */
+.mithila-frame {
+  position:absolute;
+  inset:12px;
+  border:2px solid transparent;
+  border-radius:12px;
+  background:
+    linear-gradient(var(--paper),var(--paper)) padding-box,
+    repeating-linear-gradient(
+      90deg,
+      var(--gold) 0px, var(--gold) 8px,
+      var(--maroon) 8px, var(--maroon) 12px,
+      var(--gold) 12px, var(--gold) 20px,
+      transparent 20px, transparent 28px
+    ) border-box;
+  pointer-events:none; z-index:0;
+}
+
+.q-wm{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,9vw,7rem);
+  font-weight:600;color:rgba(123,28,28,.035);
+  letter-spacing:.2em;transform:rotate(-25deg);
+  z-index:0;pointer-events:none;user-select:none;white-space:nowrap;
+}
+.q-body{position:relative;z-index:1}
+
+/* PDF HEADER — Mithila inspired top band */
+.pdf-hdr {
+  background:linear-gradient(135deg,#1A0808 0%,#7B1C1C 100%);
+  border-radius:14px;padding:24px 28px;color:#fff;margin-bottom:20px;
+  display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start;
+  position:relative;overflow:hidden;
+  border-top: 4px solid var(--gold);
+}
+/* Mithila fish pattern in header */
+.pdf-hdr::before {
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='40' viewBox='0 0 60 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C8952A' fill-opacity='0.07'%3E%3Cellipse cx='15' cy='20' rx='10' ry='5'/%3E%3Cpolygon points='25,20 30,15 30,25'/%3E%3Ccircle cx='12' cy='18' r='1.5'/%3E%3Cellipse cx='45' cy='20' rx='10' ry='5'/%3E%3Cpolygon points='55,20 60,15 60,25'/%3E%3Ccircle cx='42' cy='18' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+}
+.pdf-hdr::after{
+  content:'VC';position:absolute;right:28px;top:16px;
+  font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:600;
+  color:rgba(255,255,255,.05);line-height:1;letter-spacing:-.04em;
+}
+.ph-l{position:relative;z-index:1}
+.ph-tag{
+  display:inline-block;background:rgba(200,149,42,.22);
+  border:1px solid rgba(200,149,42,.4);border-radius:999px;
+  padding:3px 13px;font-size:.7rem;font-weight:800;
+  color:#f5d89a;letter-spacing:.1em;text-transform:uppercase;margin-bottom:11px;
+}
+.ph-name{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.5rem);font-weight:600;margin:0;color:#fff;line-height:1.05}
+.ph-name em{font-style:italic;color:#f5c842}
+.ph-line{margin:5px 0 0;color:rgba(255,255,255,.7);font-size:.86rem;line-height:1.55}
+.ph-gstin{
+  margin-top:10px;display:inline-flex;align-items:center;gap:7px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);
+  border-radius:8px;padding:5px 12px;font-size:.8rem;font-weight:700;color:rgba(255,255,255,.9);
+}
+.ph-r{position:relative;z-index:1}
+.meta-box{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:13px 15px;min-width:195px}
+.mr{display:flex;justify-content:space-between;gap:12px;padding-bottom:7px;border-bottom:1px solid rgba(255,255,255,.1)}
+.mr:last-child{border-bottom:none;padding-bottom:0}
+.mr span{color:rgba(255,255,255,.58);font-size:.79rem}
+.mr strong{color:#fff;font-size:.86rem;text-align:right}
+
+/* INFO CARDS */
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:17px}
+.ic{border:1.5px solid var(--line);border-radius:13px;padding:15px;background:#fff;position:relative;overflow:hidden}
+.ic::before {
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--gold),var(--maroon));
+}
+.ic-lbl{text-transform:uppercase;letter-spacing:.1em;color:var(--gold2);font-size:.68rem;font-weight:800;margin:0 0 8px;display:flex;align-items:center;gap:6px}
+.ic-lbl::before{content:'';width:12px;height:2px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.ic-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;margin:0 0 5px}
+.ic-line{margin:3px 0;color:var(--muted);font-size:.85rem}
+
+/* PACKAGE BANNER */
+.pkg-banner{border-radius:13px;padding:17px 20px;color:#fff;margin-bottom:17px;display:flex;justify-content:space-between;align-items:center;gap:13px;flex-wrap:wrap;position:relative;overflow:hidden}
+.pkg-banner::after {
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='20' cy='20' r='8'/%3E%3Ccircle cx='0' cy='0' r='4'/%3E%3Ccircle cx='40' cy='0' r='4'/%3E%3Ccircle cx='0' cy='40' r='4'/%3E%3Ccircle cx='40' cy='40' r='4'/%3E%3C/g%3E%3C/svg%3E");
+}
+.pkg-banner.low{background:linear-gradient(135deg,#1E5C38,#145230)}
+.pkg-banner.mid{background:linear-gradient(135deg,#a07520,#C8952A)}
+.pkg-banner.high{background:linear-gradient(135deg,#5c1414,#7B1C1C)}
+.pb-lbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.13em;opacity:.8;font-weight:800;margin:0 0 4px;position:relative;z-index:1}
+.pb-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;margin:0;position:relative;z-index:1}
+.pb-rate{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;text-align:right;position:relative;z-index:1}
+
+/* COST CHIPS */
+.cc-row{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-bottom:17px}
+.cc{background:var(--soft);border-radius:12px;padding:13px;border:1px solid var(--line)}
+.cc span{display:block;color:var(--muted);font-size:.75rem;margin-bottom:5px;font-weight:600}
+.cc strong{font-family:'Cormorant Garamond',serif;font-size:.98rem;font-weight:700}
+.cc.accent{background:var(--maroon);color:#fff;border-color:var(--maroon2)}
+.cc.accent span{color:rgba(255,255,255,.7)}
+.cc.accent strong{font-size:1.08rem;color:#fff}
+
+/* SHEET CARDS */
+.sh-card{border:1.5px solid var(--line);border-radius:13px;padding:17px;background:#fff;margin-bottom:15px;position:relative;overflow:hidden}
+.sh-card::before {
+  content:'';position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:linear-gradient(180deg,var(--gold),var(--maroon));
+}
+.sh-card h3{margin:0 0 12px;font-family:'Cormorant Garamond',serif;font-size:1.08rem;font-weight:600;padding-left:8px}
+.tbl-wrap{overflow-x:auto}
+.dtbl{width:100%;border-collapse:collapse}
+.dtbl th{background:var(--maroon);color:#fff;padding:9px 10px;font-size:.79rem;font-weight:700;text-align:left;letter-spacing:.04em}
+.dtbl th:last-child{text-align:right}
+.dtbl td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top;font-size:.87rem}
+.dtbl td:last-child{text-align:right;font-weight:600}
+.fh td{background:#f8f2e8;font-weight:800;color:var(--maroon);border-top:2px solid var(--line)}
+.fn{color:var(--muted);font-size:.77rem;margin-top:2px;font-weight:400}
+.gr td{background:var(--maroon);color:#fff;font-weight:800;border-top:2px solid var(--maroon2);font-size:.92rem}
+.gr td:last-child{font-family:'Cormorant Garamond',serif;font-size:1.1rem}
+
+/* GST TABLE */
+.gst-table-wrap { margin-top:14px; }
+.gst-note { color:var(--muted);font-size:.83rem;line-height:1.6;margin:0 0 12px; }
+.gst-chip {
+  display:inline-flex;align-items:center;gap:6px;
+  background:#e8f5e9;border:1px solid #a5d6a7;border-radius:8px;
+  padding:5px 12px;font-size:.8rem;font-weight:700;color:#1b5e20;margin-top:8px;
+}
+
+.terms-list{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:.84rem}
+.terms-list li+li{margin-top:5px}
+
+/* FOOTER */
+.q-foot{margin-top:22px;padding-top:18px;border-top:2px solid var(--line);display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.q-foot-l{color:var(--muted);font-size:.79rem;line-height:1.65}
+.sig{border-top:1.5px solid var(--ink);padding-top:6px;min-width:175px;text-align:center}
+.sig p{margin:3px 0;font-size:.79rem;font-weight:700;color:var(--ink)}
+.sig p.sub{font-weight:400;color:var(--muted)}
+
+/* MITHILA DIVIDER */
+.mithila-div {
+  height:20px; margin:20px 0;
+  background:repeating-linear-gradient(
+    90deg,
+    var(--gold) 0px, var(--gold) 6px,
+    var(--paper) 6px, var(--paper) 10px,
+    var(--maroon) 10px, var(--maroon) 14px,
+    var(--paper) 14px, var(--paper) 20px
+  );
+  border-radius:2px;
+}
+
+/* SHEET BAR */
+.sheet-bar{
+  background:linear-gradient(135deg,#0f4229,#1E5C38);
+  border-radius:16px;padding:17px 22px;color:#fff;
+  display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;
+  margin-top:20px;box-shadow:0 8px 28px rgba(30,92,56,.25);
+}
+.sheet-bar-l h3{margin:0 0 4px;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600}
+.sheet-bar-l p{margin:0;font-size:.83rem;opacity:.82}
+.quote-status{
+  margin-top:12px;
+  font-size:.82rem;
+  color:var(--muted);
+  line-height:1.6;
+  background:rgba(200,149,42,.08);
+  border:1px solid rgba(200,149,42,.18);
+  border-radius:12px;
+  padding:10px 12px;
+}
+
+/* ADMIN MODAL */
+.modal-ov{position:fixed;inset:0;background:rgba(26,8,8,.65);backdrop-filter:blur(4px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-ov.open{display:flex}
+.modal{background:var(--paper);border-radius:20px;box-shadow:0 32px 80px rgba(0,0,0,.28);width:min(880px,100%);max-height:90vh;overflow-y:auto;padding:30px;position:relative;border-top:4px solid var(--gold)}
+.modal-x{position:absolute;top:16px;right:16px;width:34px;height:34px;background:var(--soft);border:none;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.modal-x:hover{background:var(--line)}
+.modal h2{font-family:'Cormorant Garamond',serif;margin:0 0 5px;font-size:1.5rem;font-weight:600}
+.ms+.ms{margin-top:22px;padding-top:22px;border-top:1px solid var(--line)}
+.lg-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stmsg{margin-top:12px;padding:9px 13px;border-radius:10px;display:none;font-size:.87rem;font-weight:600}
+.stmsg.show{display:block}
+.stmsg.good{background:#e6f4ea;color:#1a5c35}
+.stmsg.bad{background:#fde8e6;color:#7B1C1C}
+.adm-sh{display:none}
+.adm-sh.open{display:block}
+.adm-tbl{width:100%;border-collapse:collapse;margin-top:10px}
+.adm-tbl th{background:var(--maroon);color:#fff;padding:8px 10px;font-size:.77rem;font-weight:700;text-align:left}
+.adm-tbl td{padding:7px 10px;border-bottom:1px solid var(--line);font-size:.85rem;vertical-align:middle}
+.adm-tbl input{border:1.5px solid var(--line);border-radius:8px;padding:5px 9px;width:100%;text-align:right;background:#fff}
+.adm-tbl input:focus{outline:none;border-color:var(--gold)}
+.prev-box{background:var(--soft);border-radius:12px;padding:13px 15px;line-height:1.75;font-size:.87rem;border:1px solid var(--line)}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:#1A1208;color:#fff;border-radius:12px;padding:13px 22px;font-weight:700;font-size:.92rem;z-index:9999;transition:transform .35s cubic-bezier(.34,1.56,.64,1);pointer-events:none;min-width:260px;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast.good{border-left:4px solid #34a853}
+.toast.bad{border-left:4px solid #e53935}
+
+/* URL SET */
+.url-set{display:flex;gap:8px;align-items:center;margin-top:10px}
+.url-set input{flex:1;border:1.5px solid var(--line);border-radius:9px;padding:7px 11px;font-size:.83rem}
+
+/* DEV CREDIT */
+.dev-cr{position:fixed;right:12px;bottom:8px;font-size:.65rem;color:rgba(26,8,8,.25);pointer-events:none;user-select:none;z-index:9999;letter-spacing:.06em}
+
+/* ═══ PRINT ═══ */
+@page{size:A4;margin:10mm 12mm}
+@media print{
+  body{background:#fff!important;background-image:none!important}
+  .topnav,.mithila-bar,.mithila-strip,.hero,.panel,.modal-ov,.dev-cr,.sheet-bar{display:none!important}
+  .app,.workspace{width:100%!important;margin:0!important;display:block!important}
+  .q-sheet{border:none!important;border-radius:0!important;box-shadow:none!important}
+  .q-inner{padding:0!important}
+  .mithila-frame{display:none!important}
+  .pb-before{page-break-before:always}
+  .sh-card,.ic,.pkg-banner,.meta-box{break-inside:avoid;page-break-inside:avoid}
+  .pdf-hdr,.pkg-banner,.gr td,.fh td,.dtbl th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .pdf-hdr{border-radius:10px!important}
+  .sh-card::before{display:none}
+  .ic::before{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1060px){.workspace{grid-template-columns:1fr}.panel{position:static;max-height:none}}
+@media(max-width:760px){
+  .app{width:calc(100% - 16px);margin:8px auto 28px}
+  .hero{padding:22px 20px;border-radius:0}
+  .q-inner,.panel{padding:18px}
+  .pdf-hdr{grid-template-columns:1fr}
+  .ph-r{display:none}
+  .info-grid,.cc-row,.fg,.lg-grid{grid-template-columns:1fr}
+  .placeholder-points{grid-template-columns:1fr}
+  .pkg-banner{flex-direction:column;align-items:flex-start}
+  .pb-rate{text-align:left}
+  .btn{width:100%;text-align:center;justify-content:center}
+  .topnav-actions{width:100%;justify-content:flex-start}
+}
+@media(max-width:480px){.pc-rate{font-size:1.1rem}.pb-rate{font-size:1.4rem}}
+</style>
+</head>
+<body>
+
+<!-- MITHILA TOP BAR -->
+<div class="mithila-bar"></div>
+
+<!-- TOP NAV -->
+<nav class="topnav">
+  <a class="topnav-brand" href="../index.html"><span>Vishwanath</span> Construction</a>
+  <div class="topnav-actions">
+    <div class="topnav-lang" id="quoteLangSwitch">
+      <button type="button" data-lang="en" class="active">EN</button>
+      <button type="button" data-lang="hi">हिं</button>
+    </div>
+    <button type="button" class="topnav-toggle" id="quoteThemeToggle">Dark Mode</button>
+    <a class="topnav-back" id="quoteBackLink" href="../index.html">← Back to Main Site</a>
+  </div>
+</nav>
+
+<div class="app">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-in">
+      <div>
+        <div class="hero-badges">
+          <span class="badge">⭐ GST Registered Since 2019</span>
+          <span class="badge">🏗 RERA Approved · Bihar</span>
+        </div>
+        <h1 id="quoteHeroHeading"><em>Vishwanath</em> Construction</h1>
+        <p class="hero-sub" id="quoteHeroSub">Professional Construction &amp; Finishing Work — Patna, Bihar<br>B5 Muktipalce, Rukanpura, Baly Road, 800014, in Bigland Construction Office</p>
+        <div class="hero-meta">
+          <div class="hero-pill">✓ GSTIN: 10EUFPK3451L1ZQ</div>
+          <div class="hero-pill">👤 Proprietor: Anish Kumar</div>
+          <div class="hero-pill">📅 Established: 2012</div>
+        </div>
+        <div class="hero-btns">
+          <button class="btn btn-ghost" id="openAdmin">⚙ Admin Panel</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MITHILA MOTIF STRIP -->
+  <div class="mithila-strip">
+    <svg viewBox="0 0 800 36" xmlns="http://www.w3.org/2000/svg">
+      <!-- Repeating Mithila fish + lotus motif -->
+      <defs>
+        <pattern id="mp" x="0" y="0" width="80" height="36" patternUnits="userSpaceOnUse">
+          <!-- fish -->
+          <ellipse cx="20" cy="18" rx="9" ry="4.5" fill="#C8952A" fill-opacity=".7"/>
+          <polygon points="29,18 34,13 34,23" fill="#C8952A" fill-opacity=".7"/>
+          <circle cx="17" cy="16" r="1.2" fill="#1A0808"/>
+          <!-- lotus petals -->
+          <ellipse cx="55" cy="22" rx="4" ry="7" fill="#7B1C1C" fill-opacity=".6" transform="rotate(-20,55,22)"/>
+          <ellipse cx="60" cy="20" rx="4" ry="7" fill="#7B1C1C" fill-opacity=".6" transform="rotate(0,60,20)"/>
+          <ellipse cx="65" cy="22" rx="4" ry="7" fill="#7B1C1C" fill-opacity=".6" transform="rotate(20,65,22)"/>
+          <circle cx="60" cy="18" r="3" fill="#C8952A" fill-opacity=".8"/>
+          <!-- dot divider -->
+          <circle cx="40" cy="18" r="2" fill="#C8952A" fill-opacity=".4"/>
+        </pattern>
+      </defs>
+      <rect width="800" height="36" fill="url(#mp)"/>
+    </svg>
+  </div>
+
+  <!-- WORKSPACE -->
+  <div class="workspace">
+
+    <!-- LEFT PANEL -->
+    <aside class="panel">
+
+      <div class="sec">
+        <p class="eyebrow">Customer Details</p>
+        <h2>Quotation Setup</h2>
+        <div class="fg">
+          <label class="field"><span>Quotation No.</span><input id="qNo" value="VC-QT-2026-001"></label>
+          <label class="field"><span>Date</span><input id="qDate" type="date"></label>
+          <label class="field"><span>Customer Name</span><input id="cName" value="Customer Name"></label>
+          <label class="field"><span>Phone</span><input id="cPhone" value="+91 XXXXX XXXXX"></label>
+          <label class="field"><span>Project Name</span><input id="pName" value="Residential Project"></label>
+          <label class="field"><span>Area / Floor (sq ft)</span><input id="area" type="number" min="0" value="1500"></label>
+          <label class="field"><span>Total Floors</span><input id="fCount" type="number" min="1" max="6" value="3"></label>
+          <label class="field"><span>Top Floor Label</span><input id="fLabel" value="2nd Floor"></label>
+        </div>
+        <div class="fg one">
+          <label class="field"><span>Site Address</span><textarea id="cAddr">Patna, Bihar</textarea></label>
+          <label class="field"><span>Scope / Requirements</span><textarea id="pScope">Work will be executed as per selected type, material mode, package, approved drawing and floor-wise lifting charge.</textarea></label>
+        </div>
+      </div>
+
+      <div class="sec">
+        <p class="eyebrow">Work Type</p>
+        <h3>Select Quotation Type</h3>
+        <div id="typeGrid" class="cg"></div>
+      </div>
+
+      <div class="sec">
+        <p class="eyebrow">Material Mode</p>
+        <h3>Select Material Option</h3>
+        <div id="matGrid" class="cg"></div>
+      </div>
+
+      <div class="sec">
+        <p class="eyebrow">Package</p>
+        <h3>Select Price Level</h3>
+        <p class="sec-note">Rates managed from Admin Panel.</p>
+        <div id="pkgGrid" class="cg"></div>
+      </div>
+
+      <div class="sec">
+        <p class="eyebrow">Live Summary</p>
+        <div class="sum-box">
+          <div class="sr"><span>Work Type</span><strong id="sType">—</strong></div>
+          <div class="sr"><span>Material</span><strong id="sMat">—</strong></div>
+          <div class="sr"><span>Package</span><strong id="sPkg">—</strong></div>
+          <div class="sr"><span>Base Rate</span><strong id="sRate">—</strong></div>
+          <div class="sr"><span>GST (18%)</span><strong id="sGst">—</strong></div>
+          <div class="sr-total"><span>Total (incl. GST)</span><strong id="sTotal">—</strong></div>
+        </div>
+        <div class="act-row">
+          <button class="btn btn-maroon" id="generateQuoteBtn">Generate Quotation</button>
+        </div>
+        <p class="quote-status" id="quoteStatus">Fill the details and generate the quotation to preview and download it.</p>
+        <p class="helper">PDF includes company header · GSTIN · GST breakdown · floor-wise lifting · terms · signature block.</p>
+      </div>
+
+    </aside>
+
+    <!-- QUOTATION PREVIEW -->
+    <div class="preview-stage">
+      <section class="preview-placeholder" id="quotePlaceholder">
+        <div class="preview-kicker">Quotation Preview</div>
+        <h3>Warm, detailed and ready to present.</h3>
+        <p>Your quotation will appear here with full cost breakup, GST details, floor-wise charges and client-ready formatting as soon as you generate it.</p>
+        <div class="placeholder-points">
+          <div class="placeholder-pill">Live cost summary</div>
+          <div class="placeholder-pill">Client-ready PDF layout</div>
+          <div class="placeholder-pill">GST and floor lifting breakup</div>
+          <div class="placeholder-pill">Download and print after generate</div>
+        </div>
+      </section>
+      <section class="q-sheet is-hidden" id="quoteSheet">
+        <div class="q-inner">
+          <div class="mithila-frame"></div>
+          <div class="q-wm">VISHWANATH</div>
+          <div class="q-body">
+
+          <!-- PDF HEADER -->
+          <div class="pdf-hdr">
+            <div class="ph-l">
+              <div class="ph-tag">Construction Quotation</div>
+              <h2 class="ph-name"><em>Vishwanath</em> Construction</h2>
+              <p class="ph-line">Professional Construction &amp; Finishing Work — Patna, Bihar</p>
+              <p class="ph-line">B5 Muktipalce, Rukanpura, Baly Road, 800014, in Bigland Construction Office</p>
+              <p class="ph-line" id="phContact">Phone: +91 XXXXX XXXXX &nbsp;|&nbsp; Email: vishwanathconstruction@gmail.com</p>
+              <p class="ph-line">📅 Established: 2012 &nbsp;|&nbsp; GST Reg. Since: 2019</p>
+              <div class="ph-gstin">✓ GSTIN: 10EUFPK3451L1ZQ &nbsp;|&nbsp; Proprietor: Anish Kumar</div>
+            </div>
+            <div class="ph-r">
+              <div class="meta-box">
+                <div class="mr"><span>Quotation No.</span><strong id="pvQNo">VC-QT-2026-001</strong></div>
+                <div class="mr"><span>Date</span><strong id="pvDate">—</strong></div>
+                <div class="mr"><span>Prepared By</span><strong id="pvPrep">Anish Kumar</strong></div>
+                <div class="mr"><span>Valid For</span><strong>30 Days</strong></div>
+                <div class="mr"><span>GST Rate</span><strong>18%</strong></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CUSTOMER + PROJECT -->
+          <div class="info-grid">
+            <div class="ic">
+              <p class="ic-lbl">Customer Details</p>
+              <p class="ic-name" id="pvCName">Customer Name</p>
+              <p class="ic-line" id="pvCPhone">+91 XXXXX XXXXX</p>
+              <p class="ic-line" id="pvCAddr">Patna, Bihar</p>
+            </div>
+            <div class="ic">
+              <p class="ic-lbl">Project Details</p>
+              <p class="ic-name" id="pvPName">Residential Project</p>
+              <p class="ic-line" id="pvArea">Area per floor: 1500 sq ft</p>
+              <p class="ic-line" id="pvFInfo">Total floors: 3 | Top: 2nd Floor</p>
+              <p class="ic-line" id="pvType">Type: All Work</p>
+              <p class="ic-line" id="pvMat">Material: With Material</p>
+              <p class="ic-line" id="pvScope" style="margin-top:5px;font-size:.81rem;color:var(--muted)">—</p>
+            </div>
+          </div>
+
+          <!-- PACKAGE BANNER -->
+          <div class="pkg-banner mid" id="pvBanner">
+            <div>
+              <p class="pb-lbl">Selected Package</p>
+              <h3 class="pb-name" id="pvPkgName">Standard Package</h3>
+              <p style="margin:4px 0 0;opacity:.85;font-size:.86rem;position:relative;z-index:1" id="pvPkgCopy">Balanced package for well-finished work and great value.</p>
+            </div>
+            <div class="pb-rate" id="pvPkgRate">₹ 2,100 / sq ft</div>
+          </div>
+
+          <!-- COST CHIPS -->
+          <div class="cc-row">
+            <div class="cc"><span>Work Type</span><strong id="ccType">All Work</strong></div>
+            <div class="cc"><span>Material Mode</span><strong id="ccMat">With Material</strong></div>
+            <div class="cc"><span>Area / Floor</span><strong id="ccArea">1500 sq ft</strong></div>
+            <div class="cc accent"><span>Total (incl. GST)</span><strong id="ccTotal">—</strong></div>
+          </div>
+
+          <!-- DETAIL TABLE -->
+          <div class="sh-card">
+            <h3>Quotation Details</h3>
+            <div class="tbl-wrap">
+              <table class="dtbl">
+                <thead><tr><th>Description</th><th>Value</th></tr></thead>
+                <tbody id="dtBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- GST BREAKDOWN -->
+          <div class="sh-card">
+            <h3>GST Breakdown</h3>
+            <p class="gst-note">GST applicable as per Government of India norms. CGST + SGST at 18% on taxable value. For construction contracts, composite supply provisions under GST may apply — consult your CA.</p>
+            <div class="tbl-wrap gst-table-wrap">
+              <table class="dtbl">
+                <thead><tr><th>Component</th><th>Rate</th><th style="text-align:right">Amount</th></tr></thead>
+                <tbody id="gstBody"></tbody>
+              </table>
+            </div>
+            <div class="gst-chip">✓ GSTIN: 10EUFPK3451L1ZQ — GST Registered Since 2019</div>
+          </div>
+
+          <!-- TERMS -->
+          <div class="sh-card">
+            <h3>Terms &amp; Conditions</h3>
+            <ul class="terms-list">
+              <li>This quotation is valid for <strong>30 days</strong> from date of issue.</li>
+              <li>Amount calculated at admin-set rate × area, adjusted with floor-wise lifting charge.</li>
+              <li>GST at 18% will be charged extra on the base construction value.</li>
+              <li>Final cost may change if scope, floor count, drawing or site dimensions are revised.</li>
+              <li>Work commences after advance payment and written confirmation.</li>
+              <li>Material quality, brand and specification subject to written agreement.</li>
+              <li>Vishwanath Construction is GST registered since 2019 under GSTIN: 10EUFPK3451L1ZQ.</li>
+            </ul>
+          </div>
+
+          <!-- FLOOR BREAKDOWN -->
+          <div class="sh-card pb-before">
+            <h3>Floor-wise Cost Breakdown</h3>
+            <p style="color:var(--muted);font-size:.83rem;margin:0 0 12px;padding-left:8px">Detailed floor costs, stage-wise percentages and lifting charges as per selection.</p>
+            <div class="tbl-wrap">
+              <table class="dtbl">
+                <thead><tr><th>Item / Stage</th><th>Area</th><th>Rate / %</th><th>Amount</th></tr></thead>
+                <tbody id="bkBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- MITHILA DIVIDER -->
+          <div class="mithila-div"></div>
+
+          <!-- QUOTATION FOOTER -->
+          <div class="q-foot">
+            <div class="q-foot-l">
+              <strong>Vishwanath Construction</strong><br>
+              B5 Muktipalce, Rukanpura, Baly Road, 800014, in Bigland Construction Office<br>
+              GSTIN: 10EUFPK3451L1ZQ &nbsp;|&nbsp; Proprietor: Anish Kumar<br>
+              GST Registered Since: 2019 &nbsp;|&nbsp; Established: 2012
+            </div>
+            <div class="sig">
+              <p>Authorised Signatory</p>
+              <p class="sub">Anish Kumar (Proprietor)</p>
+            </div>
+          </div>
+
+          </div><!-- q-body -->
+        </div><!-- q-inner -->
+      </section>
+    </div>
+
+  </div><!-- workspace -->
+
+  <!-- GOOGLE SHEET SUBMIT BAR -->
+  <div class="sheet-bar is-hidden" id="sheetBar">
+    <div class="sheet-bar-l">
+      <h3>Quotation Ready</h3>
+      <p>Your final quotation is now ready. Download the PDF or print it directly from here.</p>
+    </div>
+    <div class="act-row">
+      <button class="btn btn-gold" id="dl2">⬇ Download PDF</button>
+      <button class="btn btn-dark" id="printBtn">🖨 Print Quotation</button>
+    </div>
+  </div>
+
+</div><!-- app -->
+
+<!-- ADMIN MODAL -->
+<div class="modal-ov" id="adminOv">
+  <div class="modal">
+    <button class="modal-x" id="adminX">✕</button>
+    <h2>Admin Panel</h2>
+    <p style="color:var(--muted);margin:0 0 18px;font-size:.87rem">Protected: pricing, company details, GST, floor lifting charges.</p>
+
+    <div class="ms">
+      <p class="eyebrow">Access</p>
+      <div class="lg-grid">
+        <label class="field"><span>Admin ID</span><input id="aId" type="text" placeholder="Admin ID" autocomplete="off"></label>
+        <label class="field"><span>Password</span><input id="aPw" type="password" placeholder="Password"></label>
+      </div>
+      <div class="act-row" style="margin-top:13px">
+        <button class="btn btn-maroon btn-sm" id="loginBtn">Unlock Panel</button>
+        <button class="btn btn-sm" style="background:var(--soft);color:var(--ink)" id="logoutBtn">Lock</button>
+      </div>
+      <div class="stmsg" id="lstatus"></div>
+    </div>
+
+    <div class="adm-sh" id="admSh">
+      <!-- Company -->
+      <div class="ms">
+        <p class="eyebrow">Company Header</p>
+        <div class="fg">
+          <label class="field"><span>Company Name</span><input id="aC"></label>
+          <label class="field"><span>GSTIN</span><input id="aG"></label>
+          <label class="field"><span>GST Registration Year</span><input id="aGY" value="2019"></label>
+          <label class="field"><span>Established Year</span><input id="aEY" value="2012"></label>
+          <label class="field"><span>Proprietor / Prepared By</span><input id="aP"></label>
+          <label class="field"><span>Phone</span><input id="aPh"></label>
+          <label class="field"><span>Email</span><input id="aEm"></label>
+          <label class="field"><span>Address Line</span><input id="aH"></label>
+        </div>
+        <div class="fg one">
+          <label class="field"><span>Tagline</span><textarea id="aL" style="min-height:55px"></textarea></label>
+        </div>
+      </div>
+      <!-- Rates -->
+      <div class="ms">
+        <p class="eyebrow">Pricing Control</p>
+        <h3 style="margin:0 0 12px;font-size:.95rem">Rate Table (₹ / sq ft — before GST)</h3>
+        <div class="tbl-wrap">
+          <table class="adm-tbl">
+            <thead><tr><th>Work Type</th><th>Material</th><th style="text-align:right">Basic</th><th style="text-align:right">Standard</th><th style="text-align:right">Premium</th></tr></thead>
+            <tbody id="rTbody"></tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Floors -->
+      <div class="ms">
+        <p class="eyebrow">Floor Settings</p>
+        <h3 style="margin:0 0 12px;font-size:.95rem">Floor Labels &amp; Lifting Charge</h3>
+        <div class="tbl-wrap">
+          <table class="adm-tbl">
+            <thead><tr><th>#</th><th>Floor Label</th><th>Lifting Charge (%)</th></tr></thead>
+            <tbody id="fTbody"></tbody>
+          </table>
+        </div>
+      </div>
+      <!-- GST -->
+      <div class="ms">
+        <p class="eyebrow">GST Settings</p>
+        <div class="fg">
+          <label class="field"><span>GST Rate (%)</span><input id="aGstR" type="number" min="0" max="28" value="18"></label>
+          <label class="field"><span>GST Type</span>
+            <select id="aGstT">
+              <option value="cgst_sgst">CGST + SGST (within Bihar)</option>
+              <option value="igst">IGST (inter-state)</option>
+              <option value="exempt">GST Exempt</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <!-- Save -->
+      <div class="ms">
+        <div class="act-row">
+          <button class="btn btn-gold btn-sm" id="saveBtn">✓ Save All</button>
+          <button class="btn btn-dark btn-sm" id="resetBtn">↺ Reset Defaults</button>
+        </div>
+        <div class="stmsg" id="sstatus"></div>
+      </div>
+      <!-- Google Sheet -->
+      <div class="ms">
+        <p class="eyebrow">Google Sheet Integration</p>
+        <h3 style="margin:0 0 8px;font-size:.95rem">Web App URL</h3>
+        <p style="color:var(--muted);font-size:.84rem;margin:0 0 8px;line-height:1.6">Paste your Google Apps Script deployed Web App URL here.</p>
+        <div class="url-set">
+          <input type="url" id="aScriptUrl" placeholder="https://script.google.com/macros/s/YOUR_ID/exec">
+          <button class="btn btn-gold btn-sm" id="saveUrlBtn">Save URL</button>
+        </div>
+        <div class="stmsg" id="urlStatus"></div>
+      </div>
+      <!-- Preview -->
+      <div class="ms">
+        <p class="eyebrow">Quick Preview</p>
+        <div class="prev-box" id="aPrev"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="dev-cr" id="devCr">DEVELOPED BY JAISANKAR</div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+const SK={r:"vc_r_v3",c:"vc_c_v4",f:"vc_f_v3",a:"vc_a_v3",g:"vc_gst_v1"};
+const TYPES=[
+  {id:"structure",name:"Structure Work",copy:"Structural civil work and frame stage only."},
+  {id:"finishing",name:"Finishing Work",copy:"Finishing, visible surfaces, and final use areas."},
+  {id:"all_work",name:"All Work",copy:"Complete package from structure to final finish."}
+];
+const MATS=[
+  {id:"with_material",name:"With Material",copy:"Rate includes all material cost by Vishwanath Construction."},
+  {id:"without_material",name:"Without Material",copy:"Customer supplies material; we handle execution and labour."}
+];
+const PKGS=[
+  {id:"low",name:"Basic Package",cls:"low",badge:"Budget Smart",copy:"Cost-focused essential execution."},
+  {id:"mid",name:"Standard Package",cls:"mid",badge:"Most Popular",copy:"Balanced finish and great value."},
+  {id:"high",name:"Premium Package",cls:"high",badge:"Premium Finish",copy:"Superior finish and upgraded quality."}
+];
+const DR={
+  structure:{with_material:{low:1100,mid:1350,high:1600},without_material:{low:420,mid:520,high:650}},
+  finishing:{with_material:{low:650,mid:900,high:1250},without_material:{low:260,mid:360,high:480}},
+  all_work:{with_material:{low:1750,mid:2100,high:2650},without_material:{low:690,mid:880,high:1130}}
+};
+const DC={
+  companyName:"Vishwanath Construction",legalName:"Anish Kumar",
+  gstNo:"10EUFPK3451L1ZQ",gstYear:"2019",estYear:"2012",
+  preparedBy:"Anish Kumar",phone:"+91 XXXXX XXXXX",
+  email:"vishwanathconstruction@gmail.com",
+  headerDetails:"Vijay Nagar Main Rd, Khajpura, Patna, Bihar – 800014",
+  companyLine:"Professional Construction & Finishing Work — Patna, Bihar"
+};
+const DG={rate:18,type:"cgst_sgst"};
+const DF={labels:["Ground Floor","1st Floor","2nd Floor","3rd Floor","4th Floor","5th Floor"],liftingPercent:[0,10,20,30,40,50]};
+const SM={
+  structure:[{l:"Column Steel Work",p:10},{l:"Column Casting",p:20},{l:"Slab Shuttering",p:20},{l:"Slab Reinforcement",p:10},{l:"Slab Casting",p:10},{l:"Brickwork",p:10},{l:"Inner Plaster",p:10},{l:"Outer Plaster",p:10}],
+  finishing:[{l:"Flooring",p:20},{l:"Tile / Wall Finish",p:15},{l:"Putty & Primer",p:10},{l:"Painting",p:15},{l:"Doors & Windows",p:15},{l:"Electrical Finish",p:10},{l:"Plumbing Finish",p:10},{l:"Final Touch-up",p:5}],
+  all_work:[{l:"Column Steel Work",p:10},{l:"Column Casting",p:15},{l:"Slab Shuttering",p:15},{l:"Slab Reinforcement",p:10},{l:"Slab Casting",p:10},{l:"Brickwork",p:10},{l:"Inner Plaster",p:10},{l:"Outer Plaster",p:10},{l:"Flooring & Finish",p:10}]
+};
+
+function dc(v){return JSON.parse(JSON.stringify(v));}
+function ls(k,fb){try{const r=localStorage.getItem(k);return r?JSON.parse(r):dc(fb);}catch{return dc(fb);}}
+function ss(k,v){localStorage.setItem(k,JSON.stringify(v));}
+function cur(v){return"₹ "+Math.round(v).toLocaleString("en-IN");}
+function rateStr(v){return cur(v)+" / sq ft";}
+function fmtD(v){if(!v)return"";const d=new Date(v+"T00:00:00");return d.toLocaleDateString("en-GB");}
+function hsh(s){let h=0;for(let i=0;i<s.length;i++){h=((h<<5)-h)+s.charCodeAt(i);h|=0;}return h.toString(16);}
+const AH=hsh("VCADMIN"),PH=hsh("VC@2024");
+function chk(id,pw){return hsh(id)===AH&&hsh(pw)===PH;}
+function g(id){return document.getElementById(id);}
+const THEME_KEY="vishwanathTheme";
+const LANGUAGE_KEY="vishwanathLanguage";
+const quoteI18n={
+  en:{
+    pageTitle:"Vishwanath Construction | Quotation Generator",
+    back:"← Back to Main Site",
+    themeDark:"Dark Mode",
+    themeLight:"Light Mode",
+    heroHeading:"<em>Vishwanath</em> Construction",
+    heroSub:"Professional Construction &amp; Finishing Work — Patna, Bihar<br>B5 Muktipalce, Rukanpura, Baly Road, 800014, in Bigland Construction Office",
+    dl:"Download or Print PDF",
+    admin:"Quotation Admin Panel",
+    sheetTitle:"Quotation Ready",
+    sheetCopy:"Your final quotation is now ready. Download the PDF or print it directly from here.",
+    submit:"Submit Quotation",
+    generate:"Submit And Generate Final Quotation",
+    generated:"Quotation submitted and generated successfully. Final result is below with download and print options.",
+    generateHint:"Fill the full form, then submit it. After Google submit succeeds, the final quotation will appear below.",
+    previewTitle:"Warm, detailed and ready to present.",
+    previewCopy:"Your quotation will appear here with full cost breakup, GST details, floor-wise charges and client-ready formatting as soon as you generate it.",
+    adminTitle:"Vishwanath Construction | Quotation Admin",
+    modalIntro:"Protected controls for pricing, company branding, GST, and floor lifting charges.",
+    customerNameWarn:"Please fill Customer Name before submitting.",
+    quoteSaved:"Quotation saved to Google Sheet!",
+    quoteError:"Could not reach Google Script. Check URL."
+  },
+  hi:{
+    pageTitle:"Vishwanath Construction | कोटेशन जनरेटर",
+    back:"← मुख्य साइट पर जाएं",
+    themeDark:"डार्क मोड",
+    themeLight:"लाइट मोड",
+    heroHeading:"<em>Vishwanath</em> Construction",
+    heroSub:"प्रोफेशनल कंस्ट्रक्शन और फिनिशिंग वर्क — पटना, बिहार<br>B5 Muktipalce, Rukanpura, Baly Road, 800014, in Bigland Construction Office",
+    dl:"पीडीएफ डाउनलोड / प्रिंट करें",
+    admin:"कोटेशन एडमिन पैनल",
+    sheetTitle:"कोटेशन तैयार है",
+    sheetCopy:"अब आपका final quotation तैयार है। नीचे से PDF download करें या direct print करें।",
+    submit:"कोटेशन सबमिट करें",
+    generate:"सबमिट करें और final quotation बनाएं",
+    generated:"कोटेशन submit और generate हो गया। नीचे final result और download / print options मिलेंगे।",
+    generateHint:"पूरी detail भरें, फिर submit करें। Google submit successful होने के बाद final quotation नीचे दिखेगा।",
+    previewTitle:"गरमाहट भरा, साफ और client-ready layout.",
+    previewCopy:"कोटेशन generate होते ही यहां पूरा cost breakup, GST details, floor-wise charges और printable format दिखेगा।",
+    adminTitle:"Vishwanath Construction | कोटेशन एडमिन",
+    modalIntro:"प्राइसिंग, ब्रांडिंग, GST और floor lifting charge के लिए protected controls.",
+    customerNameWarn:"सबमिट करने से पहले Customer Name भरें।",
+    quoteSaved:"कोटेशन गूगल शीट में सेव हो गया!",
+    quoteError:"Google Script URL तक पहुंच नहीं हो पाई।"
+  }
+};
+function getCurrentLanguage(){const language=window.localStorage.getItem(LANGUAGE_KEY);return language==="hi"?"hi":"en";}
+let quoteGenerated=false;
+function setQuoteVisibility(generated){
+  quoteGenerated=generated;
+  const sheet=g("quoteSheet");
+  const placeholder=g("quotePlaceholder");
+  const sheetBar=g("sheetBar");
+  const status=g("quoteStatus");
+  if(sheet)sheet.classList.toggle("is-hidden",!generated);
+  if(placeholder)placeholder.classList.toggle("is-hidden",generated);
+  if(sheetBar)sheetBar.classList.toggle("is-hidden",!generated);
+  if(status)status.textContent=generated?quoteI18n[getCurrentLanguage()].generated:quoteI18n[getCurrentLanguage()].generateHint;
+}
+function applyQuoteTheme(theme){
+  const resolvedTheme=theme==="dark"?"dark":"light";
+  document.body.dataset.theme=resolvedTheme;
+  window.localStorage.setItem(THEME_KEY,resolvedTheme);
+  const lang=getCurrentLanguage();
+  const btn=g("quoteThemeToggle");
+  if(btn)btn.textContent=resolvedTheme==="dark"?quoteI18n[lang].themeLight:quoteI18n[lang].themeDark;
+}
+function applyQuoteLanguage(language){
+  const lang=language==="hi"?"hi":"en";
+  const copy=quoteI18n[lang];
+  window.localStorage.setItem(LANGUAGE_KEY,lang);
+  document.documentElement.lang=lang;
+  document.title=copy.pageTitle;
+  const back=g("quoteBackLink"); if(back) back.textContent=copy.back;
+  const heroHeading=g("quoteHeroHeading"); if(heroHeading) heroHeading.innerHTML=copy.heroHeading;
+  const heroSub=g("quoteHeroSub"); if(heroSub) heroSub.innerHTML=copy.heroSub;
+  const previewTitle=document.querySelector("#quotePlaceholder h3"); if(previewTitle) previewTitle.textContent=copy.previewTitle;
+  const previewCopy=document.querySelector("#quotePlaceholder p"); if(previewCopy) previewCopy.textContent=copy.previewCopy;
+  const adminBtn=g("openAdmin"); if(adminBtn) adminBtn.textContent=copy.admin;
+  const sheetTitle=document.querySelector(".sheet-bar-l h3"); if(sheetTitle) sheetTitle.textContent=copy.sheetTitle;
+  const sheetCopy=document.querySelector(".sheet-bar-l p"); if(sheetCopy) sheetCopy.textContent=copy.sheetCopy;
+  const submitBtn=g("generateQuoteBtn"); if(submitBtn) submitBtn.textContent=copy.generate;
+  const generateBtn=g("generateQuoteBtn"); if(generateBtn) generateBtn.textContent=copy.generate;
+  const quoteStatus=g("quoteStatus"); if(quoteStatus) quoteStatus.textContent=quoteGenerated?copy.generated:copy.generateHint;
+  const modalIntro=document.querySelector(".modal h2 + p"); if(modalIntro) modalIntro.textContent=copy.modalIntro;
+  const modalTitle=document.querySelector(".modal h2"); if(modalTitle) modalTitle.textContent=lang==="hi"?"एडमिन कंट्रोल्स":"Admin Controls";
+  document.querySelectorAll("#quoteLangSwitch [data-lang]").forEach(btn=>btn.classList.toggle("active",btn.dataset.lang===lang));
+  applyQuoteTheme(document.body.dataset.theme||window.localStorage.getItem(THEME_KEY)||"light");
+}
+DC.headerDetails="B5 Muktipalce, Rukanpura, Baly Road, 800014, in Bigland Construction Office";
+DC.companyLine="We The Home Makers | Professional Construction and Finishing Work, Patna, Bihar";
+
+function normalizeUiText(){
+  document.title=quoteI18n[getCurrentLanguage()].adminTitle;
+  const backLink=document.querySelector(".topnav-back");
+  if(backLink)backLink.textContent=quoteI18n[getCurrentLanguage()].back;
+  const badges=document.querySelectorAll(".hero-badges .badge");
+  if(badges[0])badges[0].textContent="GST Registered Since 2019";
+  if(badges[1])badges[1].textContent="22+ Projects Done in Bihar";
+  const heroSub=document.querySelector(".hero-sub");
+  if(heroSub)heroSub.innerHTML="We The Home Makers<br>B5 Muktipalce, Rukanpura, Baly Road, 800014, in Bigland Construction Office";
+  const heroPills=document.querySelectorAll(".hero-pill");
+  if(heroPills[0])heroPills[0].textContent="GSTIN: 10EUFPK3451L1ZQ";
+  if(heroPills[1])heroPills[1].textContent="Proprietor: Anish Kumar";
+  if(heroPills[2])heroPills[2].textContent="Established: 2012";
+  const adminBtn=g("openAdmin");
+  if(adminBtn)adminBtn.textContent=quoteI18n[getCurrentLanguage()].admin;
+  const sheetTitle=document.querySelector(".sheet-bar-l h3");
+  if(sheetTitle)sheetTitle.textContent=quoteI18n[getCurrentLanguage()].sheetTitle;
+  const sheetCopy=document.querySelector(".sheet-bar-l p");
+  if(sheetCopy)sheetCopy.textContent=quoteI18n[getCurrentLanguage()].sheetCopy;
+  const submitBtn=g("generateQuoteBtn");
+  if(submitBtn)submitBtn.textContent=quoteI18n[getCurrentLanguage()].generate;
+  const modalClose=g("adminX");
+  if(modalClose)modalClose.textContent="X";
+  const modalIntro=document.querySelector(".modal h2 + p");
+  if(modalIntro)modalIntro.textContent=quoteI18n[getCurrentLanguage()].modalIntro;
+  const taglineField=g("aL");
+  if(taglineField){
+    const taglineSpan=taglineField.closest("label")?.querySelector("span");
+    if(taglineSpan)taglineSpan.textContent="Brand Slogan / Tagline";
+  }
+}
+
+const S={
+  tid:"all_work",mid:"with_material",pid:"mid",
+  rates:ls(SK.r,DR),co:ls(SK.c,DC),fl:ls(SK.f,DF),
+  gst:ls(SK.g,DG),
+  unlocked:localStorage.getItem(SK.a)==="true"
+};
+
+function getArea(){return Math.max(Number(g("area").value)||0,0);}
+function getFC(){const max=S.fl.labels.length;const v=Math.min(Math.max(Number(g("fCount").value)||1,1),max);if(Number(g("fCount").value)!==v)g("fCount").value=v;return v;}
+function getBR(pid){return Number(S.rates[S.tid][S.mid][pid])||0;}
+function getBaseTotal(){let t=0,br=getBR(S.pid),a=getArea(),n=getFC();for(let i=0;i<n;i++)t+=a*br*(1+(Number(S.fl.liftingPercent[i])||0)/100);return t;}
+function getGstAmount(base){return S.gst.type==="exempt"?0:base*S.gst.rate/100;}
+function getTotal(){const b=getBaseTotal();return b+getGstAmount(b);}
+function syncFL(){const n=getFC();g("fLabel").value=S.fl.labels[n-1]||("Floor "+n);}
+function getT(){return TYPES.find(x=>x.id===S.tid)||TYPES[2];}
+function getM(){return MATS.find(x=>x.id===S.mid)||MATS[0];}
+function getP(){return PKGS.find(x=>x.id===S.pid)||PKGS[1];}
+
+function renderCards(list,cid,selId,onSel){
+  const c=g(cid);
+  c.innerHTML=list.map(it=>`<article class="sc ${it.id===selId?"active":""}" data-id="${it.id}" tabindex="0"><h4>${it.name}</h4><p>${it.copy}</p></article>`).join("");
+  c.querySelectorAll(".sc").forEach(el=>{const go=()=>onSel(el.dataset.id);el.addEventListener("click",go);el.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go();}});});
+}
+function renderPkgs(){
+  const c=g("pkgGrid");
+  c.innerHTML=PKGS.map(p=>`<article class="pc ${p.cls} ${p.id===S.pid?"active":""}" data-id="${p.id}" tabindex="0"><div class="pc-top"><div><h4>${p.name}</h4><p class="pc-rate">${cur(getBR(p.id))}</p></div><span class="pc-badge">${p.badge}</span></div><p>${p.copy}</p><ul class="pc-pts"><li>Rate set from admin panel</li><li>Changes with work type &amp; material</li><li>Includes floor lifting charge</li></ul></article>`).join("");
+  c.querySelectorAll(".pc").forEach(el=>{const go=()=>{S.pid=el.dataset.id;renderPkgs();renderQ();};el.addEventListener("click",go);el.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go();}});});
+}
+function renderTypes(){renderCards(TYPES,"typeGrid",S.tid,v=>{S.tid=v;renderTypes();renderPkgs();renderQ();});}
+function renderMats(){renderCards(MATS,"matGrid",S.mid,v=>{S.mid=v;renderMats();renderPkgs();renderQ();});}
+
+function renderDT(){
+  const base=getBaseTotal(),gstAmt=getGstAmount(base),total=base+gstAmt;
+  const rows=[
+    ["Company",S.co.companyName],
+    ["GSTIN",S.co.gstNo],
+    ["GST Registered Since",S.co.gstYear||"2019"],
+    ["Established",S.co.estYear||"2012"],
+    ["Proprietor",S.co.legalName||"Anish Kumar"],
+    ["Customer",g("cName").value||"-"],
+    ["Project",g("pName").value||"-"],
+    ["Quotation No.",g("qNo").value||"-"],
+    ["Date",fmtD(g("qDate").value)||new Date().toLocaleDateString("en-GB")],
+    ["Work Type",getT().name],
+    ["Material Mode",getM().name],
+    ["Package",getP().name],
+    ["Area / Floor",getArea()+" sq ft"],
+    ["Total Floors",getFC()],
+    ["Top Floor",g("fLabel").value||"-"],
+    ["Base Rate",cur(getBR(S.pid))+" / sq ft"],
+    ["Base Value (before GST)",cur(base)],
+    ["GST ("+S.gst.rate+"% — "+gstLabel()+")",cur(gstAmt)],
+    ["Total Estimate (incl. GST)",cur(total)],
+    ["Scope",g("pScope").value||"-"]
+  ];
+  g("dtBody").innerHTML=rows.map(([l,v])=>`<tr><td>${l}</td><td>${v}</td></tr>`).join("");
+}
+
+function gstLabel(){
+  if(S.gst.type==="exempt")return"Exempt";
+  if(S.gst.type==="igst")return"IGST";
+  return"CGST+SGST";
+}
+
+function renderGST(){
+  const base=getBaseTotal(),rate=S.gst.rate;
+  if(S.gst.type==="exempt"){
+    g("gstBody").innerHTML=`<tr><td colspan="2">GST Exempt</td><td>₹ 0</td></tr>`;
+    return;
+  }
+  let rows="";
+  if(S.gst.type==="igst"){
+    rows+=`<tr><td>Taxable Value</td><td>—</td><td>${cur(base)}</td></tr>`;
+    rows+=`<tr><td>IGST (${rate}%)</td><td>${rate}%</td><td>${cur(base*rate/100)}</td></tr>`;
+  } else {
+    rows+=`<tr><td>Taxable Value</td><td>—</td><td>${cur(base)}</td></tr>`;
+    rows+=`<tr><td>CGST</td><td>${rate/2}%</td><td>${cur(base*rate/200)}</td></tr>`;
+    rows+=`<tr><td>SGST</td><td>${rate/2}%</td><td>${cur(base*rate/200)}</td></tr>`;
+  }
+  rows+=`<tr class="gr"><td colspan="2"><strong>Total (incl. GST)</strong></td><td><strong>${cur(base+base*rate/100)}</strong></td></tr>`;
+  g("gstBody").innerHTML=rows;
+}
+
+function renderBK(){
+  const br=getBR(S.pid),a=getArea(),stages=SM[S.tid]||SM.all_work;
+  let html="",grand=0;
+  for(let i=0;i<getFC();i++){
+    const lbl=S.fl.labels[i]||("Floor "+(i+1));
+    const lift=Number(S.fl.liftingPercent[i]||0);
+    const fr=br*(1+lift/100),fa=a*fr;
+    grand+=fa;
+    html+=`<tr class="fh"><td>${lbl}<div class="fn">${lift>0?lift+"% lifting charge":"Base rate — no lifting"}</div></td><td>${a} sq ft</td><td>${cur(fr)}/sq ft</td><td>${cur(fa)}</td></tr>`;
+    stages.forEach((st,si)=>{html+=`<tr><td>${i+1}.${si+1} &nbsp;${st.l}</td><td>—</td><td>${st.p}%</td><td>${cur(fa*st.p/100)}</td></tr>`;});
+  }
+  const gstAmt=getGstAmount(grand);
+  html+=`<tr class="fh"><td colspan="3">Sub-total (before GST)</td><td>${cur(grand)}</td></tr>`;
+  if(S.gst.type!=="exempt"){
+    if(S.gst.type==="igst"){
+      html+=`<tr><td colspan="3">IGST (${S.gst.rate}%)</td><td>${cur(gstAmt)}</td></tr>`;
+    } else {
+      html+=`<tr><td colspan="3">CGST (${S.gst.rate/2}%)</td><td>${cur(grand*S.gst.rate/200)}</td></tr>`;
+      html+=`<tr><td colspan="3">SGST (${S.gst.rate/2}%)</td><td>${cur(grand*S.gst.rate/200)}</td></tr>`;
+    }
+  }
+  html+=`<tr class="gr"><td colspan="3"><strong>Grand Total — All Floors (incl. GST)</strong></td><td><strong>${cur(grand+gstAmt)}</strong></td></tr>`;
+  g("bkBody").innerHTML=html;
+}
+
+function renderQ(){
+  const t=getT(),m=getM(),p=getP(),br=getBR(S.pid);
+  const base=getBaseTotal(),gstAmt=getGstAmount(base),tot=base+gstAmt;
+  const today=new Date().toLocaleDateString("en-GB");
+  // Left panel
+  g("sType").textContent=t.name;g("sMat").textContent=m.name;g("sPkg").textContent=p.name;
+  g("sRate").textContent=rateStr(br);
+  g("sGst").textContent=S.gst.type==="exempt"?"Exempt":cur(gstAmt)+" ("+S.gst.rate+"%)";
+  g("sTotal").textContent=cur(tot);
+  // Header
+  g("pvQNo").textContent=g("qNo").value||"-";
+  g("pvDate").textContent=fmtD(g("qDate").value)||today;
+  g("pvPrep").textContent=S.co.preparedBy||"Anish Kumar";
+  g("phContact").textContent="Phone: "+(S.co.phone||"+91 XXXXX XXXXX")+" | Email: "+(S.co.email||"vishwanathconstruction@gmail.com");
+  // Customer
+  g("pvCName").textContent=g("cName").value||"Customer Name";
+  g("pvCPhone").textContent=g("cPhone").value||"-";
+  g("pvCAddr").textContent=g("cAddr").value||"-";
+  g("pvPName").textContent=g("pName").value||"Project";
+  g("pvArea").textContent="Area per floor: "+getArea()+" sq ft";
+  g("pvFInfo").textContent="Total floors: "+getFC()+" | Top: "+(g("fLabel").value||"-");
+  g("pvType").textContent="Type: "+t.name;
+  g("pvMat").textContent="Material: "+m.name;
+  g("pvScope").textContent=g("pScope").value||"-";
+  // Banner
+  const ban=g("pvBanner");ban.className="pkg-banner "+p.cls;
+  g("pvPkgName").textContent=p.name;g("pvPkgCopy").textContent=p.copy;g("pvPkgRate").textContent=rateStr(br);
+  // Chips
+  g("ccType").textContent=t.name;g("ccMat").textContent=m.name;g("ccArea").textContent=getArea()+" sq ft";g("ccTotal").textContent=cur(tot);
+  renderDT();renderGST();renderBK();
+  const lang=getCurrentLanguage();
+  const prefix=lang==="hi"?"कोटेशन":"Quotation";
+  document.title=`${quoteI18n[lang].pageTitle} | ${prefix} ${g("qNo").value||"QT"}`;
+}
+
+function bindFields(){
+  ["qNo","qDate","cName","cPhone","pName","area","cAddr","pScope","fLabel"].forEach(id=>{
+    g(id).addEventListener("input",renderQ);g(id).addEventListener("change",renderQ);
+  });
+  g("fCount").addEventListener("input",()=>{syncFL();renderPkgs();renderQ();});
+  g("fCount").addEventListener("change",()=>{syncFL();renderPkgs();renderQ();});
+}
+function doPrint(){renderQ();setTimeout(()=>window.print(),80);}
+["dl2","printBtn"].forEach(id=>g(id)&&g(id).addEventListener("click",doPrint));
+
+/* ADMIN */
+const ov=g("adminOv");
+g("openAdmin").addEventListener("click",()=>ov.classList.add("open"));
+g("adminX").addEventListener("click",()=>ov.classList.remove("open"));
+ov.addEventListener("click",e=>{if(e.target===ov)ov.classList.remove("open");});
+function syncSh(){g("admSh").classList.toggle("open",S.unlocked);}
+function showSt(el,msg,type){el.textContent=msg;el.className="stmsg show "+type;setTimeout(()=>el.className="stmsg",4000);}
+function showToast(msg,type){const t=g("toast");t.textContent=msg;t.className="toast "+type;setTimeout(()=>t.classList.add("show"),10);setTimeout(()=>t.className="toast",3500);}
+
+function tryLogin(){
+  if(!chk(g("aId").value.trim(),g("aPw").value)){S.unlocked=false;localStorage.removeItem(SK.a);syncSh();showSt(g("lstatus"),"✗ Access denied. Wrong ID or password.","bad");return;}
+  S.unlocked=true;localStorage.setItem(SK.a,"true");syncSh();
+  g("aId").value="";g("aPw").value="";
+  showSt(g("lstatus"),"✓ Admin panel unlocked.","good");
+  renderAF();renderRT();renderFT();renderAP();
+}
+g("loginBtn").addEventListener("click",tryLogin);
+g("aPw").addEventListener("keydown",e=>{if(e.key==="Enter")tryLogin();});
+g("aId").addEventListener("keydown",e=>{if(e.key==="Enter")tryLogin();});
+g("logoutBtn").addEventListener("click",()=>{S.unlocked=false;localStorage.removeItem(SK.a);syncSh();showSt(g("lstatus"),"Admin panel locked.","good");});
+
+function renderAF(){
+  g("aC").value=S.co.companyName;g("aG").value=S.co.gstNo;
+  g("aGY").value=S.co.gstYear||"2019";g("aEY").value=S.co.estYear||"2012";
+  g("aP").value=S.co.preparedBy;g("aPh").value=S.co.phone||"";
+  g("aEm").value=S.co.email||"";g("aH").value=S.co.headerDetails;g("aL").value=S.co.companyLine;
+  g("aGstR").value=S.gst.rate;g("aGstT").value=S.gst.type;
+}
+function renderRT(){
+  g("rTbody").innerHTML=TYPES.map(t=>MATS.map(m=>`<tr><td>${t.name}</td><td>${m.name}</td>${PKGS.map(p=>`<td><input type="number" min="0" step="1" data-t="${t.id}" data-m="${m.id}" data-p="${p.id}" value="${S.rates[t.id][m.id][p.id]}"></td>`).join("")}</tr>`).join("")).join("");
+}
+function renderFT(){
+  g("fTbody").innerHTML=S.fl.labels.map((l,i)=>`<tr><td>${i+1}</td><td><input type="text" data-fl="${i}" value="${l}"></td><td><input type="number" min="0" step="1" data-lift="${i}" value="${S.fl.liftingPercent[i]||0}"></td></tr>`).join("");
+}
+function renderAP(){
+  g("aPrev").innerHTML=`<strong>${S.co.companyName}</strong><br>GSTIN: ${S.co.gstNo}<br>GST Reg. Since: ${S.co.gstYear||2019}<br>Established: ${S.co.estYear||2012}<br>${S.co.headerDetails}<br>${S.co.phone||""} | ${S.co.email||""}<br><br><strong>GST: ${S.gst.rate}% (${gstLabel()})</strong><br><br><strong>All Work / With Material</strong><br>Basic: ${cur(S.rates.all_work.with_material.low)}/sqft<br>Standard: ${cur(S.rates.all_work.with_material.mid)}/sqft<br>Premium: ${cur(S.rates.all_work.with_material.high)}/sqft<br><br><strong>Floor Lifting</strong><br>${S.fl.labels.map((l,i)=>`${l}: ${S.fl.liftingPercent[i]||0}%`).join("<br>")}`;
+}
+const baseRenderAP=renderAP;
+renderAP=function(){
+  baseRenderAP();
+  const preview=g("aPrev");
+  if(preview){
+    preview.innerHTML=`<strong>${S.co.companyName}</strong><br>${S.co.companyLine}<br><br>GSTIN: ${S.co.gstNo}<br>GST Reg. Since: ${S.co.gstYear||2019}<br>Established: ${S.co.estYear||2012}<br>${S.co.headerDetails}<br>${S.co.phone||""} | ${S.co.email||""}<br><br><strong>22+ Projects Done</strong><br><strong>GST: ${S.gst.rate}% (${gstLabel()})</strong><br><br><strong>All Work / With Material</strong><br>Basic: ${cur(S.rates.all_work.with_material.low)}/sqft<br>Standard: ${cur(S.rates.all_work.with_material.mid)}/sqft<br>Premium: ${cur(S.rates.all_work.with_material.high)}/sqft<br><br><strong>Floor Lifting</strong><br>${S.fl.labels.map((l,i)=>`${l}: ${S.fl.liftingPercent[i]||0}%`).join("<br>")}`;
+  }
+};
+function capCo(){
+  S.co={
+    companyName:g("aC").value||DC.companyName,legalName:"Anish Kumar",
+    gstNo:g("aG").value||DC.gstNo,gstYear:g("aGY").value||"2019",estYear:g("aEY").value||"2012",
+    preparedBy:g("aP").value||DC.preparedBy,phone:g("aPh").value||DC.phone,
+    email:g("aEm").value||DC.email,headerDetails:g("aH").value||DC.headerDetails,
+    companyLine:g("aL").value||DC.companyLine
+  };
+  S.gst={rate:Number(g("aGstR").value)||18,type:g("aGstT").value||"cgst_sgst"};
+}
+function capR(){g("rTbody").querySelectorAll("input").forEach(inp=>{const v=Math.max(Number(inp.value)||0,0);S.rates[inp.dataset.t][inp.dataset.m][inp.dataset.p]=v;});}
+function capF(){g("fTbody").querySelectorAll("input[data-fl]").forEach(inp=>{S.fl.labels[Number(inp.dataset.fl)]=inp.value.trim()||"Floor";});g("fTbody").querySelectorAll("input[data-lift]").forEach(inp=>{S.fl.liftingPercent[Number(inp.dataset.lift)]=Math.min(Math.max(Number(inp.value)||0,0),200);});}
+
+g("saveBtn").addEventListener("click",()=>{
+  capCo();capR();capF();
+  ss(SK.c,S.co);ss(SK.r,S.rates);ss(SK.f,S.fl);ss(SK.g,S.gst);
+  renderAP();syncFL();renderPkgs();renderQ();
+  showSt(g("sstatus"),"✓ All settings saved. Quotation updated.","good");
+});
+g("resetBtn").addEventListener("click",()=>{
+  if(!confirm("Reset all to defaults?"))return;
+  S.co=dc(DC);S.rates=dc(DR);S.fl=dc(DF);S.gst=dc(DG);
+  renderAF();renderRT();renderFT();
+  ss(SK.c,S.co);ss(SK.r,S.rates);ss(SK.f,S.fl);ss(SK.g,S.gst);
+  renderAP();syncFL();renderPkgs();renderQ();
+  showSt(g("sstatus"),"↺ Reset complete.","good");
+});
+
+/* GOOGLE SHEET */
+const GS_KEY="vc_script_url_v1";
+function getScriptUrl(){return localStorage.getItem(GS_KEY)||"";}
+if(g("aScriptUrl")){g("aScriptUrl").value=getScriptUrl();}
+if(g("saveUrlBtn")){g("saveUrlBtn").addEventListener("click",function(){const url=g("aScriptUrl").value.trim();if(!url.startsWith("https://script.google.com")){showSt(g("urlStatus"),"✗ Invalid URL. Must start with https://script.google.com","bad");return;}localStorage.setItem(GS_KEY,url);showSt(g("urlStatus"),"✓ Google Script URL saved.","good");});}
+
+function collectQuotationData(){
+  const base=getBaseTotal(),gstAmt=getGstAmount(base);
+  return {
+    quotationNo:g("qNo").value||"",quotationDate:g("qDate").value||"",
+    customerName:g("cName").value||"",customerPhone:g("cPhone").value||"",
+    customerAddress:g("cAddr").value||"",projectName:g("pName").value||"",
+    area:g("area").value||"",floorCount:g("fCount").value||"",
+    topFloor:g("fLabel").value||"",workType:getT().name,
+    materialMode:getM().name,packageName:getP().name,
+    baseRate:getBR(S.pid),baseValue:Math.round(base),
+    gstRate:S.gst.rate,gstType:gstLabel(),gstAmount:Math.round(gstAmt),
+    totalEstimate:Math.round(base+gstAmt),
+    scope:g("pScope").value||"",
+    preparedBy:S.co.preparedBy||"Anish Kumar",
+    gstNo:S.co.gstNo||"10EUFPK3451L1ZQ",
+    gstRegYear:S.co.gstYear||"2019",
+    estYear:S.co.estYear||"2012"
+  };
+}
+
+g("generateQuoteBtn").addEventListener("click",async function(){
+  const url=getScriptUrl();
+  if(!url){showToast("⚠ Google Script URL not set. Open Admin Panel → Integration.","bad");return;}
+  const btn=g("generateQuoteBtn");btn.disabled=true;btn.textContent="Submitting…";
+  const data=collectQuotationData();
+  if(!data.customerName||data.customerName==="Customer Name"){showToast("⚠ "+quoteI18n[getCurrentLanguage()].customerNameWarn,"bad");btn.disabled=false;btn.textContent=quoteI18n[getCurrentLanguage()].generate;return;}
+  try{
+    const res=await fetch(url,{method:"POST",body:JSON.stringify(data),headers:{"Content-Type":"application/json"}});
+    const json=await res.json();
+    if(json.success){
+      renderQ();
+      setQuoteVisibility(true);
+      showToast("✅ "+quoteI18n[getCurrentLanguage()].quoteSaved,"good");
+    }
+    else{showToast("✗ Error: "+(json.message||"Unknown error"),"bad");}
+  }catch(err){showToast("✗ "+quoteI18n[getCurrentLanguage()].quoteError,"bad");}
+  btn.disabled=false;btn.textContent=quoteI18n[getCurrentLanguage()].generate;
+});
+
+/* DEV CREDIT */
+function ensureCr(){if(g("devCr"))return;const n=document.createElement("div");n.id="devCr";n.className="dev-cr";n.textContent="DEVELOPED BY JAISANKAR";document.body.appendChild(n);}
+new MutationObserver(ensureCr).observe(document.body,{childList:true,subtree:true});
+ensureCr();
+
+/* INIT */
+function setToday(){const n=new Date();g("qDate").value=`${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,"0")}-${String(n.getDate()).padStart(2,"0")}`;}
+normalizeUiText();setToday();syncFL();syncSh();bindFields();renderTypes();renderMats();renderPkgs();renderQ();setQuoteVisibility(false);
+document.querySelectorAll("#quoteLangSwitch [data-lang]").forEach(btn=>btn.addEventListener("click",()=>applyQuoteLanguage(btn.dataset.lang)));
+if(g("quoteThemeToggle"))g("quoteThemeToggle").addEventListener("click",()=>applyQuoteTheme(document.body.dataset.theme==="dark"?"light":"dark"));
+applyQuoteTheme(window.localStorage.getItem(THEME_KEY)||"light");
+applyQuoteLanguage(getCurrentLanguage());
+if(S.unlocked){renderAF();renderRT();renderFT();renderAP();}
+
+})();
+</script>
+</body>
+</html>

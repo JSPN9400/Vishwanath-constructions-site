@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Site Admin | Vishwanath Construction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        body {
+            min-height: 100vh;
+            padding: 2rem 0;
+            background:
+                radial-gradient(circle at top left, rgba(143, 43, 46, 0.14), transparent 24%),
+                radial-gradient(circle at top right, rgba(215, 170, 66, 0.14), transparent 24%),
+                radial-gradient(circle at bottom right, rgba(85, 114, 79, 0.12), transparent 22%);
+        }
+
+        .admin-wrap {
+            width: min(100% - 1rem, 1460px);
+            margin: 0 auto;
+            display: grid;
+            gap: 1.25rem;
+        }
+
+        .admin-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 1.8rem;
+            border-radius: 28px;
+            background:
+                linear-gradient(135deg, rgba(143, 43, 46, 0.1), rgba(215, 170, 66, 0.08), rgba(85, 114, 79, 0.08)),
+                rgba(255, 251, 245, 0.9);
+            border: 1px solid rgba(64, 39, 28, 0.08);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .admin-top::before {
+            content: "";
+            position: absolute;
+            left: 1rem;
+            right: 1rem;
+            top: 0.9rem;
+            height: 14px;
+            opacity: 0.8;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='132' height='14' viewBox='0 0 132 14'%3E%3Cg fill='none' stroke='%23a34f33' stroke-width='1.2'%3E%3Cpath d='M0 7h24l6-5 6 5h24l6-5 6 5h24l6-5 6 5h24'/%3E%3Ccircle cx='18' cy='7' r='2'/%3E%3Ccircle cx='66' cy='7' r='2'/%3E%3Ccircle cx='114' cy='7' r='2'/%3E%3C/g%3E%3C/svg%3E");
+            background-repeat: repeat-x;
+        }
+
+        .admin-top::after {
+            content: "";
+            position: absolute;
+            right: -10px;
+            bottom: -10px;
+            width: 120px;
+            height: 120px;
+            opacity: 0.12;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%238f2b2e' stroke-width='2'%3E%3Ccircle cx='50' cy='50' r='14'/%3E%3Ccircle cx='50' cy='50' r='28'/%3E%3Cpath d='M50 8v16M50 76v16M8 50h16M76 50h16M20 20l12 12M68 68l12 12M80 20L68 32M32 68L20 80'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .admin-top h1,
+        .admin-card h2,
+        .admin-item h3,
+        .preview-card h3 {
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        .admin-top h1 {
+            margin: 0;
+            font-size: clamp(2.2rem, 4vw, 3.3rem);
+            line-height: 0.95;
+        }
+
+        .admin-top p,
+        .admin-card p,
+        .admin-item p,
+        .admin-note,
+        .preview-card p {
+            color: rgba(32, 25, 22, 0.72);
+        }
+
+        .admin-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
+            gap: 1.2rem;
+        }
+
+        .admin-card,
+        .preview-card,
+        .admin-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+            padding: 1.5rem;
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(252, 244, 236, 0.92));
+            border: 1px solid rgba(64, 39, 28, 0.08);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .admin-card::before,
+        .preview-card::before,
+        .admin-item::before {
+            content: "";
+            position: absolute;
+            left: 1rem;
+            right: 1rem;
+            top: 0.9rem;
+            height: 12px;
+            opacity: 0.75;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='108' height='12' viewBox='0 0 108 12'%3E%3Cg fill='none' stroke='%23a34f33' stroke-width='1.2'%3E%3Cpath d='M0 6h18l4-4 4 4h18l4-4 4 4h18l4-4 4 4h18l4-4 4 4h8'/%3E%3C/g%3E%3C/svg%3E");
+            background-repeat: repeat-x;
+        }
+
+        .admin-card > *,
+        .preview-card > *,
+        .admin-item > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .admin-card h2 {
+            margin: 0 0 0.5rem;
+            font-size: 2rem;
+        }
+
+        .admin-card,
+        .preview-card {
+            min-height: 100%;
+        }
+
+        .section-kicker {
+            margin-bottom: 0.8rem;
+            color: var(--maithil-red);
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            font-size: 0.72rem;
+            font-weight: 800;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .form-grid.one {
+            grid-template-columns: 1fr;
+        }
+
+        label {
+            display: grid;
+            gap: 0.45rem;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(32, 25, 22, 0.68);
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            min-height: 52px;
+            padding: 0.9rem 1rem;
+            border: 1px solid rgba(64, 39, 28, 0.14);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--charcoal);
+            font: inherit;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        input[type="file"] {
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.65);
+        }
+
+        .admin-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .status-text {
+            min-height: 1.4rem;
+            margin-top: 0.7rem;
+            font-size: 0.9rem;
+            color: var(--leaf);
+        }
+
+        .preview-card {
+            display: grid;
+            gap: 1rem;
+            align-content: start;
+            background:
+                linear-gradient(135deg, rgba(143, 43, 46, 0.08), rgba(215, 170, 66, 0.08), rgba(85, 114, 79, 0.06)),
+                rgba(255, 252, 246, 0.9);
+        }
+
+        .preview-image,
+        .entry-thumb {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            border-radius: 18px;
+            background: rgba(234, 220, 200, 0.6);
+        }
+
+        .mini-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+        }
+
+        .mini-stat {
+            padding: 1rem;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.82);
+            border: 1px solid rgba(64, 39, 28, 0.08);
+        }
+
+        .admin-pill-row {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.8rem;
+        }
+
+        .admin-pill {
+            padding: 1rem;
+            border-radius: 18px;
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(252, 244, 236, 0.92));
+            border: 1px solid rgba(64, 39, 28, 0.08);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .admin-pill strong {
+            display: block;
+            margin-bottom: 0.35rem;
+            color: var(--maithil-red);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .admin-pill p {
+            font-size: 0.9rem;
+        }
+
+        .mini-stat strong {
+            display: block;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 2rem;
+            color: var(--maithil-red);
+            line-height: 1;
+        }
+
+        .list-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            align-items: end;
+            flex-wrap: wrap;
+        }
+
+        .admin-list {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .admin-item {
+            display: grid;
+            grid-template-columns: 150px 1fr auto;
+            gap: 1rem;
+            align-items: start;
+        }
+
+        .item-meta {
+            display: grid;
+            gap: 0.45rem;
+        }
+
+        .item-badge {
+            display: inline-flex;
+            width: fit-content;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(143, 43, 46, 0.08);
+            color: var(--maithil-red);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.72rem;
+            font-weight: 800;
+        }
+
+        .item-sub {
+            font-size: 0.84rem;
+            color: rgba(32, 25, 22, 0.65);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .item-actions {
+            display: grid;
+            gap: 0.6rem;
+        }
+
+        .empty-card {
+            padding: 1.5rem;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px dashed rgba(64, 39, 28, 0.18);
+            color: rgba(32, 25, 22, 0.7);
+        }
+
+        .admin-note {
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 980px) {
+            .admin-grid,
+            .admin-item {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-pill-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .form-grid,
+            .mini-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-wrap {
+                width: min(100% - 1rem, 1220px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-wrap">
+        <section class="admin-top">
+            <div>
+                <p class="section-kicker">Site Control</p>
+                <h1>Homepage Admin</h1>
+                <p>Update slogan, trust stats, hero home photo, offers, and project gallery cards for the main website.</p>
+            </div>
+            <div class="admin-actions">
+                <button type="button" class="btn btn-secondary" id="themeToggle">Dark Mode</button>
+                <a href="index.html" class="btn btn-secondary">Back to Website</a>
+                <a href="quotation/index.html" class="btn btn-primary-fill">Quotation Admin</a>
+            </div>
+        </section>
+
+        <section class="admin-pill-row">
+            <div class="admin-pill">
+                <strong>Hero Control</strong>
+                <p>Set the main house photo, slogan, and trust numbers for the first screen.</p>
+            </div>
+            <div class="admin-pill">
+                <strong>Gallery Control</strong>
+                <p>Add real home images and project entries so the website feels full and authentic.</p>
+            </div>
+            <div class="admin-pill">
+                <strong>Quick Access</strong>
+                <p>Use this panel for the main page and open the quotation page admin from here.</p>
+            </div>
+        </section>
+
+        <section class="admin-grid">
+            <div class="admin-card">
+                <p class="section-kicker">Brand Settings</p>
+                <h2>Mithila Brand and Trust</h2>
+                <p>Control the homepage slogan, colorful hero home image, and trust numbers like `22+ projects done`.</p>
+
+                <form id="siteSettingsForm">
+                    <div class="form-grid">
+                        <label>
+                            Notice Title
+                            <input id="noticeTitleInput" type="text" placeholder="Important" />
+                        </label>
+                        <label>
+                            Notice Text
+                            <input id="noticeTextInput" type="text" placeholder="Special update, festive message, important information" />
+                        </label>
+                        <label>
+                            Brand Slogan
+                            <input id="brandSloganInput" type="text" placeholder="We The Home Makers" />
+                        </label>
+                        <label>
+                            Hero Tagline
+                            <input id="heroTaglineInput" type="text" placeholder="Building Bihar with Strength and Culture" />
+                        </label>
+                        <label>
+                            Hero Top Label
+                            <input id="heroTagInput" type="text" placeholder="Bihar Contractor · Clear Quotes" />
+                        </label>
+                        <label>
+                            Hero Support Text
+                            <input id="heroSubInput" type="text" placeholder="Local construction planning, reliable materials, and clear budget guidance for every family project." />
+                        </label>
+                        <label>
+                            Years in Bihar
+                            <input id="yearsInput" type="number" min="1" value="12" />
+                        </label>
+                        <label>
+                            Projects Done
+                            <input id="projectsInput" type="number" min="1" value="22" />
+                        </label>
+                        <label>
+                            Hero Home Photo URL
+                            <input id="heroImageInput" type="url" placeholder="https://..." />
+                        </label>
+                        <label>
+                            Upload Hero Home Photo
+                            <input id="heroImageFile" type="file" accept="image/*" />
+                        </label>
+                        <label>
+                            Office Address
+                            <input id="officeAddressInput" type="text" placeholder="Office address" />
+                        </label>
+                        <label>
+                            Phone Number
+                            <input id="phoneInput" type="text" placeholder="+91 ..." />
+                        </label>
+                        <label>
+                            Email Address
+                            <input id="emailInput" type="email" placeholder="contact@example.com" />
+                        </label>
+                        <label>
+                            WhatsApp Link
+                            <input id="whatsappInput" type="text" placeholder="https://wa.me/..." />
+                        </label>
+                        <label>
+                            Map Embed Link
+                            <input id="mapInput" type="text" placeholder="https://maps.google.com/?q=...&output=embed" />
+                        </label>
+                        <label>
+                            Footer Text
+                            <input id="footerCopyInput" type="text" placeholder="Footer line" />
+                        </label>
+                        <label>
+                            Google Review Link
+                            <input id="googleReviewUrlInput" type="url" placeholder="https://g.page/r/.../review" />
+                        </label>
+                    </div>
+                    <div class="form-grid">
+                        <label>
+                            Facebook Link
+                            <input id="facebookInput" type="text" placeholder="https://facebook.com/..." />
+                        </label>
+                        <label>
+                            Instagram Link
+                            <input id="instagramInput" type="text" placeholder="https://instagram.com/..." />
+                        </label>
+                        <label>
+                            YouTube Link
+                            <input id="youtubeInput" type="text" placeholder="https://youtube.com/..." />
+                        </label>
+                        <label>
+                            Maps Link
+                            <input id="mapsLinkInput" type="text" placeholder="https://maps.google.com/..." />
+                        </label>
+                    </div>
+                    <div class="admin-actions">
+                        <button type="submit" class="btn btn-primary-fill">Save Brand Settings</button>
+                    </div>
+                    <div class="status-text" id="settingsStatus"></div>
+                </form>
+            </div>
+
+            <aside class="preview-card">
+                <p class="section-kicker">Live Preview</p>
+                <img id="heroPreview" class="preview-image" alt="Hero home preview" />
+                <div>
+                    <h3 id="previewSlogan">We The Home Makers</h3>
+                    <p id="previewTagline">Building Bihar with Strength and Culture</p>
+                </div>
+                <div class="mini-stats">
+                    <div class="mini-stat">
+                        <strong id="previewYears">12</strong>
+                        <span>Years in Bihar</span>
+                    </div>
+                    <div class="mini-stat">
+                        <strong id="previewProjects">22+</strong>
+                        <span>Projects Done</span>
+                    </div>
+                </div>
+                <p class="admin-note">Use home exterior or completed house photos here so the website reflects your real work and looks more trustworthy.</p>
+            </aside>
+        </section>
+
+        <section class="admin-grid">
+            <div class="admin-card">
+                <p class="section-kicker">Content Entry</p>
+                <h2>Offers and Home Projects</h2>
+                <p>Add colorful Mithila-style project cards, offers, and house photos for the homepage gallery and updates section.</p>
+
+                <form id="adminForm">
+                    <div class="form-grid">
+                        <label>
+                            Entry Type
+                            <select id="entryType" required>
+                                <option value="project">Project Highlight</option>
+                                <option value="offer">Offer / Promotion</option>
+                                <option value="festival">Festival / Important Post</option>
+                                <option value="review">Customer / Google Review</option>
+                            </select>
+                        </label>
+                        <label>
+                            Title
+                            <input id="title" type="text" placeholder="Example: Family Home in Patna" required />
+                        </label>
+                        <label>
+                            Tag or Badge
+                            <input id="tag" type="text" placeholder="Example: 3BHK Residence" />
+                        </label>
+                        <label>
+                            Location
+                            <input id="location" type="text" placeholder="Example: Kankarbagh, Patna" />
+                        </label>
+                        <label>
+                            Image URL
+                            <input id="imageUrl" type="url" placeholder="https://..." />
+                        </label>
+                        <label>
+                            Upload Home Photo
+                            <input id="imageFile" type="file" accept="image/*" />
+                        </label>
+                        <label>
+                            Button Text
+                            <input id="buttonText" type="text" placeholder="Example: View Project" required />
+                        </label>
+                        <label>
+                            Button URL
+                            <input id="buttonUrl" type="text" placeholder="quotation/index.html or https://..." required />
+                        </label>
+                    </div>
+                    <div class="form-grid one">
+                        <label>
+                            Description
+                            <textarea id="description" placeholder="Short description for the offer or project." required></textarea>
+                        </label>
+                    </div>
+                    <div class="admin-actions">
+                        <button type="submit" class="btn btn-primary-fill">Save Entry</button>
+                        <button type="button" class="btn btn-secondary" id="resetEntryForm">Clear Form</button>
+                    </div>
+                    <div class="status-text" id="entryStatus"></div>
+                </form>
+            </div>
+
+            <aside class="preview-card">
+                <p class="section-kicker">Entry Preview</p>
+                <img id="entryPreviewImage" class="preview-image" alt="Entry preview" />
+                <div class="item-badge" id="entryPreviewType">Project</div>
+                <div>
+                    <h3 id="entryPreviewTitle">Family Home in Patna</h3>
+                    <p class="item-sub" id="entryPreviewMeta">Kankarbagh, Patna</p>
+                    <p id="entryPreviewDescription">Short description for the selected offer or project will appear here.</p>
+                </div>
+            </aside>
+        </section>
+
+        <section class="admin-card">
+            <div class="list-head">
+                <div>
+                    <p class="section-kicker">Saved Content</p>
+                    <h2>Homepage Entries</h2>
+                    <p>These cards appear on the main website using this browser's local storage.</p>
+                </div>
+            </div>
+            <div class="admin-list" id="adminList"></div>
+            <p class="admin-note">This admin stores data in browser local storage. For live multi-device updates, the next step would be connecting a real backend or database.</p>
+        </section>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
