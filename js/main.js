@@ -3,10 +3,14 @@ const LANGUAGE_KEY = "vishwanathLanguage";
 
 const translations = {
   en: {
-    pageTitle: "Vishwanath Construction | Bihar Home Construction - Patna",
-    metaDescription: "Vishwanath Construction - Patna, Bihar's trusted home construction company. 12+ years, 240+ homes, GST registered support.",
-    ogTitle: "Vishwanath Construction | Bihar Home Construction",
-    ogDescription: "Trusted Patna home construction company with clear quotation and practical execution support.",
+    pageTitle:
+      "Vishwanath Construction (Vishwant Construction) | Home Construction Company in Patna, Bihar",
+    metaDescription:
+      "Vishwanath Construction (Vishwant Construction) is a trusted home construction company in Patna, Bihar. Turnkey house construction, renovation, civil work, clear quotation, GST billing.",
+    ogTitle:
+      "Vishwanath Construction | Construction Company in Patna, Bihar",
+    ogDescription:
+      "Home construction, renovation & turnkey delivery in Patna, Bihar with clear quotation and GST billing.",
     loaderPrompt: "Choose your language",
     floatingChat: "Chat",
     navHome: "Home",
@@ -19,6 +23,7 @@ const translations = {
     navTeam: "Team",
     navFaq: "FAQ",
     navContact: "Contact",
+    navBlog: "Blog",
     navQuote: "Get Quotation",
     menuButton: "Menu",
     heroHeading: "Build Your Dream <em>Home</em><br />In Patna",
@@ -130,6 +135,8 @@ const translations = {
     aboutLabel: "Why Vishwanath",
     aboutHeading: "Bihar's Trusted <em>Construction Partner</em>",
     aboutCopy: "Since 2012, Vishwanath Construction has focused on helping families in Patna build practical, durable and budget-aware homes. Clear communication and local execution stay at the center of every project.",
+    localSeoCopy:
+      "Searching for the best construction company in Patna? We help Bihar families with home construction, renovation and turnkey delivery—with clear quotation and GST billing.",
     aboutBadge1: "Operating since 2012",
     aboutBadge2: "Transparent billing",
     stat1: "Workers",
@@ -172,14 +179,16 @@ const translations = {
     footerHome: "Home",
     footerAbout: "About",
     footerQuote: "Quote",
+    footerBlog: "Blog",
     themeDark: "Dark Mode",
     themeLight: "Light Mode"
   },
   hi: {
-    pageTitle: "Vishwanath Construction | बिहार घर निर्माण - पटना",
-    metaDescription: "Vishwanath Construction - पटना, बिहार की भरोसेमंद घर निर्माण कंपनी। 12+ साल, 240+ घर, जीएसटी सपोर्ट।",
-    ogTitle: "Vishwanath Construction | बिहार घर निर्माण",
-    ogDescription: "पटना की भरोसेमंद घर निर्माण कंपनी, साफ कोटेशन और व्यावहारिक निर्माण सहयोग के साथ।",
+    pageTitle: "Vishwanath Construction (Vishwant Construction) | पटना, बिहार घर निर्माण कंपनी",
+    metaDescription:
+      "Vishwanath Construction (Vishwant Construction) - पटना, बिहार की भरोसेमंद घर निर्माण कंपनी। टर्नकी कंस्ट्रक्शन, रिनोवेशन, सिविल वर्क, साफ कोटेशन और GST बिलिंग।",
+    ogTitle: "Vishwanath Construction | पटना, बिहार कंस्ट्रक्शन कंपनी",
+    ogDescription: "पटना, बिहार में घर निर्माण, रिनोवेशन और टर्नकी डिलीवरी—साफ कोटेशन और GST बिलिंग के साथ।",
     loaderPrompt: "अपनी भाषा चुनें",
     floatingChat: "चैट",
     navHome: "होम",
@@ -192,6 +201,7 @@ const translations = {
     navTeam: "टीम",
     navFaq: "सवाल",
     navContact: "संपर्क",
+    navBlog: "ब्लॉग",
     navQuote: "कोटेशन लें",
     menuButton: "मेन्यू",
     heroHeading: "अपना सपना <em>घर</em><br />पटना में बनाइए",
@@ -303,6 +313,8 @@ const translations = {
     aboutLabel: "क्यों Vishwanath",
     aboutHeading: "बिहार का भरोसेमंद <em>कंस्ट्रक्शन पार्टनर</em>",
     aboutCopy: "2012 से Vishwanath Construction पटना के परिवारों के लिए टिकाऊ, व्यावहारिक और बजट के अनुसार घर बनाने पर काम कर रहा है। साफ बातचीत और लोकल एक्जीक्यूशन हमारी पहचान है।",
+    localSeoCopy:
+      "अगर आप पटना में बेस्ट construction company ढूंढ रहे हैं, तो Vishwanath Construction बिहार के परिवारों के लिए home construction, renovation और turnkey delivery—साफ quotation और GST billing के साथ—देता है।",
     aboutBadge1: "2012 से सेवा",
     aboutBadge2: "पारदर्शी बिलिंग",
     stat1: "वर्कर्स",
@@ -345,6 +357,7 @@ const translations = {
     footerHome: "होम",
     footerAbout: "अबाउट",
     footerQuote: "कोटेशन",
+    footerBlog: "ब्लॉग",
     themeDark: "डार्क मोड",
     themeLight: "लाइट मोड"
   }
