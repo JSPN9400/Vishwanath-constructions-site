@@ -110,6 +110,77 @@ body[data-theme="dark"] .btn-dark{
   background:#f0e6cf;
   color:#1A1208;
 }
+
+/* ── DARK MODE EXTRA FIXES ── */
+body[data-theme="dark"] .sc,
+body[data-theme="dark"] .pc,
+body[data-theme="dark"] .field input,
+body[data-theme="dark"] .field textarea,
+body[data-theme="dark"] .field select{
+  background:var(--paper)!important;
+  color:var(--ink)!important;
+}
+body[data-theme="dark"] .sc.active{
+  background:var(--soft)!important;
+}
+body[data-theme="dark"] .pc.active{
+  background:var(--soft)!important;
+}
+body[data-theme="dark"] .stmsg.good{
+  background:#1a3d22!important;
+  color:#a5d6a7!important;
+}
+body[data-theme="dark"] .stmsg.bad{
+  background:#3d1a1a!important;
+  color:#f5a0a0!important;
+}
+body[data-theme="dark"] .gst-chip{
+  background:#1a2d1e!important;
+  border-color:#2f6d39!important;
+  color:#a5d6a7!important;
+}
+body[data-theme="dark"] .topnav-lang button:not(.active){
+  color:rgba(255,255,255,.86)!important;
+}
+body[data-theme="dark"] .sh-card h3,
+body[data-theme="dark"] .sh-card p,
+body[data-theme="dark"] .sc h4,
+body[data-theme="dark"] .pc h4,
+body[data-theme="dark"] .meta-box *,
+body[data-theme="dark"] .admSh label,
+body[data-theme="dark"] .admSh td,
+body[data-theme="dark"] .admSh th,
+body[data-theme="dark"] .admSh p,
+body[data-theme="dark"] .admSh h3,
+body[data-theme="dark"] .admSh span{
+  color:var(--ink)!important;
+}
+body[data-theme="dark"] .admin-panel h2,
+body[data-theme="dark"] .admin-panel h3,
+body[data-theme="dark"] .admin-panel label,
+body[data-theme="dark"] .admin-panel p,
+body[data-theme="dark"] .admin-panel td,
+body[data-theme="dark"] .admin-panel th{
+  color:var(--ink)!important;
+}
+body[data-theme="dark"] .q-sheet *:not(.pkg-banner *):not(.pdf-hdr *):not(.sheet-bar *):not(.gr td):not(.dtbl th):not(.fh td):not(.btn):not(.gst-chip){
+  color:var(--ink);
+}
+body[data-theme="dark"] .fh td{
+  background:#2a1f10!important;
+  color:var(--gold)!important;
+}
+body[data-theme="dark"] .sum-box *{
+  color:var(--ink)!important;
+}
+body[data-theme="dark"] .bk-row td,
+body[data-theme="dark"] .bk-table td{
+  color:var(--ink)!important;
+}
+body[data-theme="dark"] .stmsg{
+  color:var(--ink);
+}
+
 a,button,input,textarea,select{font:inherit}
 .is-hidden{display:none!important}
 
@@ -273,7 +344,7 @@ a,button,input,textarea,select{font:inherit}
 .field span{font-size:.82rem;font-weight:700;color:var(--ink)}
 .field input,.field textarea,.field select{
   width:100%;border:1.5px solid var(--line);border-radius:10px;
-  background:#fff;padding:9px 12px;color:var(--ink);outline:none;
+  background:var(--paper);padding:9px 12px;color:var(--ink);outline:none;
   transition:border-color .15s;
 }
 .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--gold)}
@@ -283,18 +354,18 @@ a,button,input,textarea,select{font:inherit}
 .cg{display:grid;gap:9px}
 .sc{
   border:1.5px solid var(--line);border-radius:13px;padding:12px;
-  background:#fff;cursor:pointer;
+  background:var(--paper);cursor:pointer;
   transition:border-color .18s,box-shadow .18s,transform .15s;
 }
 .sc:hover{transform:translateY(-2px)}
-.sc.active{border-color:var(--maroon);box-shadow:0 6px 20px rgba(123,28,28,.14);background:#fff9f4}
+.sc.active{border-color:var(--maroon);box-shadow:0 6px 20px rgba(123,28,28,.14);background:var(--soft)}
 .sc h4{margin:0 0 3px;font-size:.94rem;font-weight:700}
 .sc p{margin:0;color:var(--muted);font-size:.83rem;line-height:1.5}
 
 /* ── PACKAGE CARDS ── */
-.pc{border:1.5px solid var(--line);border-radius:13px;padding:13px;background:#fff;cursor:pointer;transition:border-color .18s,box-shadow .18s,transform .15s}
+.pc{border:1.5px solid var(--line);border-radius:13px;padding:13px;background:var(--paper);cursor:pointer;transition:border-color .18s,box-shadow .18s,transform .15s}
 .pc:hover{transform:translateY(-2px)}
-.pc.active{border-color:var(--gold);box-shadow:0 6px 22px rgba(200,149,42,.18);background:#fffbf0}
+.pc.active{border-color:var(--gold);box-shadow:0 6px 22px rgba(200,149,42,.18);background:var(--soft)}
 .pc.active.high{border-color:var(--maroon)}
 .pc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:7px}
 .pc-rate{margin:2px 0 0;font-size:1.35rem;font-weight:800;letter-spacing:-.03em;font-family:'Cormorant Garamond',serif}
@@ -475,7 +546,7 @@ a,button,input,textarea,select{font:inherit}
 
 /* INFO CARDS */
 .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:17px}
-.ic{border:1.5px solid var(--line);border-radius:13px;padding:15px;background:#fff;position:relative;overflow:hidden}
+.ic{border:1.5px solid var(--line);border-radius:13px;padding:15px;background:var(--paper);position:relative;overflow:hidden}
 .ic::before {
   content:'';position:absolute;top:0;left:0;right:0;height:3px;
   background:linear-gradient(90deg,var(--gold),var(--maroon));
@@ -508,7 +579,7 @@ a,button,input,textarea,select{font:inherit}
 .cc.accent strong{font-size:1.08rem;color:#fff}
 
 /* SHEET CARDS */
-.sh-card{border:1.5px solid var(--line);border-radius:13px;padding:17px;background:#fff;margin-bottom:15px;position:relative;overflow:hidden}
+.sh-card{border:1.5px solid var(--line);border-radius:13px;padding:17px;background:var(--paper);margin-bottom:15px;position:relative;overflow:hidden}
 .sh-card::before {
   content:'';position:absolute;left:0;top:0;bottom:0;width:4px;
   background:linear-gradient(180deg,var(--gold),var(--maroon));
@@ -520,7 +591,7 @@ a,button,input,textarea,select{font:inherit}
 .dtbl th:last-child{text-align:right}
 .dtbl td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top;font-size:.87rem}
 .dtbl td:last-child{text-align:right;font-weight:600}
-.fh td{background:#f8f2e8;font-weight:800;color:var(--maroon);border-top:2px solid var(--line)}
+.fh td{background:var(--soft);font-weight:800;color:var(--maroon);border-top:2px solid var(--line)}
 .fn{color:var(--muted);font-size:.77rem;margin-top:2px;font-weight:400}
 .gr td{background:var(--maroon);color:#fff;font-weight:800;border-top:2px solid var(--maroon2);font-size:.92rem}
 .gr td:last-child{font-family:'Cormorant Garamond',serif;font-size:1.1rem}
@@ -530,8 +601,8 @@ a,button,input,textarea,select{font:inherit}
 .gst-note { color:var(--muted);font-size:.83rem;line-height:1.6;margin:0 0 12px; }
 .gst-chip {
   display:inline-flex;align-items:center;gap:6px;
-  background:#e8f5e9;border:1px solid #a5d6a7;border-radius:8px;
-  padding:5px 12px;font-size:.8rem;font-weight:700;color:#1b5e20;margin-top:8px;
+  background:var(--soft);border:1px solid var(--line);border-radius:8px;
+  padding:5px 12px;font-size:.8rem;font-weight:700;color:var(--green);margin-top:8px;
 }
 
 .terms-list{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:.84rem}
@@ -588,14 +659,14 @@ a,button,input,textarea,select{font:inherit}
 .lg-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .stmsg{margin-top:12px;padding:9px 13px;border-radius:10px;display:none;font-size:.87rem;font-weight:600}
 .stmsg.show{display:block}
-.stmsg.good{background:#e6f4ea;color:#1a5c35}
+.stmsg.good{background:#e6f4ea;color:#1a5c35;}
 .stmsg.bad{background:#fde8e6;color:#7B1C1C}
 .adm-sh{display:none}
 .adm-sh.open{display:block}
 .adm-tbl{width:100%;border-collapse:collapse;margin-top:10px}
 .adm-tbl th{background:var(--maroon);color:#fff;padding:8px 10px;font-size:.77rem;font-weight:700;text-align:left}
 .adm-tbl td{padding:7px 10px;border-bottom:1px solid var(--line);font-size:.85rem;vertical-align:middle}
-.adm-tbl input{border:1.5px solid var(--line);border-radius:8px;padding:5px 9px;width:100%;text-align:right;background:#fff}
+.adm-tbl input{border:1.5px solid var(--line);border-radius:8px;padding:5px 9px;width:100%;text-align:right;background:var(--paper)}
 .adm-tbl input:focus{outline:none;border-color:var(--gold)}
 .prev-box{background:var(--soft);border-radius:12px;padding:13px 15px;line-height:1.75;font-size:.87rem;border:1px solid var(--line)}
 
@@ -1482,8 +1553,13 @@ g("generateQuoteBtn").addEventListener("click",async function(){
   const data=collectQuotationData();
   if(!data.customerName||data.customerName==="Customer Name"){showToast("⚠ "+quoteI18n[getCurrentLanguage()].customerNameWarn,"bad");btn.disabled=false;btn.textContent=quoteI18n[getCurrentLanguage()].generate;return;}
   try{
-    const res=await fetch(url,{method:"POST",body:JSON.stringify(data),headers:{"Content-Type":"application/json"}});
-    const json=await res.json();
+    // URLSearchParams use karo — CORS issue fix hota hai Google Apps Script ke saath
+    const formData=new URLSearchParams();
+    formData.append("payload",JSON.stringify(data));
+    const res=await fetch(url,{method:"POST",body:formData});
+    const text=await res.text();
+    let json;
+    try{json=JSON.parse(text);}catch(e){json={success:false,message:"Invalid response from server"};}
     if(json.success){
       renderQ();
       setQuoteVisibility(true);
