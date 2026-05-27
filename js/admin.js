@@ -25,6 +25,7 @@ const defaultSiteData = {
       maps: ""
     },
     googleReviewUrl: "",
+    googleReviewAddUrl: "",
     heroImage:
       "https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1200&q=80"
   },
@@ -71,6 +72,7 @@ const settingsFields = {
   youtube: document.getElementById("youtubeInput"),
   maps: document.getElementById("mapsLinkInput"),
   googleReviewUrl: document.getElementById("googleReviewUrlInput"),
+  googleReviewAddUrl: document.getElementById("googleReviewAddUrlInput"),
   heroImage: document.getElementById("heroImageInput"),
   heroImageFile: document.getElementById("heroImageFile")
 };
@@ -216,6 +218,7 @@ function populateSettingsForm() {
   settingsFields.youtube.value = settings.socialLinks?.youtube || "";
   settingsFields.maps.value = settings.socialLinks?.maps || "";
   settingsFields.googleReviewUrl.value = settings.googleReviewUrl || "";
+  settingsFields.googleReviewAddUrl.value = settings.googleReviewAddUrl || "";
   settingsFields.heroImage.value = settings.heroImage;
   uploadedHeroImage = "";
   updateSettingsPreview();
@@ -337,6 +340,7 @@ siteSettingsForm.addEventListener("submit", (event) => {
       maps: settingsFields.maps.value.trim()
     },
     googleReviewUrl: settingsFields.googleReviewUrl.value.trim(),
+    googleReviewAddUrl: settingsFields.googleReviewAddUrl.value.trim(),
     heroImage: getHeroImage() || defaultSiteData.settings.heroImage
   };
 
@@ -431,6 +435,7 @@ settingsFields.heroImageFile.addEventListener("change", () => {
   settingsFields.youtube,
   settingsFields.maps,
   settingsFields.googleReviewUrl,
+  settingsFields.googleReviewAddUrl,
   settingsFields.heroImage
 ].forEach((field) => field.addEventListener("input", updateSettingsPreview));
 

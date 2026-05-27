@@ -126,6 +126,7 @@ const translations = {
     reviewLabel: "Customer Reviews",
     reviewHeading: "Google And Customer Feedback",
     reviewCta: "See All Google Reviews",
+    reviewAddCta: "Add Google Review",
     aboutLabel: "Why Vishwanath",
     aboutHeading: "Bihar's Trusted <em>Construction Partner</em>",
     aboutCopy: "Since 2012, Vishwanath Construction has focused on helping families in Patna build practical, durable and budget-aware homes. Clear communication and local execution stay at the center of every project.",
@@ -298,6 +299,7 @@ const translations = {
     reviewLabel: "कस्टमर रिव्यू",
     reviewHeading: "गूगल और ग्राहक फीडबैक",
     reviewCta: "सभी गूगल रिव्यू देखें",
+    reviewAddCta: "गूगल पर रिव्यू लिखें",
     aboutLabel: "क्यों Vishwanath",
     aboutHeading: "बिहार का भरोसेमंद <em>कंस्ट्रक्शन पार्टनर</em>",
     aboutCopy: "2012 से Vishwanath Construction पटना के परिवारों के लिए टिकाऊ, व्यावहारिक और बजट के अनुसार घर बनाने पर काम कर रहा है। साफ बातचीत और लोकल एक्जीक्यूशन हमारी पहचान है।",
@@ -577,12 +579,14 @@ const defaultSiteData = {
       hi: "© 2026 Vishwanath Construction. बिहार के परिवारों के लिए भरोसेमंद घर निर्माण सहयोग।"
     },
     socialLinks: {
-      facebook: "",
-      instagram: "",
+      facebook: "#",
+      instagram: "https://www.instagram.com/vishwanath_construction_patna/",
       youtube: "",
       maps: ""
     },
-    googleReviewUrl: "",
+    googleReviewUrl:
+      "https://www.google.com/search?q=VISHWANATHCONSTRUCTION&oq=v&sourceid=chrome&ie=UTF-8#mpd=~14315249868047743992/customers/reviews",
+    googleReviewAddUrl: "https://g.page/r/CTYSuG7U5zjNEBM/review",
     heroImage:
       "https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1200&q=80"
   },
@@ -776,6 +780,7 @@ function renderReviews() {
   const data = getSiteData();
   const reviewList = document.getElementById("reviewList");
   const googleReviewLink = document.getElementById("googleReviewLink");
+  const googleReviewAddLink = document.getElementById("googleReviewAddLink");
 
   if (!reviewList) {
     return;
@@ -805,6 +810,12 @@ function renderReviews() {
     const reviewUrl = data.settings?.googleReviewUrl || "";
     googleReviewLink.hidden = !reviewUrl;
     googleReviewLink.href = reviewUrl || "#";
+  }
+
+  if (googleReviewAddLink) {
+    const addUrl = data.settings?.googleReviewAddUrl || "";
+    googleReviewAddLink.hidden = !addUrl;
+    googleReviewAddLink.href = addUrl || "#";
   }
 }
 
@@ -888,21 +899,37 @@ function renderSettings() {
   }
 
   if (socialLinks) {
+    const icon = (name) => {
+      switch (name) {
+        case "Facebook":
+          return `<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.56 9.87v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.88h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>`;
+        case "Instagram":
+          return `<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 3.5A4.5 4.5 0 1 1 7.5 12 4.51 4.51 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zM17.75 6a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.75 6z"/></svg>`;
+        case "YouTube":
+          return `<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M21.6 7.2a3 3 0 0 0-2.1-2.12C17.6 4.5 12 4.5 12 4.5s-5.6 0-7.5.58A3 3 0 0 0 2.4 7.2 31.5 31.5 0 0 0 2 12a31.5 31.5 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.12c1.9.58 7.5.58 7.5.58s5.6 0 7.5-.58a3 3 0 0 0 2.1-2.12A31.5 31.5 0 0 0 22 12a31.5 31.5 0 0 0-.4-4.8zM10 15.5v-7l6 3.5-6 3.5z"/></svg>`;
+        case "Maps":
+          return `<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7zm0 9.5A2.5 2.5 0 1 0 9.5 9 2.5 2.5 0 0 0 12 11.5z"/></svg>`;
+        default:
+          return "";
+      }
+    };
+
     const links = [
-      { label: "Facebook", url: settings.socialLinks?.facebook },
       { label: "Instagram", url: settings.socialLinks?.instagram },
+      { label: "Facebook", url: settings.socialLinks?.facebook },
       { label: "YouTube", url: settings.socialLinks?.youtube },
       { label: "Maps", url: settings.socialLinks?.maps }
     ].filter((item) => item.url);
 
-    socialLinks.innerHTML = links.length
-      ? links
-          .map(
-            (item) =>
-              `<a href="${item.url}" target="_blank" rel="noreferrer">${item.label}</a>`
-          )
-          .join("")
-      : '<a href="#" aria-disabled="true">Coming Soon</a>';
+    socialLinks.innerHTML = links
+      .map((item) => {
+        const isPlaceholder = item.url === "#";
+        const attrs = isPlaceholder
+          ? 'href="#" aria-disabled="true"'
+          : `href="${item.url}" target="_blank" rel="noreferrer"`;
+        return `<a ${attrs} data-social="${item.label.toLowerCase()}">${icon(item.label)}<span>${item.label}</span></a>`;
+      })
+      .join("");
   }
 }
 
