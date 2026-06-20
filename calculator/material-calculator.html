@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Material Calculator | Vishwanath Construction</title>
+  <link rel="icon" href="../assets/logo/LOGO-VC.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <main class="quote-page">
+    <div class="container">
+      <div class="section-heading">
+        <a href="../index.html" class="eyebrow">Back to home</a>
+        <h1>Material calculator</h1>
+        <p>Quick planning tool for rough material budgeting.</p>
+      </div>
+      <div class="quote-grid">
+        <section class="quote-card">
+          <form class="quote-form">
+            <label>Built-up area in sq ft<input id="matArea" type="number" value="1000" min="100" /></label>
+            <button class="btn btn-primary" type="button" id="matBtn">Calculate</button>
+          </form>
+        </section>
+        <section class="quote-summary">
+          <div class="summary-row"><span>Cement bags</span><strong id="cementOut">-</strong></div>
+          <div class="summary-row"><span>Steel in kg</span><strong id="steelOut">-</strong></div>
+          <div class="summary-row"><span>Sand in ft3</span><strong id="sandOut">-</strong></div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <script>
+    document.getElementById("matBtn").onclick = function () {
+      const area = Number(document.getElementById("matArea").value) || 0;
+      document.getElementById("cementOut").textContent = Math.round(area * 0.45);
+      document.getElementById("steelOut").textContent = Math.round(area * 4);
+      document.getElementById("sandOut").textContent = Math.round(area * 1.8);
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>House Cost Planner | Vishwanath Construction</title>
+  <link rel="icon" href="../assets/logo/LOGO-VC.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <main class="quote-page">
+    <div class="container">
+      <div class="section-heading">
+        <a href="../index.html" class="eyebrow">Back to home</a>
+        <h1>House cost planner</h1>
+        <p>Use this to understand rough budget ranges before final quotation.</p>
+      </div>
+      <div class="quote-grid">
+        <section class="quote-card">
+          <form class="quote-form">
+            <label>Area in sq ft<input id="costArea" type="number" value="1200" /></label>
+            <label>Package<select id="costPkg"><option value="1800">Basic</option><option value="2400" selected>Standard</option><option value="3200">Premium</option></select></label>
+            <button class="btn btn-primary" type="button" id="costBtn">Calculate</button>
+          </form>
+        </section>
+        <section class="quote-summary">
+          <div class="quote-total"><span>Estimated budget</span><strong id="costOut">-</strong></div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <script>
+    document.getElementById("costBtn").onclick = function () {
+      const area = Number(document.getElementById("costArea").value) || 0;
+      const rate = Number(document.getElementById("costPkg").value) || 0;
+      document.getElementById("costOut").textContent = "INR " + Math.round(area * rate).toLocaleString("en-IN");
+    };
+  </script>
+</body>
+</html>

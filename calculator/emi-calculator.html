@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EMI Calculator | Vishwanath Construction</title>
+  <link rel="icon" href="../assets/logo/LOGO-VC.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <main class="quote-page">
+    <div class="container">
+      <div class="section-heading">
+        <a href="../index.html" class="eyebrow">Back to home</a>
+        <h1>EMI calculator</h1>
+        <p>Simple EMI estimate for early budget comfort.</p>
+      </div>
+      <div class="quote-grid">
+        <section class="quote-card">
+          <form class="quote-form">
+            <label>Loan amount<input id="loanAmt" type="number" value="2000000" /></label>
+            <label>Interest % yearly<input id="loanRate" type="number" value="9" step="0.1" /></label>
+            <label>Years<input id="loanYears" type="number" value="15" /></label>
+            <button class="btn btn-primary" type="button" id="emiBtn">Calculate</button>
+          </form>
+        </section>
+        <section class="quote-summary">
+          <div class="quote-total"><span>Monthly EMI</span><strong id="emiOut">-</strong></div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <script>
+    document.getElementById("emiBtn").onclick = function () {
+      const p = Number(document.getElementById("loanAmt").value) || 0;
+      const r = (Number(document.getElementById("loanRate").value) || 0) / 1200;
+      const n = (Number(document.getElementById("loanYears").value) || 0) * 12;
+      const emi = r ? (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1) : 0;
+      document.getElementById("emiOut").textContent = "INR " + Math.round(emi).toLocaleString("en-IN");
+    };
+  </script>
+</body>
+</html>

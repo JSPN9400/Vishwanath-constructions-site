@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://www.vishwanathconstruction.in/sitemap.xml
-
