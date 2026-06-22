@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     body { padding: 2rem 0; background: var(--paper-deep); }
     .admin-wrap { width: min(100% - 1rem, 1560px); margin: 0 auto; display: grid; gap: 1.25rem; }
@@ -21,13 +21,13 @@
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-top: 1rem; }
     .form-grid.one { grid-template-columns: 1fr; }
     label { display: grid; gap: 0.45rem; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); }
-    input, select, textarea { width: 100%; min-height: 52px; padding: 0.9rem 1rem; border: 1px solid var(--concrete); border-radius: 4px; background: var(--ink-soft); color: var(--ink); font: inherit; }
+    input, select, textarea { width: 100%; min-height: 52px; padding: 0.9rem 1rem; border: 1px solid var(--concrete); border-radius: 4px; background: var(--paper); color: var(--ink); font: inherit; }
     textarea { min-height: 120px; resize: vertical; }
     .admin-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1rem; }
     .status-text { min-height: 1.4rem; margin-top: 0.7rem; font-size: 0.9rem; color: var(--rebar-dim); }
     .preview-image { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 4px; background: var(--ink-soft); }
     .mini-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-    .mini-stat { padding: 1rem; border-radius: 4px; background: var(--ink-soft); border: 1px solid var(--concrete); }
+    .mini-stat { padding: 1rem; border-radius: 4px; background: var(--paper-deep); border: 1px solid var(--concrete); }
     .mini-stat strong { display: block; font-size: 2rem; color: var(--rebar-dim); line-height: 1; }
     .admin-pill-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
     .admin-pill { padding: 1rem; border-radius: 4px; background: var(--paper); backdrop-filter: blur(20px); border: 1px solid var(--concrete); box-shadow: var(--shadow-doc); }
@@ -48,16 +48,18 @@
     <section class="admin-top">
       <div class="admin-brand"><img src="assets/logo/LOGO-VC.png" alt="Vishwanath Construction logo" /><div><p class="section-label" style="color:var(--rebar-dim);">Site Control</p><h1>Homepage Admin</h1><p style="color:var(--ink-soft);">Update slogan, trust stats, hero photo, offers, and project gallery.</p></div></div>
       <div class="admin-actions">
-        <button type="button" class="btn btn-secondary" id="themeToggle">Theme Toggle</button>
+        <a href="#pricing" class="btn btn-secondary">Pricing</a>
+        <a href="#materials" class="btn btn-secondary">Materials</a>
+        <a href="#leads" class="btn btn-secondary">Leads &amp; Quotations</a>
         <a href="index.html" class="btn btn-secondary">Back to Website</a>
-        <a href="quotation/index.html" class="btn btn-primary">Quotation Admin</a>
+        <a href="quotation/index.html" class="btn btn-primary">Open Quotation Tool</a>
       </div>
     </section>
 
     <section class="admin-pill-row">
       <div class="admin-pill"><strong>Hero Control</strong><p style="color:var(--ink-soft);">Set the main house photo, slogan, and trust numbers.</p></div>
-      <div class="admin-pill"><strong>Gallery Control</strong><p style="color:var(--ink-soft);">Add real home images and project entries.</p></div>
-      <div class="admin-pill"><strong>Quick Access</strong><p style="color:var(--ink-soft);">Open quotation admin from here.</p></div>
+      <div class="admin-pill"><strong>Pricing Control</strong><p style="color:var(--ink-soft);">Change calculator and quotation rates — updates the whole site instantly.</p></div>
+      <div class="admin-pill"><strong>Leads &amp; Quotations</strong><p style="color:var(--ink-soft);">See every quotation request and connect your Google Sheet.</p></div>
     </section>
 
     <section class="admin-grid">
@@ -136,12 +138,101 @@
       </aside>
     </section>
 
+    <section class="admin-card" id="pricing">
+      <div><p class="section-label" style="color:var(--rebar-dim);">Pricing Control</p><h2>Calculator &amp; Quotation Rates</h2><p style="color:var(--ink-soft);">Change these numbers and every price shown on the website — homepage calculator and the quotation tool — updates immediately.</p></div>
+
+      <form id="pricingForm">
+        <p class="section-label" style="margin-top:1.2rem;color:var(--rebar-dim);">Homepage Calculator Packages (rate per sq ft)</p>
+        <div class="form-grid">
+          <label>Basic Package Rate <input id="rateBasic" type="number" min="0" step="50" /></label>
+          <label>Standard Package Rate <input id="rateStandard" type="number" min="0" step="50" /></label>
+          <label>Premium Package Rate <input id="ratePremium" type="number" min="0" step="50" /></label>
+        </div>
+
+        <p class="section-label" style="margin-top:1.4rem;color:var(--rebar-dim);">Quotation Tool Rates (per sq ft, by work type)</p>
+        <div class="form-grid">
+          <label>Structure — With Material (Low / Mid / High) <input id="structWithLow" type="number" placeholder="Low" /></label>
+          <label>&nbsp; <input id="structWithMid" type="number" placeholder="Mid" /></label>
+          <label>&nbsp; <input id="structWithHigh" type="number" placeholder="High" /></label>
+          <label>Structure — Without Material (Low / Mid / High) <input id="structWoLow" type="number" placeholder="Low" /></label>
+          <label>&nbsp; <input id="structWoMid" type="number" placeholder="Mid" /></label>
+          <label>&nbsp; <input id="structWoHigh" type="number" placeholder="High" /></label>
+          <label>Finishing — With Material (Low / Mid / High) <input id="finWithLow" type="number" placeholder="Low" /></label>
+          <label>&nbsp; <input id="finWithMid" type="number" placeholder="Mid" /></label>
+          <label>&nbsp; <input id="finWithHigh" type="number" placeholder="High" /></label>
+          <label>Finishing — Without Material (Low / Mid / High) <input id="finWoLow" type="number" placeholder="Low" /></label>
+          <label>&nbsp; <input id="finWoMid" type="number" placeholder="Mid" /></label>
+          <label>&nbsp; <input id="finWoHigh" type="number" placeholder="High" /></label>
+          <label>All Work — With Material (Low / Mid / High) <input id="allWithLow" type="number" placeholder="Low" /></label>
+          <label>&nbsp; <input id="allWithMid" type="number" placeholder="Mid" /></label>
+          <label>&nbsp; <input id="allWithHigh" type="number" placeholder="High" /></label>
+          <label>All Work — Without Material (Low / Mid / High) <input id="allWoLow" type="number" placeholder="Low" /></label>
+          <label>&nbsp; <input id="allWoMid" type="number" placeholder="Mid" /></label>
+          <label>&nbsp; <input id="allWoHigh" type="number" placeholder="High" /></label>
+          <label>GST Percent <input id="gstPercentInput" type="number" min="0" max="28" step="0.5" /></label>
+        </div>
+
+        <div class="admin-actions">
+          <button type="submit" class="btn btn-primary">Save Pricing</button>
+          <button type="button" class="btn btn-secondary" id="resetPricingBtn">Reset to Default Pricing</button>
+        </div>
+        <div class="status-text" id="pricingStatus"></div>
+      </form>
+    </section>
+
+    <section class="admin-card" id="materials">
+      <div><p class="section-label" style="color:var(--rebar-dim);">Material Specifications</p><h2>What We Build With, By Package</h2><p style="color:var(--ink-soft);">Each package (Basic / Standard / Premium) shows different brands and specs on the printed quotation. Edit the list below for each package — one line per item as <code>Item Name | Specification text</code>, grouped under a category heading starting with <code>##</code>.</p></div>
+
+      <form id="materialsForm">
+        <div class="form-grid one">
+          <label>Basic Package — Materials
+            <textarea id="matLow" rows="10" style="font-family:var(--font-mono);font-size:0.82rem;"></textarea>
+          </label>
+          <label>Standard Package — Materials
+            <textarea id="matMid" rows="10" style="font-family:var(--font-mono);font-size:0.82rem;"></textarea>
+          </label>
+          <label>Premium Package — Materials
+            <textarea id="matHigh" rows="10" style="font-family:var(--font-mono);font-size:0.82rem;"></textarea>
+          </label>
+        </div>
+        <div class="admin-actions">
+          <button type="submit" class="btn btn-primary">Save Material Specifications</button>
+          <button type="button" class="btn btn-secondary" id="resetMaterialsBtn">Reset to Default Materials</button>
+        </div>
+        <div class="status-text" id="materialsStatus"></div>
+      </form>
+    </section>
+
+    <section class="admin-card" id="leads">
+      <div><p class="section-label" style="color:var(--rebar-dim);">Leads &amp; Quotations</p><h2>Who Asked for a Quote</h2><p style="color:var(--ink-soft);">Connect your Google Sheet once — every quotation request from the website (and any Google Form share) lands there automatically, so you always know who took a cost estimate.</p></div>
+
+      <div class="form-grid one">
+        <label>Google Sheet Link (paste the SHEET URL from your setup)
+          <input id="sheetLinkInput" type="url" placeholder="https://docs.google.com/spreadsheets/d/..." />
+        </label>
+        <label>Google Form Link (share this on WhatsApp / Instagram to collect leads directly)
+          <input id="formLinkInput" type="url" placeholder="https://forms.gle/..." />
+        </label>
+      </div>
+      <div class="admin-actions">
+        <button type="button" class="btn btn-primary" id="saveLeadLinksBtn">Save Links</button>
+        <a id="openSheetBtn" class="btn btn-secondary" href="#" target="_blank" rel="noopener">Open Google Sheet</a>
+        <a id="openFormBtn" class="btn btn-secondary" href="#" target="_blank" rel="noopener">Open Google Form</a>
+        <a href="quotation/index.html" class="btn btn-secondary">Open Quotation Tool to Print</a>
+      </div>
+      <div class="status-text" id="leadsStatus"></div>
+      <p style="color:var(--ink-soft);margin-top:0.8rem;">First time setup? Follow <code>google-script/SETUP-README.md</code> in the project files — it generates the Form and Sheet for you in about 5 minutes.</p>
+    </section>
+
     <section class="admin-card">
       <div><p class="section-label" style="color:var(--rebar-dim);">Saved Content</p><h2>Homepage Entries</h2><p style="color:var(--ink-soft);">These cards appear on the main website using localStorage.</p></div>
       <div class="admin-list" id="adminList"></div>
       <p style="color:var(--ink-soft);">Data stored in browser local storage.</p>
     </section>
   </div>
+  <script src="js/site-data.js"></script>
+  <script src="js/pricing.js"></script>
+  <script src="js/materials.js"></script>
   <script src="js/admin.js"></script>
 </body>
 </html>

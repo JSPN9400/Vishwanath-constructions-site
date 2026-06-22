@@ -3,16 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vishwanath Construction | Professional Quotation</title>
-  <meta name="description" content="Professional A4-friendly construction quotation with GST, cost breakdown, signature section, QR code, and print-ready layout." />
+  <title>Free Construction Quotation Patna | Vishwanath Construction</title>
+  <meta name="description" content="Get a free, GST-compliant construction quotation from Vishwanath Construction, Patna — instant cost breakdown, material specifications, and print-ready document." />
   <link rel="canonical" href="https://www.vishwanathconstruction.in/quotation/" />
   <link rel="icon" href="../assets/logo/LOGO-VC.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
+  <script src="../js/pricing.js"></script>
+  <script src="../js/materials.js"></script>
+  <script src="../js/quotation-sync.js" defer></script>
 </head>
 <body>
+    <header class="main-header" id="header">
+      <div class="container">
+        <a href="../index.html" class="brand" aria-label="Vishwanath Construction Home">
+          <img src="../assets/logo/LOGO-VC.png" alt="Vishwanath Construction logo" class="brand-logo" decoding="async" />
+          <span class="brand-copy">
+            <strong>Vishwanath Construction</strong>
+            <small>Reg. Patna &middot; Est. billing transparency</small>
+          </span>
+        </a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="siteNav">
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="site-nav" id="siteNav" aria-label="Primary">
+          <a href="../services.html">Services</a>
+          <a href="../projects.html">Projects</a>
+          <a href="../index.html#calculator">Cost Estimate</a>
+          <a href="../about.html">About</a>
+          <a href="../blog/index.html">Blog</a>
+          <a href="../quotation/index.html" class="nav-cta">Get Quotation</a>
+        </nav>
+      </div>
+    </header>
+
   <main class="quote-page">
     <div class="container">
       <a href="../index.html" class="eyebrow">Back to homepage</a>
@@ -46,7 +73,7 @@
           <div class="summary-row"><span>Material mode</span><strong id="sMat">-</strong></div>
           <div class="summary-row"><span>Package</span><strong id="sPkg">-</strong></div>
           <div class="summary-row"><span>Base value</span><strong id="sBase">-</strong></div>
-          <div class="summary-row"><span>GST 18%</span><strong id="sGst">-</strong></div>
+          <div class="summary-row"><span id="sGstLabel">GST 18%</span><strong id="sGst">-</strong></div>
           <div class="summary-row"><span>Estimated duration</span><strong id="sDuration">-</strong></div>
           <div class="quote-total">
             <span>Total estimate</span>
@@ -67,14 +94,58 @@
       </section>
     </div>
   </main>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <img src="../assets/logo/LOGO-VC.png" alt="Vishwanath Construction logo" class="footer-logo" loading="lazy" decoding="async" />
+            <p>House construction company delivering transparent, stage-wise billing across Patna and Bihar.</p>
+          </div>
+          <div>
+            <h3>Quick Links</h3>
+            <a href="../index.html#calculator">House Cost Calculator</a>
+            <a href="../index.html#projects">Featured Projects</a>
+            <a href="../index.html#billing">Transparent Billing</a>
+            <a href="../quotation/index.html">Quotation</a>
+          </div>
+          <div>
+            <h3>More Pages</h3>
+            <a href="../services.html">Residential Construction Bihar</a>
+            <a href="../projects.html">Building Contractor Patna</a>
+            <a href="../about.html">About Us</a>
+            <a href="../blog/index.html">Construction Blog</a>
+          </div>
+          <div>
+            <h3>Free Tools</h3>
+            <a href="../calculator/house-cost.html">House Cost Calculator</a>
+            <a href="../calculator/material-calculator.html">Material Calculator</a>
+            <a href="../calculator/emi-calculator.html">Loan EMI Calculator</a>
+          </div>
+          <div>
+            <h3>Contact</h3>
+            <a href="tel:+919934683355">+91 99346 83355</a>
+            <a href="mailto:info.vishwanathconstruction@gmail.com">info.vishwanathconstruction@gmail.com</a>
+            <a href="https://wa.me/919934683355">WhatsApp</a>
+            <a href="../contact.html">Contact Page</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; 2026 Vishwanath Construction, Patna &amp; Danapur, Bihar</span>
+          <span>GSTIN 10EUFPK3451L1ZQ</span>
+        </div>
+      </div>
+    </footer>
+  <script src="../js/main.js"></script>
+
 
   <script>
     (function () {
-      const rates = {
+      const rates = (window.loadPricing ? window.loadPricing().quotationRates : null) || {
         structure: { with_material: { low: 1100, mid: 1350, high: 1600 }, without_material: { low: 420, mid: 520, high: 650 } },
         finishing: { with_material: { low: 650, mid: 900, high: 1250 }, without_material: { low: 260, mid: 360, high: 480 } },
         all_work: { with_material: { low: 1750, mid: 2100, high: 2650 }, without_material: { low: 690, mid: 880, high: 1130 } }
       };
+      const gstPercent = (window.loadPricing ? window.loadPricing().gstPercent : 18) || 18;
       const liftPct = [0, 10, 20, 30];
       const durationMap = { 1: "6 to 8 months", 2: "9 to 11 months", 3: "11 to 14 months", 4: "14 to 16 months" };
       const ids = ["area", "fCount", "workType", "matMode", "pkg", "cName", "cPhone", "pName", "pCity", "pScope"];
@@ -97,7 +168,7 @@
         for (let i = 0; i < floors; i += 1) {
           baseTotal += area * rate * (1 + (liftPct[i] || 0) / 100);
         }
-        const gst = baseTotal * 0.18;
+        const gst = baseTotal * (gstPercent / 100);
         const total = baseTotal + gst;
         return {
           area,
@@ -119,22 +190,49 @@
         document.getElementById("sMat").textContent = document.querySelector("#matMode option:checked").textContent;
         document.getElementById("sPkg").textContent = document.querySelector("#pkg option:checked").textContent;
         document.getElementById("sBase").textContent = currency(data.baseTotal);
+        document.getElementById("sGstLabel").textContent = `GST ${gstPercent}%`;
         document.getElementById("sGst").textContent = currency(data.gst);
         document.getElementById("sDuration").textContent = data.duration;
         document.getElementById("sTotal").textContent = currency(data.total);
         window.currentQuoteData = data;
       }
 
+      function buildMaterialTableHtml(pkgKey) {
+        const materials = window.loadMaterials ? window.loadMaterials() : window.DEFAULT_MATERIALS;
+        const tier = materials[pkgKey] || materials.mid;
+        const groupsHtml = tier.groups.map((group) => `
+          <div class="material-category">
+            <h4>${group.category}</h4>
+            <table class="material-table">
+              <thead><tr><th>Item</th><th>Specification</th></tr></thead>
+              <tbody>
+                ${group.rows.map(([item, spec]) => `<tr><td>${item}</td><td>${spec}</td></tr>`).join("")}
+              </tbody>
+            </table>
+          </div>
+        `).join("");
+        return `
+          <div class="material-section">
+            <strong>Material Specification — ${tier.label} Package</strong>
+            <p style="font-size:0.84rem;color:var(--ink-soft);margin:0 0 0.4rem;">Brand and material selection below applies to the ${tier.label} package selected for this quotation. Final brand availability may vary by site location.</p>
+            ${groupsHtml}
+          </div>
+        `;
+      }
+
       function buildPreview() {
         const data = window.currentQuoteData || buildQuoteData();
+        const pkgKey = value("pkg");
         const qrSource = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent("https://wa.me/919934683355?text=Hello Vishwanath Construction, I want a quotation review.")}`;
         quoteContent.innerHTML = `
           <div class="preview-header">
             <div class="preview-meta">
               <img src="../assets/logo/LOGO-VC.png" alt="Vishwanath Construction logo" />
               <div><strong>Vishwanath Construction</strong></div>
-              <div>Premium Engineering and Construction Platform</div>
+              <div>Vishwas Ki Neev, Gunvatta Ki Pehchan</div>
+              <div>Proprietor: Anish Kumar</div>
               <div>GSTIN: 10EUFPK3451L1ZQ</div>
+              <div>Vijay Nagar Main Road, Khajpura, Patna, Bihar, 800014</div>
             </div>
             <div class="preview-meta">
               <div><strong>Quotation No:</strong> ${quoteNumber}</div>
@@ -153,10 +251,12 @@
             <div><strong>Work Type:</strong> ${document.querySelector("#workType option:checked").textContent}</div>
             <div><strong>Material Mode:</strong> ${document.querySelector("#matMode option:checked").textContent}</div>
             <div><strong>Package:</strong> ${document.querySelector("#pkg option:checked").textContent}</div>
+            <div><strong>Rate:</strong> ${currency(data.rate)} / sq ft</div>
             <div><strong>Estimated Base Value:</strong> ${currency(data.baseTotal)}</div>
-            <div><strong>GST:</strong> ${currency(data.gst)}</div>
+            <div><strong>GST (${gstPercent}%):</strong> ${currency(data.gst)}</div>
             <div><strong>Total Estimate:</strong> ${currency(data.total)}</div>
           </div>
+          ${buildMaterialTableHtml(pkgKey)}
           <div class="preview-block">
             <div><strong>Billing Structure:</strong></div>
             <div>Material cost, labour cost, transport, GST, and milestone-linked approvals are reviewed stage by stage.</div>
@@ -166,6 +266,7 @@
             <div>1. Final rates depend on approved drawings, soil conditions, and site access.</div>
             <div>2. This quotation is for budgeting and planning discussion.</div>
             <div>3. Material brand selection and milestone schedule will be finalized before work starts.</div>
+            <div>4. Tile and granite prices mentioned are base rates; any selection above these rates will be charged extra.</div>
           </div>
           <div class="preview-block">
             <div><strong>Client Notes:</strong> ${value("pScope")}</div>
@@ -173,17 +274,46 @@
           <div class="preview-header">
             <div class="preview-meta">
               <div><strong>Signature Section</strong></div>
-              <div>Authorized by Vishwanath Construction</div>
+              <div>Authorized Signatory — Anish Kumar</div>
+              <div>Vishwanath Construction</div>
               <div>Phone: +91 99346 83355</div>
             </div>
             <img class="preview-qr" src="${qrSource}" alt="Quotation QR code" />
           </div>
         `;
         quotePreview.hidden = false;
+
+        // Send this quotation to the Google Sheet (lead tracking)
+        if (window.sendQuotationToSheet) {
+          window.sendQuotationToSheet({
+            clientName: value("cName"),
+            phone: value("cPhone"),
+            projectName: value("pName"),
+            location: value("pCity"),
+            area: data.area,
+            floors: data.floors,
+            workType: document.querySelector("#workType option:checked").textContent,
+            materialMode: document.querySelector("#matMode option:checked").textContent,
+            package: document.querySelector("#pkg option:checked").textContent,
+            rate: data.rate,
+            baseValue: Math.round(data.baseTotal),
+            gst: Math.round(data.gst),
+            total: Math.round(data.total),
+            duration: data.duration,
+            notes: value("pScope"),
+            quotationNumber: quoteNumber
+          });
+        }
       }
 
       ids.forEach((id) => {
-        document.getElementById(id).addEventListener("input", updateSummary);
+        const el = document.getElementById(id);
+        const handler = () => {
+          updateSummary();
+          if (quotePreview && !quotePreview.hidden) buildPreview();
+        };
+        el.addEventListener("input", handler);
+        el.addEventListener("change", handler);
       });
 
       document.getElementById("previewBtn").addEventListener("click", buildPreview);

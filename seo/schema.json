@@ -1,42 +1,107 @@
 {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "LocalBusiness",
-      "@id": "https://www.vishwanathconstruction.in/#business",
-      "name": "Vishwanath Construction",
-      "url": "https://www.vishwanathconstruction.in/",
-      "image": "https://www.vishwanathconstruction.in/assets/logo/LOGO%20VC.png",
-      "telephone": "+91-9934683355",
-      "email": "info.vishwanathconstruction@gmail.com",
-      "description": "Data-driven home construction and project planning platform serving Patna and Bihar.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Patna",
-        "addressRegion": "Bihar",
-        "addressCountry": "IN"
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "GeneralContractor",
+        "@id": "https://www.vishwanathconstruction.in/#business",
+        "name": "Vishwanath Construction",
+        "alternateName": "Vishwanath Construction Patna",
+        "legalName": "Anish Kumar",
+        "image": "https://www.vishwanathconstruction.in/assets/logo/LOGO-VC.png",
+        "logo": "https://www.vishwanathconstruction.in/assets/logo/LOGO-VC.png",
+        "url": "https://www.vishwanathconstruction.in/",
+        "telephone": "+91-9934683355",
+        "email": "info.vishwanathconstruction@gmail.com",
+        "taxID": "10EUFPK3451L1ZQ",
+        "description": "GST-registered house construction company in Patna and Danapur offering stage-wise transparent billing, GST-registered invoicing, and engineering-supervised residential construction across Bihar.",
+        "foundingDate": "2019-03-03",
+        "founder": { "@type": "Person", "name": "Anish Kumar" },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Vijay Nagar Main Road, Khajpura",
+          "addressLocality": "Patna",
+          "addressRegion": "Bihar",
+          "postalCode": "800014",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 25.601261,
+          "longitude": 85.106842
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Patna" },
+          { "@type": "City", "name": "Danapur" },
+          { "@type": "AdministrativeArea", "name": "Bihar" }
+        ],
+        "priceRange": "₹₹",
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "09:00",
+          "closes": "19:00"
+        },
+        "sameAs": [
+          "https://wa.me/919934683355",
+          "https://www.instagram.com/constructionvishwanath2026/"
+        ]
       },
-      "areaServed": [
-        "Patna",
-        "Gaya",
-        "Aurangabad, Bihar",
-        "Danapur",
-        "Bihar"
-      ]
-    },
-    {
-      "@type": "Service",
-      "name": "Residential Construction Planning",
-      "provider": {
-        "@id": "https://www.vishwanathconstruction.in/#business"
+      {
+        "@type": "Service",
+        "name": "House Construction Patna",
+        "provider": { "@id": "https://www.vishwanathconstruction.in/#business" },
+        "areaServed": ["Patna", "Danapur", "Bihar"],
+        "serviceType": [
+          "House Construction Patna",
+          "House Construction Danapur",
+          "Residential Construction Bihar",
+          "Commercial Construction Bihar",
+          "Building Contractor Patna",
+          "Turnkey Construction Patna"
+        ]
       },
-      "areaServed": "Bihar",
-      "serviceType": [
-        "House construction",
-        "Turnkey construction",
-        "Budget planning",
-        "Site visit consultation"
-      ]
-    },
-  ]
-}
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vishwanathconstruction.in/" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is Vishwanath Construction GST registered?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Vishwanath Construction is a GST-registered proprietorship (GSTIN 10EUFPK3451L1ZQ), registered since March 2019 and based in Khajpura, Patna."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which areas does Vishwanath Construction serve?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Vishwanath Construction builds primarily in Patna and Danapur, with project experience across other parts of Bihar as well."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is house construction cost calculated?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Cost depends on built-up area, number of floors, work type, material mode, and package (Basic, Standard, or Premium). A free online calculator is available for an instant estimate."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I get a construction quotation from Vishwanath Construction?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use the free online quotation tool for an instant, printable, GST-compliant estimate, or book a free site visit by calling +91 99346 83355."
+            }
+          }
+        ]
+      }
+    ]
+  }

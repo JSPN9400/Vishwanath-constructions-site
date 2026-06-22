@@ -14,7 +14,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const leadForm = document.getElementById("leadForm");
 
   if (loader) {
-    window.setTimeout(() => loader.classList.add("hidden"), 320);
+    const hideLoader = () => loader.classList.add("hidden");
+    if (document.readyState === "complete") {
+      // Page (including images) already finished loading by the time JS ran
+      requestAnimationFrame(hideLoader);
+    } else {
+      window.addEventListener("load", hideLoader, { once: true });
+      // Safety cap: never block the user more than 1.2s even on a slow connection
+      window.setTimeout(hideLoader, 1200);
+    }
   }
 
   const updateHeader = () => {
@@ -49,6 +57,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   if (calcEstimateBtn && calcArea && calcFloors && calcPackage) {
+    // Populate package dropdown from shared pricing (admin-editable)
+    if (window.loadPricing) {
+      const pricing = window.loadPricing();
+      const packages = pricing.calculatorPackages;
+      calcPackage.innerHTML = Object.entries(packages)
+        .map(([key, pkg]) => `<option value="${pkg.ratePerSqFt}" data-label="${pkg.label}"${key === "standard" ? " selected" : ""}>${pkg.label}</option>`)
+        .join("");
+    }
+
     const updateEstimate = () => {
       const area = Number(calcArea.value) || 0;
       const floors = Number(calcFloors.value) || 1;
@@ -86,6 +103,16 @@ document.addEventListener("DOMContentLoaded", () => {
         `Project Type: ${project}`
       ].join("\n");
 
+      if (window.sendQuotationToSheet) {
+        window.sendQuotationToSheet({
+          clientName: name,
+          phone,
+          projectName: project,
+          location: city,
+          notes: "Submitted via homepage quick enquiry form"
+        });
+      }
+
       window.open(`https://wa.me/919934683355?text=${encodeURIComponent(message)}`, "_blank", "noopener");
     });
   }
@@ -109,23 +136,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  if (window.gsap && window.ScrollTrigger) {
-    window.gsap.registerPlugin(window.ScrollTrigger);
-    window.gsap.utils.toArray(".billing-card, .reason-card, .testimonial-card, .trust-card").forEach((card, index) => {
-      window.gsap.fromTo(card, { opacity: 0, y: 28 }, {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        delay: index * 0.04,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: card,
-          start: "top 86%"
-        }
-      });
-    });
-
-    window.gsap.fromTo(".hero-main", { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 1, ease: "power3.out" });
-    window.gsap.fromTo(".hero-side-card", { opacity: 0, x: 36 }, { opacity: 1, x: 0, duration: 1, ease: "power3.out", delay: 0.15 });
+  // Render projects added from the admin panel (if any)
+  const moreProjectsGrid = document.getElementById("moreProjectsGrid");
+  if (moreProjectsGrid && window.loadSiteData) {
+    const siteData = window.loadSiteData();
+    const projects = siteData.projects || [];
+    if (projects.length) {
+      moreProjectsGrid.hidden = false;
+      moreProjectsGrid.innerHTML = projects.map((p) => `
+        <article class="project-card">
+          <div class="project-visual" style="${p.image ? `background-image:url('${p.image}');background-size:cover;background-position:center;` : ""}"></div>
+          <div class="project-body">
+            <span class="project-tag">${p.location || "Patna, Bihar"}</span>
+            <h3>${p.title || "Untitled Project"}</h3>
+            <p>${p.description || ""}</p>
+          </div>
+        </article>
+      `).join("");
+    }
   }
 });

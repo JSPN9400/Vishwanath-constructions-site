@@ -1,0 +1,22 @@
+{
+  "calculatorPackages": {
+    "basic": { "label": "Basic", "ratePerSqFt": 1800 },
+    "standard": { "label": "Standard", "ratePerSqFt": 2400 },
+    "premium": { "label": "Premium", "ratePerSqFt": 3200 }
+  },
+  "quotationRates": {
+    "structure": {
+      "with_material": { "low": 1100, "mid": 1350, "high": 1600 },
+      "without_material": { "low": 420, "mid": 520, "high": 650 }
+    },
+    "finishing": {
+      "with_material": { "low": 650, "mid": 900, "high": 1250 },
+      "without_material": { "low": 260, "mid": 360, "high": 480 }
+    },
+    "all_work": {
+      "with_material": { "low": 1750, "mid": 2100, "high": 2650 },
+      "without_material": { "low": 690, "mid": 880, "high": 1130 }
+    }
+  },
+  "gstPercent": 18
+}

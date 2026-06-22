@@ -1,35 +1,37 @@
 /* ============================================================
    VISHWANATH CONSTRUCTION — DESIGN TOKENS
-   Direction: "Site Document" — the visual language of survey
-   stamps, measurement ticks, and stage-approval paperwork.
-   Built from real site material, not a generic dark/gold theme.
+   Direction: "Brushed Metal & Brass" — sober gold and cool
+   silver-blue metallics on a warm ivory ground, pulled directly
+   from the logo's brass V and chrome C. Minimal, premium, calm.
    ============================================================ */
 
 :root {
-  /* ---- Color: limewash + blueprint, one rebar-orange accent ---- */
-  --paper:        #F5F2EA;   /* limewashed concrete white */
-  --paper-deep:    #ECE6D8;  /* slightly deeper paper, for panels */
-  --ink:          #15211C;   /* near-black blueprint ink (green-black, not pure black) */
-  --ink-soft:     #45524B;   /* secondary text on paper */
-  --site:         #1C2620;   /* deep site charcoal-green (dark sections) */
-  --site-line:    #2C3A33;   /* hairline on dark */
-  --concrete:     #8A9A8E;   /* sage-concrete gray */
-  --rebar:        #FF5A1F;   /* the ONE accent — safety-vest / stamp-ink orange */
-  --rebar-dim:    #C9450F;
+  /* ---- Color: warm ivory ground, muted brass gold + cool silver-blue ---- */
+  --paper:        #FAF6EE;   /* warm ivory background */
+  --paper-deep:    #F1EADA;  /* deeper ivory, for panels */
+  --ink:          #23262B;   /* deep charcoal-navy text (not pure black) */
+  --ink-soft:     #5B6068;   /* secondary text on paper */
+  --site:         #23262B;   /* deep charcoal-navy (dark sections) */
+  --site-line:    #383C44;   /* hairline on dark */
+  --concrete:     #AEB6C0;   /* cool silver-grey, secondary metallic */
+  --rebar:        #BB8838;   /* muted brass-gold accent — the logo's V */
+  --rebar-dim:    #8A6222;   /* deep bronze, hover/emphasis */
+  --silver:       #8A93A0;   /* cool blue-silver metallic — the logo's C */
+  --silver-dim:   #5F6772;   /* deeper steel-blue */
   --stamp-red:    #B3261E;   /* approval-stamp red, used only for the quote stamp */
 
   /* ---- Type ---- */
-  --font-display: "Archivo Black", "Arial Narrow", sans-serif;
-  --font-head:    "Space Grotesk", "Archivo Black", sans-serif;
+  --font-display: "Cormorant Garamond", "Playfair Display", serif;
+  --font-head:    "Space Grotesk", "Cormorant Garamond", sans-serif;
   --font-body:    "Inter", "Manrope", sans-serif;
   --font-mono:    "JetBrains Mono", "Space Mono", monospace; /* measurements, data */
 
   /* ---- Scale ---- */
-  --radius-doc: 2px;     /* documents have square corners, not pills */
-  --radius-sm: 6px;
+  --radius-doc: 4px;     /* soft minimal corners */
+  --radius-sm: 8px;
   --container: 1320px;
   --ease-doc: 380ms cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* ---- shadow: flat paper lift, not soft glow ---- */
-  --shadow-doc: 0 1px 0 rgba(21,33,28,0.06), 0 12px 24px -16px rgba(21,33,28,0.35);
+  /* ---- shadow: soft minimal lift ---- */
+  --shadow-doc: 0 1px 0 rgba(35,38,43,0.04), 0 16px 32px -20px rgba(35,38,43,0.22);
 }

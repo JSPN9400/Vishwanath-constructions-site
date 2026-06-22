@@ -1,51 +1,9 @@
 // ============================================
 // Vishwanath Construction — Admin Panel
 // localStorage CRUD for homepage content
+// (loadSiteData / saveSiteData come from js/site-data.js, loaded before this file)
 // ============================================
-const STORAGE_KEY = "vishwanathSiteData";
-const defaultSiteData = {
-  settings: {
-    brandSlogan: "We The Home Makers",
-    heroTagline: "Building Bihar with Strength and Culture",
-    heroTag: "Bihar Contractor · Clear Quotes",
-    heroSub: "Local construction planning, reliable materials, and clear budget guidance.",
-    noticeTitle: "",
-    noticeText: "",
-    yearsInBihar: 12,
-    projectsDone: 22,
-    officeAddress: "Vijay Nagar Main Road, Khajpura, Patna",
-    phone: "+91 9934683355",
-    email: "info.vishwanathconstruction@gmail.com",
-    whatsappLink: "https://wa.me/9934683355",
-    mapEmbedUrl: "https://maps.google.com/maps?q=Khajpura+Patna&output=embed",
-    footerCopy: "© 2026 Vishwanath Construction. Trusted home construction support.",
-    socialLinks: { facebook: "", instagram: "", youtube: "", maps: "" },
-    googleReviewUrl: "",
-    googleReviewAddUrl: "",
-    heroImage: "https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1200&q=80"
-  },
-  offers: [],
-  projects: [],
-  reviews: []
-};
-
-function loadSiteData() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return JSON.parse(JSON.stringify(defaultSiteData));
-    const parsed = JSON.parse(raw);
-    return {
-      settings: { ...defaultSiteData.settings, ...parsed.settings, socialLinks: { ...defaultSiteData.settings.socialLinks, ...(parsed.settings?.socialLinks || {}) } },
-      offers: Array.isArray(parsed.offers) ? parsed.offers : [],
-      projects: Array.isArray(parsed.projects) ? parsed.projects : [],
-      reviews: Array.isArray(parsed.reviews) ? parsed.reviews : []
-    };
-  } catch { return JSON.parse(JSON.stringify(defaultSiteData)); }
-}
-
-function saveSiteData(data) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-}
+const defaultSiteData = window.DEFAULT_SITE_DATA;
 
 // --- Populate forms and previews ---
 function populateSettings() {
@@ -246,11 +204,182 @@ document.addEventListener('DOMContentLoaded', function() {
     setStatus('entryStatus', 'Form cleared.');
   });
 
-  // Theme toggle in admin
-  document.getElementById('themeToggle')?.addEventListener('click', function() {
-    const current = document.body.dataset.theme;
-    document.body.dataset.theme = (current === 'dark') ? 'light' : 'dark';
-    localStorage.setItem('vishwanathTheme', document.body.dataset.theme);
-    this.textContent = (document.body.dataset.theme === 'dark') ? 'Light Mode' : 'Dark Mode';
-  });
+  initPricingPanel();
+  initMaterialsPanel();
+  initLeadsPanel();
 });
+
+// ============================================
+// Pricing Panel — calculator + quotation rates
+// ============================================
+function initPricingPanel() {
+  const form = document.getElementById('pricingForm');
+  if (!form) return;
+
+  const fields = {
+    rateBasic: ['calculatorPackages', 'basic', 'ratePerSqFt'],
+    rateStandard: ['calculatorPackages', 'standard', 'ratePerSqFt'],
+    ratePremium: ['calculatorPackages', 'premium', 'ratePerSqFt'],
+    structWithLow: ['quotationRates', 'structure', 'with_material', 'low'],
+    structWithMid: ['quotationRates', 'structure', 'with_material', 'mid'],
+    structWithHigh: ['quotationRates', 'structure', 'with_material', 'high'],
+    structWoLow: ['quotationRates', 'structure', 'without_material', 'low'],
+    structWoMid: ['quotationRates', 'structure', 'without_material', 'mid'],
+    structWoHigh: ['quotationRates', 'structure', 'without_material', 'high'],
+    finWithLow: ['quotationRates', 'finishing', 'with_material', 'low'],
+    finWithMid: ['quotationRates', 'finishing', 'with_material', 'mid'],
+    finWithHigh: ['quotationRates', 'finishing', 'with_material', 'high'],
+    finWoLow: ['quotationRates', 'finishing', 'without_material', 'low'],
+    finWoMid: ['quotationRates', 'finishing', 'without_material', 'mid'],
+    finWoHigh: ['quotationRates', 'finishing', 'without_material', 'high'],
+    allWithLow: ['quotationRates', 'all_work', 'with_material', 'low'],
+    allWithMid: ['quotationRates', 'all_work', 'with_material', 'mid'],
+    allWithHigh: ['quotationRates', 'all_work', 'with_material', 'high'],
+    allWoLow: ['quotationRates', 'all_work', 'without_material', 'low'],
+    allWoMid: ['quotationRates', 'all_work', 'without_material', 'mid'],
+    allWoHigh: ['quotationRates', 'all_work', 'without_material', 'high']
+  };
+
+  function getPath(obj, path) {
+    return path.reduce((acc, key) => (acc == null ? acc : acc[key]), obj);
+  }
+  function setPath(obj, path, value) {
+    let cur = obj;
+    for (let i = 0; i < path.length - 1; i++) {
+      cur = cur[path[i]];
+    }
+    cur[path[path.length - 1]] = value;
+  }
+
+  function fillForm() {
+    const pricing = window.loadPricing();
+    Object.entries(fields).forEach(([id, path]) => {
+      const el = document.getElementById(id);
+      if (el) el.value = getPath(pricing, path);
+    });
+    document.getElementById('gstPercentInput').value = pricing.gstPercent;
+  }
+
+  fillForm();
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const pricing = window.loadPricing();
+    Object.entries(fields).forEach(([id, path]) => {
+      const el = document.getElementById(id);
+      if (el && el.value !== '') setPath(pricing, path, Number(el.value));
+    });
+    pricing.gstPercent = Number(document.getElementById('gstPercentInput').value) || pricing.gstPercent;
+    window.savePricing(pricing);
+    setStatus('pricingStatus', 'Pricing saved — homepage calculator and quotation tool will use these rates immediately.');
+  });
+
+  document.getElementById('resetPricingBtn')?.addEventListener('click', function () {
+    if (!confirm('Reset all pricing to the original default values?')) return;
+    window.savePricing(JSON.parse(JSON.stringify(window.DEFAULT_PRICING)));
+    fillForm();
+    setStatus('pricingStatus', 'Pricing reset to defaults.');
+  });
+}
+
+// ============================================
+// Materials Panel — package-wise material specs
+// Text format: "## Category" headers, "Item | Spec" rows
+// ============================================
+function materialsToText(tier) {
+  return tier.groups.map((group) => {
+    const header = `## ${group.category}`;
+    const rows = group.rows.map(([item, spec]) => `${item} | ${spec}`).join('\n');
+    return `${header}\n${rows}`;
+  }).join('\n\n');
+}
+
+function textToMaterials(text, label) {
+  const lines = text.split('\n').map((l) => l.trim()).filter(Boolean);
+  const groups = [];
+  let current = null;
+  lines.forEach((line) => {
+    if (line.startsWith('##')) {
+      current = { category: line.replace(/^##\s*/, ''), rows: [] };
+      groups.push(current);
+    } else if (line.includes('|') && current) {
+      const [item, ...specParts] = line.split('|');
+      current.rows.push([item.trim(), specParts.join('|').trim()]);
+    }
+  });
+  return { label, groups };
+}
+
+function initMaterialsPanel() {
+  const form = document.getElementById('materialsForm');
+  if (!form) return;
+
+  const matLow = document.getElementById('matLow');
+  const matMid = document.getElementById('matMid');
+  const matHigh = document.getElementById('matHigh');
+
+  function fillForm() {
+    const materials = window.loadMaterials();
+    matLow.value = materialsToText(materials.low);
+    matMid.value = materialsToText(materials.mid);
+    matHigh.value = materialsToText(materials.high);
+  }
+
+  fillForm();
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const materials = {
+      low: textToMaterials(matLow.value, 'Basic'),
+      mid: textToMaterials(matMid.value, 'Standard'),
+      high: textToMaterials(matHigh.value, 'Premium')
+    };
+    window.saveMaterials(materials);
+    setStatus('materialsStatus', 'Material specifications saved — new quotations will use these specs immediately.');
+  });
+
+  document.getElementById('resetMaterialsBtn')?.addEventListener('click', function () {
+    if (!confirm('Reset all material specifications to the original defaults?')) return;
+    window.saveMaterials(JSON.parse(JSON.stringify(window.DEFAULT_MATERIALS)));
+    fillForm();
+    setStatus('materialsStatus', 'Material specifications reset to defaults.');
+  });
+}
+function initLeadsPanel() {
+  const sheetInput = document.getElementById('sheetLinkInput');
+  const formInput = document.getElementById('formLinkInput');
+  if (!sheetInput || !formInput) return;
+
+  const LEADS_LINKS_KEY = 'vishwanathLeadLinks';
+
+  function loadLinks() {
+    try {
+      return JSON.parse(localStorage.getItem(LEADS_LINKS_KEY) || '{}');
+    } catch {
+      return {};
+    }
+  }
+
+  function applyLinks() {
+    const links = loadLinks();
+    sheetInput.value = links.sheetUrl || '';
+    formInput.value = links.formUrl || '';
+    const openSheetBtn = document.getElementById('openSheetBtn');
+    const openFormBtn = document.getElementById('openFormBtn');
+    if (links.sheetUrl) { openSheetBtn.href = links.sheetUrl; openSheetBtn.style.opacity = '1'; }
+    else { openSheetBtn.removeAttribute('href'); openSheetBtn.style.opacity = '0.5'; }
+    if (links.formUrl) { openFormBtn.href = links.formUrl; openFormBtn.style.opacity = '1'; }
+    else { openFormBtn.removeAttribute('href'); openFormBtn.style.opacity = '0.5'; }
+  }
+
+  applyLinks();
+
+  document.getElementById('saveLeadLinksBtn')?.addEventListener('click', function () {
+    localStorage.setItem(LEADS_LINKS_KEY, JSON.stringify({
+      sheetUrl: sheetInput.value.trim(),
+      formUrl: formInput.value.trim()
+    }));
+    applyLinks();
+    setStatus('leadsStatus', 'Links saved. Use "Open Google Sheet" anytime to see new quotation requests.');
+  });
+}
