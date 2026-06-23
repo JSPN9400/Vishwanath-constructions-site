@@ -188,6 +188,8 @@
         grid.innerHTML = (services || [])
           .map((s) => `
             <article class="service-card">
+              ${s.image ? `<div class="billing-card-img" style="background-image:url('${s.image}')"></div>` : ''}
+              ${s.tag ? `<span class="project-tag" style="margin-bottom:0.5rem;display:inline-block;">${s.tag}</span>` : ''}
               <h3>${s.title ?? ''}</h3>
               <p>${s.description ?? ''}</p>
             </article>

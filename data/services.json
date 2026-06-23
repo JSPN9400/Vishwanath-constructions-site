@@ -1,14 +1,26 @@
 [
   {
     "title": "House Construction",
-    "description": "Residential construction with planning, budgeting, and execution support."
+    "description": "Residential construction with transparent stage-wise billing, verified materials, and engineer supervision across Patna and Bihar.",
+    "image": "../assets/images/services/house-construction.jpg",
+    "tag": "Most Popular"
   },
   {
     "title": "Turnkey Projects",
-    "description": "Single-point coordination for structure, finishing, and delivery."
+    "description": "Single-point coordination — structure, finishing, plumbing, electrical, and delivery — billed milestone by milestone.",
+    "image": "../assets/images/services/turnkey.jpg",
+    "tag": "End to End"
   },
   {
     "title": "Site Consultation",
-    "description": "Early-stage advice for plot planning, scope, and budget clarity."
+    "description": "Early-stage advice for plot planning, cost estimation, material strategy, and scope clarity before committing a budget.",
+    "image": "../assets/images/services/consultation.jpg",
+    "tag": "Free Advice"
+  },
+  {
+    "title": "Apartment Construction",
+    "description": "G+2 to G+6 apartment buildings with RCC structure, premium elevation, and turnkey finishing options.",
+    "image": "../assets/images/stages/stage2-structure.jpg",
+    "tag": "Commercial"
   }
 ]
