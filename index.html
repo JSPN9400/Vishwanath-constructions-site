@@ -171,9 +171,14 @@
     </header>
 
     <main>
+      <!-- Notice banner — shown only when admin sets noticeTitle or noticeText -->
+      <div id="noticeBanner" hidden style="background:var(--gold,#b8870b);color:#fff;text-align:center;padding:0.6rem 1rem;font-size:0.95rem;font-weight:600;">
+        <strong id="noticeBannerTitle"></strong> <span id="noticeBannerText"></span>
+      </div>
+
       <section class="hero-premium" id="top">
         <div class="hero-backdrop" data-parallax>
-          <img src="assets/images/hero/img hero.png" alt="" class="hero-photo" loading="eager" fetchpriority="high" decoding="async" />
+          <img id="heroPhoto" src="assets/images/hero/img hero.png" alt="" class="hero-photo" loading="eager" fetchpriority="high" decoding="async" />
           <div class="hero-overlay"></div>
           <div class="hero-gradient"></div>
           <div class="hero-glow" aria-hidden="true"></div>
@@ -548,22 +553,22 @@
           </div>
           <div>
             <h3>Contact</h3>
-            <a href="tel:+919934683355">+91 99346 83355</a>
-            <a href="mailto:info.vishwanathconstruction@gmail.com">info.vishwanathconstruction@gmail.com</a>
-            <a href="https://wa.me/919934683355">WhatsApp</a>
+            <a data-dynamic="phone" href="tel:+919934683355">+91 99346 83355</a>
+            <a data-dynamic="email" href="mailto:info.vishwanathconstruction@gmail.com">info.vishwanathconstruction@gmail.com</a>
+            <a data-dynamic="whatsapp" href="https://wa.me/919934683355">WhatsApp</a>
             <a href="contact.html">Contact Page</a>
           </div>
         </div>
         <div class="footer-bottom">
-          <span>© 2026 Vishwanath Construction, Patna &amp; Danapur, Bihar</span>
+          <span id="footerCopy">© 2026 Vishwanath Construction, Patna &amp; Danapur, Bihar</span>
           <span>GSTIN 10EUFPK3451L1ZQ</span>
         </div>
       </div>
     </footer>
 
     <div class="sticky-contact-bar">
-      <a href="tel:+919934683355">Call Now</a>
-      <a href="https://wa.me/919934683355?text=Hello%20Vishwanath%20Construction%2C%20I%20want%20to%20discuss%20my%20project.">WhatsApp</a>
+      <a data-dynamic="phone" href="tel:+919934683355">Call Now</a>
+      <a data-dynamic="whatsapp" href="https://wa.me/919934683355?text=Hello%20Vishwanath%20Construction%2C%20I%20want%20to%20discuss%20my%20project.">WhatsApp</a>
       <a href="quotation/index.html">Quotation</a>
     </div>
   </div>

@@ -13,14 +13,121 @@ document.addEventListener("DOMContentLoaded", () => {
   const calcGuide = document.getElementById("calcGuide");
   const leadForm = document.getElementById("leadForm");
 
+  // ============================================================
+  // APPLY ADMIN SETTINGS TO HOMEPAGE
+  // Reads settings saved from admin.html and updates DOM live
+  // ============================================================
+  function applySettings() {
+    if (!window.loadSiteData) return;
+    const data = window.loadSiteData();
+    const s = data.settings;
+
+    // --- Hero photo ---
+    const heroPhoto = document.getElementById("heroPhoto");
+    if (heroPhoto && s.heroImage) {
+      heroPhoto.src = s.heroImage;
+    }
+
+    // --- Notice / announcement banner ---
+    const noticeBanner = document.getElementById("noticeBanner");
+    const noticeTitle = document.getElementById("noticeBannerTitle");
+    const noticeText = document.getElementById("noticeBannerText");
+    if (noticeBanner) {
+      if (s.noticeTitle || s.noticeText) {
+        noticeBanner.hidden = false;
+        if (noticeTitle) noticeTitle.textContent = s.noticeTitle || "";
+        if (noticeText)  noticeText.textContent  = s.noticeText  || "";
+      } else {
+        noticeBanner.hidden = true;
+      }
+    }
+
+    // --- Brand slogan ---
+    const brandSloganEl = document.getElementById("brandSlogan");
+    if (brandSloganEl && s.brandSlogan) brandSloganEl.textContent = s.brandSlogan;
+
+    // --- Hero tagline, tag, subtext ---
+    const heroTaglineEl = document.getElementById("heroTaglineText");
+    if (heroTaglineEl && s.heroTagline) heroTaglineEl.textContent = s.heroTagline;
+    const heroTagEl = document.getElementById("heroTagText");
+    if (heroTagEl && s.heroTag) heroTagEl.textContent = s.heroTag;
+    const heroSubEl = document.getElementById("heroSubText");
+    if (heroSubEl && s.heroSub) heroSubEl.textContent = s.heroSub;
+
+    // --- Stats: Years in Bihar & Projects Done ---
+    const yearsEl = document.getElementById("statYears");
+    if (yearsEl && s.yearsInBihar) yearsEl.textContent = s.yearsInBihar;
+    const projectsEl = document.getElementById("statProjects");
+    if (projectsEl && s.projectsDone) projectsEl.textContent = s.projectsDone + "+";
+
+    // --- Phone: all [data-dynamic="phone"] links ---
+    if (s.phone) {
+      const cleanPhone = s.phone.replace(/[^0-9+]/g, "");
+      document.querySelectorAll("[data-dynamic='phone']").forEach(el => {
+        el.href = "tel:" + cleanPhone;
+        el.textContent = s.phone;
+      });
+    }
+
+    // --- WhatsApp: all [data-dynamic="whatsapp"] links ---
+    if (s.whatsappLink) {
+      document.querySelectorAll("[data-dynamic='whatsapp']").forEach(el => {
+        // Preserve query string if already set
+        const url = new URL(el.href, location.href);
+        const text = url.searchParams.get("text") || "";
+        el.href = s.whatsappLink + (text ? "?text=" + encodeURIComponent(text) : "");
+      });
+      // Also update lead form open URL (handled in submit handler below)
+    }
+
+    // --- Email ---
+    if (s.email) {
+      document.querySelectorAll("[data-dynamic='email']").forEach(el => {
+        el.href = "mailto:" + s.email;
+        el.textContent = s.email;
+      });
+    }
+
+    // --- Office address ---
+    const addrEl = document.getElementById("officeAddress");
+    if (addrEl && s.officeAddress) addrEl.textContent = s.officeAddress;
+
+    // --- Footer copyright ---
+    const footerCopyEl = document.getElementById("footerCopy");
+    if (footerCopyEl && s.footerCopy) footerCopyEl.textContent = s.footerCopy;
+
+    // --- Social links ---
+    const fbLink = document.getElementById("socialFacebook");
+    if (fbLink) { if (s.socialLinks.facebook) { fbLink.href = s.socialLinks.facebook; fbLink.hidden = false; } else { fbLink.hidden = true; } }
+    const igLink = document.getElementById("socialInstagram");
+    if (igLink) { if (s.socialLinks.instagram) { igLink.href = s.socialLinks.instagram; igLink.hidden = false; } else { igLink.hidden = true; } }
+    const ytLink = document.getElementById("socialYoutube");
+    if (ytLink) { if (s.socialLinks.youtube) { ytLink.href = s.socialLinks.youtube; ytLink.hidden = false; } else { ytLink.hidden = true; } }
+    const mapsLink = document.getElementById("socialMaps");
+    if (mapsLink) { if (s.socialLinks.maps) { mapsLink.href = s.socialLinks.maps; mapsLink.hidden = false; } else { mapsLink.hidden = true; } }
+
+    // --- Google Reviews links ---
+    const reviewSeeAll = document.getElementById("googleReviewSeeAll");
+    if (reviewSeeAll && s.googleReviewUrl) reviewSeeAll.href = s.googleReviewUrl;
+    const reviewAdd = document.getElementById("googleReviewAdd");
+    if (reviewAdd && s.googleReviewAddUrl) reviewAdd.href = s.googleReviewAddUrl;
+
+    // --- Map embed ---
+    const mapIframe = document.getElementById("mapEmbed");
+    if (mapIframe && s.mapEmbedUrl) mapIframe.src = s.mapEmbedUrl;
+
+    // Store whatsapp for lead form use
+    window._vcWhatsapp = s.whatsappLink || "https://wa.me/919934683355";
+  }
+
+  applySettings();
+
   if (loader) {
     const hideLoader = () => loader.classList.add("hidden");
     if (document.readyState === "complete") {
-      // Page (including images) already finished loading by the time JS ran
       requestAnimationFrame(hideLoader);
     } else {
       window.addEventListener("load", hideLoader, { once: true });
-      // Safety cap: never block the user more than 1.2s even on a slow connection
       window.setTimeout(hideLoader, 1200);
     }
   }
@@ -57,7 +164,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   if (calcEstimateBtn && calcArea && calcFloors && calcPackage) {
-    // Populate package dropdown from shared pricing (admin-editable)
     if (window.loadPricing) {
       const pricing = window.loadPricing();
       const packages = pricing.calculatorPackages;
@@ -113,7 +219,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
 
-      window.open(`https://wa.me/919934683355?text=${encodeURIComponent(message)}`, "_blank", "noopener");
+      const waBase = (window._vcWhatsapp || "https://wa.me/919934683355").split("?")[0];
+      window.open(`${waBase}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
     });
   }
 
