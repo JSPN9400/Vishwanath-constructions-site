@@ -1,37 +1,33 @@
 /* ============================================================
-   VISHWANATH CONSTRUCTION — DESIGN TOKENS
-   Direction: "Brushed Metal & Brass" — sober gold and cool
-   silver-blue metallics on a warm ivory ground, pulled directly
-   from the logo's brass V and chrome C. Minimal, premium, calm.
+   VISHWANATH CONSTRUCTION — DESIGN TOKENS v2
+   Direction: "Dark Concrete + Electric Amber" — modern, bold,
+   minimal. Raw construction meets precision engineering.
    ============================================================ */
-
 :root {
-  /* ---- Color: warm ivory ground, muted brass gold + cool silver-blue ---- */
-  --paper:        #FAF6EE;   /* warm ivory background */
-  --paper-deep:    #F1EADA;  /* deeper ivory, for panels */
-  --ink:          #23262B;   /* deep charcoal-navy text (not pure black) */
-  --ink-soft:     #5B6068;   /* secondary text on paper */
-  --site:         #23262B;   /* deep charcoal-navy (dark sections) */
-  --site-line:    #383C44;   /* hairline on dark */
-  --concrete:     #AEB6C0;   /* cool silver-grey, secondary metallic */
-  --rebar:        #BB8838;   /* muted brass-gold accent — the logo's V */
-  --rebar-dim:    #8A6222;   /* deep bronze, hover/emphasis */
-  --silver:       #8A93A0;   /* cool blue-silver metallic — the logo's C */
-  --silver-dim:   #5F6772;   /* deeper steel-blue */
-  --stamp-red:    #B3261E;   /* approval-stamp red, used only for the quote stamp */
+  /* Palette */
+  --c-bg:        #080A0D;
+  --c-bg2:       #0F1216;
+  --c-bg3:       #151A20;
+  --c-surface:   #1A2028;
+  --c-border:    rgba(255,255,255,0.07);
+  --c-text:      #F0EDE8;
+  --c-muted:     #8A9099;
+  --c-accent:    #F5A300;
+  --c-accent2:   #FF6B35;
+  --c-white:     #FFFFFF;
 
-  /* ---- Type ---- */
-  --font-display: "Cormorant Garamond", "Playfair Display", serif;
-  --font-head:    "Space Grotesk", "Cormorant Garamond", sans-serif;
-  --font-body:    "Inter", "Manrope", sans-serif;
-  --font-mono:    "JetBrains Mono", "Space Mono", monospace; /* measurements, data */
+  /* Type */
+  --f-display: 'Syne', 'Space Grotesk', sans-serif;
+  --f-body:    'Inter', sans-serif;
+  --f-mono:    'JetBrains Mono', monospace;
 
-  /* ---- Scale ---- */
-  --radius-doc: 4px;     /* soft minimal corners */
-  --radius-sm: 8px;
-  --container: 1320px;
-  --ease-doc: 380ms cubic-bezier(0.16, 1, 0.3, 1);
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:  cubic-bezier(0.4, 0, 1, 1);
 
-  /* ---- shadow: soft minimal lift ---- */
-  --shadow-doc: 0 1px 0 rgba(35,38,43,0.04), 0 16px 32px -20px rgba(35,38,43,0.22);
+  /* Spacing */
+  --section-py: clamp(5rem, 10vw, 9rem);
+  --container: 1300px;
+  --radius: 4px;
+  --radius-lg: 12px;
 }

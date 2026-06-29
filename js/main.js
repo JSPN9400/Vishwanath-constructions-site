@@ -1,265 +1,232 @@
 document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("pageLoader");
   const header = document.getElementById("header");
-  const mobileToggle = document.getElementById("mobileToggle");
-  const siteNav = document.getElementById("siteNav");
-  const parallaxTarget = document.querySelector("[data-parallax]");
-  const calcEstimateBtn = document.getElementById("calcEstimateBtn");
-  const calcArea = document.getElementById("calcArea");
-  const calcFloors = document.getElementById("calcFloors");
-  const calcPackage = document.getElementById("calcPackage");
-  const calcBuiltUp = document.getElementById("calcBuiltUp");
-  const calcEstimate = document.getElementById("calcEstimate");
-  const calcGuide = document.getElementById("calcGuide");
-  const leadForm = document.getElementById("leadForm");
 
   // ============================================================
-  // APPLY ADMIN SETTINGS TO HOMEPAGE
-  // Reads settings saved from admin.html and updates DOM live
+  // APPLY ADMIN SETTINGS
   // ============================================================
   function applySettings() {
     if (!window.loadSiteData) return;
     const data = window.loadSiteData();
     const s = data.settings;
-
-    // --- Hero photo ---
     const heroPhoto = document.getElementById("heroPhoto");
-    if (heroPhoto && s.heroImage) {
-      heroPhoto.src = s.heroImage;
-    }
-
-    // --- Notice / announcement banner ---
+    if (heroPhoto && s.heroImage) heroPhoto.src = s.heroImage;
     const noticeBanner = document.getElementById("noticeBanner");
-    const noticeTitle = document.getElementById("noticeBannerTitle");
-    const noticeText = document.getElementById("noticeBannerText");
     if (noticeBanner) {
       if (s.noticeTitle || s.noticeText) {
         noticeBanner.hidden = false;
-        if (noticeTitle) noticeTitle.textContent = s.noticeTitle || "";
-        if (noticeText)  noticeText.textContent  = s.noticeText  || "";
-      } else {
-        noticeBanner.hidden = true;
-      }
+        const t = document.getElementById("noticeBannerTitle"); if(t) t.textContent = s.noticeTitle||"";
+        const x = document.getElementById("noticeBannerText"); if(x) x.textContent = s.noticeText||"";
+      } else { noticeBanner.hidden = true; }
     }
-
-    // --- Brand slogan ---
-    const brandSloganEl = document.getElementById("brandSlogan");
-    if (brandSloganEl && s.brandSlogan) brandSloganEl.textContent = s.brandSlogan;
-
-    // --- Hero tagline, tag, subtext ---
-    const heroTaglineEl = document.getElementById("heroTaglineText");
-    if (heroTaglineEl && s.heroTagline) heroTaglineEl.textContent = s.heroTagline;
-    const heroTagEl = document.getElementById("heroTagText");
-    if (heroTagEl && s.heroTag) heroTagEl.textContent = s.heroTag;
-    const heroSubEl = document.getElementById("heroSubText");
-    if (heroSubEl && s.heroSub) heroSubEl.textContent = s.heroSub;
-
-    // --- Stats: Years in Bihar & Projects Done ---
-    const yearsEl = document.getElementById("statYears");
-    if (yearsEl && s.yearsInBihar) yearsEl.textContent = s.yearsInBihar;
-    const projectsEl = document.getElementById("statProjects");
-    if (projectsEl && s.projectsDone) projectsEl.textContent = s.projectsDone + "+";
-
-    // --- Phone: all [data-dynamic="phone"] links ---
     if (s.phone) {
-      const cleanPhone = s.phone.replace(/[^0-9+]/g, "");
-      document.querySelectorAll("[data-dynamic='phone']").forEach(el => {
-        el.href = "tel:" + cleanPhone;
-        el.textContent = s.phone;
-      });
+      const clean = s.phone.replace(/[^0-9+]/g,"");
+      document.querySelectorAll("[data-dynamic='phone']").forEach(el => { el.href="tel:"+clean; el.textContent=s.phone; });
     }
-
-    // --- WhatsApp: all [data-dynamic="whatsapp"] links ---
     if (s.whatsappLink) {
       document.querySelectorAll("[data-dynamic='whatsapp']").forEach(el => {
-        // Preserve query string if already set
         const url = new URL(el.href, location.href);
-        const text = url.searchParams.get("text") || "";
-        el.href = s.whatsappLink + (text ? "?text=" + encodeURIComponent(text) : "");
-      });
-      // Also update lead form open URL (handled in submit handler below)
-    }
-
-    // --- Email ---
-    if (s.email) {
-      document.querySelectorAll("[data-dynamic='email']").forEach(el => {
-        el.href = "mailto:" + s.email;
-        el.textContent = s.email;
+        const txt = url.searchParams.get("text")||"";
+        el.href = s.whatsappLink + (txt ? "?text="+encodeURIComponent(txt) : "");
       });
     }
-
-    // --- Office address ---
-    const addrEl = document.getElementById("officeAddress");
-    if (addrEl && s.officeAddress) addrEl.textContent = s.officeAddress;
-
-    // --- Footer copyright ---
-    const footerCopyEl = document.getElementById("footerCopy");
-    if (footerCopyEl && s.footerCopy) footerCopyEl.textContent = s.footerCopy;
-
-    // --- Social links ---
-    const fbLink = document.getElementById("socialFacebook");
-    if (fbLink) { if (s.socialLinks.facebook) { fbLink.href = s.socialLinks.facebook; fbLink.hidden = false; } else { fbLink.hidden = true; } }
-    const igLink = document.getElementById("socialInstagram");
-    if (igLink) { if (s.socialLinks.instagram) { igLink.href = s.socialLinks.instagram; igLink.hidden = false; } else { igLink.hidden = true; } }
-    const ytLink = document.getElementById("socialYoutube");
-    if (ytLink) { if (s.socialLinks.youtube) { ytLink.href = s.socialLinks.youtube; ytLink.hidden = false; } else { ytLink.hidden = true; } }
-    const mapsLink = document.getElementById("socialMaps");
-    if (mapsLink) { if (s.socialLinks.maps) { mapsLink.href = s.socialLinks.maps; mapsLink.hidden = false; } else { mapsLink.hidden = true; } }
-
-    // --- Google Reviews links ---
-    const reviewSeeAll = document.getElementById("googleReviewSeeAll");
-    if (reviewSeeAll && s.googleReviewUrl) reviewSeeAll.href = s.googleReviewUrl;
-    const reviewAdd = document.getElementById("googleReviewAdd");
-    if (reviewAdd && s.googleReviewAddUrl) reviewAdd.href = s.googleReviewAddUrl;
-
-    // --- Map embed ---
-    const mapIframe = document.getElementById("mapEmbed");
-    if (mapIframe && s.mapEmbedUrl) mapIframe.src = s.mapEmbedUrl;
-
-    // Store whatsapp for lead form use
+    if (s.email) document.querySelectorAll("[data-dynamic='email']").forEach(el => { el.href="mailto:"+s.email; el.textContent=s.email; });
+    const fc = document.getElementById("footerCopy"); if(fc && s.footerCopy) fc.textContent=s.footerCopy;
+    const yr = document.getElementById("statYears"); if(yr && s.yearsInBihar) yr.dataset.count=s.yearsInBihar;
+    const pr = document.getElementById("statProjects"); if(pr && s.projectsDone) pr.dataset.count=s.projectsDone;
     window._vcWhatsapp = s.whatsappLink || "https://wa.me/919934683355";
   }
-
   applySettings();
 
+  // ============================================================
+  // LOADER
+  // ============================================================
   if (loader) {
-    const hideLoader = () => loader.classList.add("hidden");
-    if (document.readyState === "complete") {
-      requestAnimationFrame(hideLoader);
-    } else {
-      window.addEventListener("load", hideLoader, { once: true });
-      window.setTimeout(hideLoader, 1200);
-    }
+    const hide = () => loader.classList.add("hidden");
+    if (document.readyState === "complete") requestAnimationFrame(hide);
+    else { window.addEventListener("load", hide, {once:true}); setTimeout(hide, 1500); }
   }
 
-  const updateHeader = () => {
-    if (!header) return;
-    header.classList.toggle("scrolled", window.scrollY > 24);
-  };
+  // ============================================================
+  // HEADER SCROLL
+  // ============================================================
+  if (header) {
+    const update = () => header.classList.toggle("scrolled", window.scrollY > 40);
+    update();
+    window.addEventListener("scroll", update, {passive:true});
+  }
 
-  updateHeader();
-  window.addEventListener("scroll", updateHeader, { passive: true });
-
-  if (mobileToggle && siteNav) {
-    mobileToggle.addEventListener("click", () => {
-      const isOpen = siteNav.classList.toggle("open");
-      mobileToggle.classList.toggle("open", isOpen);
-      mobileToggle.setAttribute("aria-expanded", String(isOpen));
+  // Mobile nav
+  const toggle = document.getElementById("mobileToggle");
+  const nav = document.getElementById("siteNav");
+  if (toggle && nav) {
+    toggle.addEventListener("click", () => {
+      const open = nav.classList.toggle("open");
+      toggle.classList.toggle("open", open);
+      toggle.setAttribute("aria-expanded", String(open));
     });
   }
 
-  document.querySelectorAll(".interactive-btn").forEach((button) => {
-    button.addEventListener("click", (event) => {
-      const ripple = document.createElement("span");
-      const rect = button.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      ripple.className = "ripple";
-      ripple.style.width = `${size}px`;
-      ripple.style.height = `${size}px`;
-      ripple.style.left = `${event.clientX - rect.left - size / 2}px`;
-      ripple.style.top = `${event.clientY - rect.top - size / 2}px`;
-      button.appendChild(ripple);
-      window.setTimeout(() => ripple.remove(), 650);
+  // ============================================================
+  // SCROLL REVEAL
+  // ============================================================
+  const revealClasses = [".reveal", ".reveal-left", ".reveal-right", ".reveal-scale"];
+  const revealEls = document.querySelectorAll(revealClasses.join(","));
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+  revealEls.forEach(el => revealObs.observe(el));
+
+  // ============================================================
+  // COUNTER ANIMATION
+  // ============================================================
+  function animateCount(el, target, duration = 1800) {
+    let start = 0;
+    const step = timestamp => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target);
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target;
+    };
+    requestAnimationFrame(step);
+  }
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.count || el.textContent);
+        if (!isNaN(target)) animateCount(el, target);
+        counterObs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll("[data-count]").forEach(el => counterObs.observe(el));
+
+  // ============================================================
+  // CALCULATOR
+  // ============================================================
+  const calcArea = document.getElementById("calcArea");
+  const calcFloors = document.getElementById("calcFloors");
+  const calcPackage = document.getElementById("calcPackage");
+  const calcEstimate = document.getElementById("calcEstimate");
+  const calcBuiltUp = document.getElementById("calcBuiltUp");
+  const calcGuide = document.getElementById("calcGuide");
+  const calcBtn = document.getElementById("calcEstimateBtn");
+
+  if (window.loadPricing && calcPackage) {
+    const pricing = window.loadPricing();
+    const pkgs = pricing.calculatorPackages;
+    calcPackage.innerHTML = Object.entries(pkgs)
+      .map(([k,p]) => `<option value="${p.ratePerSqFt}"${k==="standard"?" selected":""}>${p.label} — ₹${p.ratePerSqFt.toLocaleString("en-IN")}/sq ft</option>`)
+      .join("");
+  }
+
+  function doCalc() {
+    const area = Number(calcArea?.value) || 0;
+    const floors = Number(calcFloors?.value) || 1;
+    const rate = Number(calcPackage?.value) || 0;
+    const builtUp = area * floors;
+    const est = builtUp * rate;
+    if (calcEstimate) calcEstimate.textContent = "₹" + est.toLocaleString("en-IN");
+    if (calcBuiltUp) calcBuiltUp.textContent = builtUp.toLocaleString("en-IN") + " sq ft";
+    if (calcGuide && calcPackage) calcGuide.textContent = calcPackage.options[calcPackage.selectedIndex]?.text?.split("—")[0]?.trim() || "";
+  }
+  [calcArea, calcFloors, calcPackage].forEach(el => el?.addEventListener("input", doCalc));
+  calcBtn?.addEventListener("click", doCalc);
+  doCalc();
+
+  // ============================================================
+  // FAQ ACCORDION
+  // ============================================================
+  document.querySelectorAll(".faq-q").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest(".faq-item");
+      const isOpen = item.classList.contains("open");
+      document.querySelectorAll(".faq-item.open").forEach(i => i.classList.remove("open"));
+      if (!isOpen) item.classList.add("open");
     });
   });
 
-  if (calcEstimateBtn && calcArea && calcFloors && calcPackage) {
-    if (window.loadPricing) {
-      const pricing = window.loadPricing();
-      const packages = pricing.calculatorPackages;
-      calcPackage.innerHTML = Object.entries(packages)
-        .map(([key, pkg]) => `<option value="${pkg.ratePerSqFt}" data-label="${pkg.label}"${key === "standard" ? " selected" : ""}>${pkg.label}</option>`)
-        .join("");
-    }
-
-    const updateEstimate = () => {
-      const area = Number(calcArea.value) || 0;
-      const floors = Number(calcFloors.value) || 1;
-      const rate = Number(calcPackage.value) || 0;
-      const builtUp = area * floors;
-      const estimate = builtUp * rate;
-      calcBuiltUp.textContent = `${builtUp.toLocaleString("en-IN")} sq ft`;
-      calcEstimate.textContent = `INR ${estimate.toLocaleString("en-IN")}`;
-      calcGuide.textContent = `${calcPackage.options[calcPackage.selectedIndex].text} package with ${floors} floor plan`;
-    };
-
-    ["input", "change"].forEach((type) => {
-      calcArea.addEventListener(type, updateEstimate);
-      calcFloors.addEventListener(type, updateEstimate);
-      calcPackage.addEventListener(type, updateEstimate);
+  // ============================================================
+  // STAGE SWITCHER
+  // ============================================================
+  const stageImgs = [
+    "assets/images/stages/stage1-foundation.jpg",
+    "assets/images/stages/stage2-structure.jpg",
+    "assets/images/stages/stage3-brick.jpg",
+    "assets/images/stages/stage4-slab.jpg",
+    "assets/images/stages/stage5-plumbing.jpg",
+    "assets/images/stages/stage9-painting.jpg"
+  ];
+  const stageImg = document.getElementById("stageImg");
+  document.querySelectorAll(".stage-item").forEach((item, i) => {
+    item.addEventListener("click", () => {
+      document.querySelectorAll(".stage-item").forEach(s => s.classList.remove("active"));
+      item.classList.add("active");
+      if (stageImg && stageImgs[i]) {
+        stageImg.style.opacity = "0";
+        setTimeout(() => { stageImg.src = stageImgs[i]; stageImg.style.opacity = "1"; }, 250);
+      }
     });
+  });
+  if (stageImg) stageImg.style.transition = "opacity 0.3s ease";
 
-    calcEstimateBtn.addEventListener("click", updateEstimate);
-    updateEstimate();
-  }
-
+  // ============================================================
+  // LEAD FORM
+  // ============================================================
+  const leadForm = document.getElementById("leadForm");
   if (leadForm) {
-    leadForm.addEventListener("submit", (event) => {
-      event.preventDefault();
+    leadForm.addEventListener("submit", e => {
+      e.preventDefault();
       const name = document.getElementById("leadName")?.value.trim() || "";
       const phone = document.getElementById("leadPhone")?.value.trim() || "";
       const city = document.getElementById("leadCity")?.value.trim() || "";
       const project = document.getElementById("leadProject")?.value || "";
-      const message = [
+      const msg = [
         "Hello Vishwanath Construction,",
         "I want a free site consultation.",
-        `Name: ${name}`,
-        `Phone: ${phone}`,
-        `City: ${city || "Not shared"}`,
-        `Project Type: ${project}`
+        `Name: ${name}`, `Phone: ${phone}`,
+        `City: ${city || "Not shared"}`, `Project Type: ${project}`
       ].join("\n");
-
-      if (window.sendQuotationToSheet) {
-        window.sendQuotationToSheet({
-          clientName: name,
-          phone,
-          projectName: project,
-          location: city,
-          notes: "Submitted via homepage quick enquiry form"
-        });
-      }
-
-      const waBase = (window._vcWhatsapp || "https://wa.me/919934683355").split("?")[0];
-      window.open(`${waBase}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
+      if (window.sendQuotationToSheet) window.sendQuotationToSheet({clientName:name,phone,projectName:project,location:city,notes:"Homepage enquiry form"});
+      const base = (window._vcWhatsapp || "https://wa.me/919934683355").split("?")[0];
+      window.open(`${base}?text=${encodeURIComponent(msg)}`, "_blank", "noopener");
     });
   }
 
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.18 });
-
-  document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
-
-  if (parallaxTarget) {
-    window.addEventListener("mousemove", (event) => {
-      const x = (event.clientX / window.innerWidth - 0.5) * 16;
-      const y = (event.clientY / window.innerHeight - 0.5) * 12;
-      parallaxTarget.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-    });
-  }
-
-  // Render projects added from the admin panel (if any)
-  const moreProjectsGrid = document.getElementById("moreProjectsGrid");
-  if (moreProjectsGrid && window.loadSiteData) {
-    const siteData = window.loadSiteData();
-    const projects = siteData.projects || [];
-    if (projects.length) {
-      moreProjectsGrid.hidden = false;
-      moreProjectsGrid.innerHTML = projects.map((p) => `
-        <article class="project-card">
-          <div class="project-visual" style="${p.image ? `background-image:url('${p.image}');background-size:cover;background-position:center;` : ""}"></div>
-          <div class="project-body">
-            <span class="project-tag">${p.location || "Patna, Bihar"}</span>
-            <h3>${p.title || "Untitled Project"}</h3>
-            <p>${p.description || ""}</p>
+  // ============================================================
+  // MORE PROJECTS (admin added)
+  // ============================================================
+  const grid = document.getElementById("moreProjectsGrid");
+  if (grid && window.loadSiteData) {
+    const { projects } = window.loadSiteData();
+    if (projects?.length) {
+      grid.hidden = false;
+      grid.innerHTML = projects.map(p => `
+        <div class="project-card">
+          <div class="proj-bg" style="${p.image?`background-image:url('${p.image}');`:""};width:100%;height:100%;"></div>
+          <div class="project-overlay">
+            <span class="project-tag-badge">${p.location||"Patna"}</span>
+            <h3>${p.title||"Untitled"}</h3>
+            <p>${p.description||""}</p>
           </div>
-        </article>
+        </div>
       `).join("");
     }
   }
+
+  // ============================================================
+  // ADD heroScale KEYFRAME (if not in CSS for some reason)
+  // ============================================================
+  const style = document.createElement("style");
+  style.textContent = `@keyframes heroScale { from{transform:scale(1)} to{transform:scale(1.06)} }`;
+  document.head.appendChild(style);
+
 });

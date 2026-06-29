@@ -30,7 +30,8 @@ function populateSettings() {
     mapsLinkInput: s.socialLinks.maps,
     googleReviewUrlInput: s.googleReviewUrl,
     googleReviewAddUrlInput: s.googleReviewAddUrl,
-    heroImageInput: s.heroImage
+    heroImageInput: s.heroImage,
+    quotationNoteInput: s.quotationNote
   };
   Object.entries(map).forEach(([id, val]) => {
     const el = document.getElementById(id);
@@ -120,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
       e.preventDefault();
       const data = loadSiteData();
       const s = data.settings;
-      const fields = ['noticeTitle','noticeText','brandSlogan','heroTagline','heroTag','heroSub','officeAddress','phone','email','whatsappLink','mapEmbedUrl','footerCopy','googleReviewUrl','googleReviewAddUrl','heroImage'];
+      const fields = ['noticeTitle','noticeText','brandSlogan','heroTagline','heroTag','heroSub','officeAddress','phone','email','whatsappLink','mapEmbedUrl','footerCopy','googleReviewUrl','googleReviewAddUrl','heroImage','quotationNote'];
       fields.forEach(f => {
         const el = document.getElementById(f + 'Input');
         if (el) s[f] = el.value.trim();

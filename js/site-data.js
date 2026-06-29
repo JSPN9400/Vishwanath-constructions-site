@@ -26,7 +26,8 @@ const DEFAULT_SITE_DATA = {
     socialLinks: { facebook: "", instagram: "", youtube: "", maps: "" },
     googleReviewUrl: "",
     googleReviewAddUrl: "",
-    heroImage: ""
+    heroImage: "",
+    quotationNote: ""
   },
   offers: [],
   projects: [],

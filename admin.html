@@ -6,47 +6,166 @@
   <title>Site Admin | Vishwanath Construction</title>
   <meta name="robots" content="noindex,nofollow" />
   <link rel="icon" href="assets/logo/LOGO-VC.png" />
-  <link rel="stylesheet" href="css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    body { padding: 2rem 0; background: var(--paper-deep); }
-    .admin-wrap { width: min(100% - 1rem, 1560px); margin: 0 auto; display: grid; gap: 1.25rem; }
-    .admin-top { display: flex; justify-content: space-between; gap: 1rem; align-items: center; flex-wrap: wrap; padding: 1.8rem; border-radius: 4px; background: var(--paper); backdrop-filter: blur(20px); border: 1px solid var(--concrete); box-shadow: var(--shadow-doc); }
-    .admin-top h1 { font-size: clamp(2.2rem, 4vw, 3.3rem); line-height: 0.95; margin: 0; }
-    .admin-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 1.2rem; }
-    .admin-card, .preview-card, .admin-item { border-radius: 4px; padding: 1.5rem; background: var(--paper); backdrop-filter: blur(20px); border: 1px solid var(--concrete); box-shadow: var(--shadow-doc); }
-    .admin-card h2 { font-size: 2rem; margin: 0 0 0.5rem; }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-top: 1rem; }
+    /* ===== ADMIN PANEL — DARK THEME (matches main site) ===== */
+    :root {
+      --a-bg:      #080A0D;
+      --a-bg2:     #0F1216;
+      --a-surface: #1A2028;
+      --a-border:  rgba(255,255,255,0.08);
+      --a-text:    #F0EDE8;
+      --a-muted:   #8A9099;
+      --a-accent:  #F5A300;
+      --a-white:   #FFFFFF;
+      --a-radius:  8px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--a-bg);
+      color: var(--a-text);
+      padding: 2rem 0 5rem;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    h1,h2,h3,h4 { font-family: 'Inter', sans-serif; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Wrapper */
+    .admin-wrap { width: min(calc(100% - 2rem), 1400px); margin: 0 auto; display: grid; gap: 1.25rem; }
+
+    /* Top bar */
+    .admin-top {
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
+      gap: 1rem; padding: 1.5rem 2rem;
+      background: var(--a-bg2); border: 1px solid var(--a-border); border-radius: var(--a-radius);
+    }
+    .admin-top h1 { font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--a-white); }
+    .admin-brand { display: flex; align-items: center; gap: 1rem; }
+    .admin-brand img { width: 60px; height: 60px; object-fit: contain; }
+    .section-label {
+      font-size: 0.68rem; font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase; letter-spacing: 0.12em; color: var(--a-accent);
+      display: block; margin-bottom: 0.35rem;
+    }
+    .admin-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.6rem 1.2rem; border-radius: 6px;
+      font-size: 0.82rem; font-weight: 600; border: none; cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.2s ease; white-space: nowrap;
+    }
+    .btn:hover { opacity: 0.85; transform: translateY(-1px); }
+    .btn-primary { background: var(--a-accent); color: #000; }
+    .btn-secondary {
+      background: var(--a-surface); color: var(--a-text);
+      border: 1px solid var(--a-border);
+    }
+    .btn-danger { background: rgba(220,50,50,0.15); color: #ff6b6b; border: 1px solid rgba(220,50,50,0.2); }
+
+    /* Pills row */
+    .admin-pill-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .admin-pill {
+      padding: 1.25rem 1.5rem;
+      background: var(--a-bg2); border: 1px solid var(--a-border); border-radius: var(--a-radius);
+    }
+    .admin-pill strong { display: block; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--a-accent); margin-bottom: 0.4rem; }
+    .admin-pill p { font-size: 0.82rem; color: var(--a-muted); line-height: 1.5; }
+
+    /* Cards */
+    .admin-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 1.25rem; }
+    .admin-card, .preview-card {
+      background: var(--a-bg2); border: 1px solid var(--a-border);
+      border-radius: var(--a-radius); padding: 1.75rem;
+    }
+    .admin-card h2 { font-size: 1.4rem; color: var(--a-white); margin-bottom: 0.4rem; }
+    .admin-card > p { font-size: 0.85rem; color: var(--a-muted); margin-bottom: 0.5rem; }
+
+    /* Form */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-top: 1.25rem; }
     .form-grid.one { grid-template-columns: 1fr; }
-    label { display: grid; gap: 0.45rem; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); }
-    input, select, textarea { width: 100%; min-height: 52px; padding: 0.9rem 1rem; border: 1px solid var(--concrete); border-radius: 4px; background: var(--paper); color: var(--ink); font: inherit; }
-    textarea { min-height: 120px; resize: vertical; }
-    .admin-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1rem; }
-    .status-text { min-height: 1.4rem; margin-top: 0.7rem; font-size: 0.9rem; color: var(--rebar-dim); }
-    .preview-image { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 4px; background: var(--ink-soft); }
-    .mini-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-    .mini-stat { padding: 1rem; border-radius: 4px; background: var(--paper-deep); border: 1px solid var(--concrete); }
-    .mini-stat strong { display: block; font-size: 2rem; color: var(--rebar-dim); line-height: 1; }
-    .admin-pill-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
-    .admin-pill { padding: 1rem; border-radius: 4px; background: var(--paper); backdrop-filter: blur(20px); border: 1px solid var(--concrete); box-shadow: var(--shadow-doc); }
-    .admin-pill strong { display: block; margin-bottom: 0.35rem; color: var(--rebar-dim); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.12em; }
-    .admin-item { display: grid; grid-template-columns: 150px 1fr auto; gap: 1rem; align-items: start; }
-    .item-badge { display: inline-flex; width: fit-content; padding: 0.35rem 0.7rem; border-radius: 4px; background: rgba(255,90,31,0.12); color: var(--rebar-dim); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 800; }
-    .entry-thumb { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 4px; background: var(--ink-soft); }
-    .admin-brand { display:flex; align-items:center; gap:1rem; }
-    .admin-brand img { width:88px; height:88px; object-fit:contain; filter: drop-shadow(0 16px 24px rgba(0,0,0,0.35)); }
-    .section-label { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 0.4rem; }
-    .admin-list { display: grid; gap: 0.8rem; margin-top: 1rem; }
-    @media (max-width: 980px) { .admin-grid, .admin-item { grid-template-columns: 1fr; } .admin-pill-row { grid-template-columns: 1fr; } }
-    @media (max-width: 640px) { .form-grid, .mini-stats { grid-template-columns: 1fr; } }
+    label {
+      display: grid; gap: 0.4rem;
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--a-muted);
+      font-weight: 500;
+    }
+    input, select, textarea {
+      width: 100%; padding: 0.7rem 0.9rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--a-border);
+      border-radius: 6px;
+      color: var(--a-text); font: inherit; font-size: 0.88rem;
+      transition: border-color 0.2s ease;
+      appearance: none;
+    }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--a-accent); }
+    textarea { min-height: 100px; resize: vertical; }
+    .admin-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
+    .status-text { min-height: 1.4rem; margin-top: 0.6rem; font-size: 0.82rem; color: var(--a-accent); }
+
+    /* Preview */
+    .preview-image { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 6px; background: var(--a-surface); }
+    .mini-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem; }
+    .mini-stat {
+      padding: 1rem 1.25rem;
+      background: var(--a-surface); border: 1px solid var(--a-border); border-radius: 6px;
+    }
+    .mini-stat strong { display: block; font-size: 2rem; color: var(--a-accent); line-height: 1; margin-bottom: 0.2rem; }
+    .mini-stat span { font-size: 0.75rem; color: var(--a-muted); }
+
+    /* List items */
+    .admin-list { display: grid; gap: 0.85rem; margin-top: 1rem; }
+    .admin-item {
+      display: grid; grid-template-columns: 120px 1fr auto; gap: 1rem; align-items: start;
+      background: var(--a-bg2); border: 1px solid var(--a-border); border-radius: var(--a-radius); padding: 1rem;
+    }
+    .entry-thumb { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 6px; background: var(--a-surface); }
+    .item-badge {
+      display: inline-flex; width: fit-content; padding: 0.25rem 0.6rem;
+      border-radius: 99px; background: rgba(245,163,0,0.12); color: var(--a-accent);
+      text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.68rem; font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .admin-item h4 { font-size: 0.95rem; color: var(--a-white); margin-bottom: 0.3rem; }
+    .admin-item p { font-size: 0.82rem; color: var(--a-muted); }
+
+    /* Full-width section cards */
+    .admin-section-card {
+      background: var(--a-bg2); border: 1px solid var(--a-border);
+      border-radius: var(--a-radius); padding: 1.75rem;
+    }
+    .admin-section-card h2 { font-size: 1.4rem; color: var(--a-white); margin-bottom: 0.4rem; }
+    .admin-section-card > p { font-size: 0.85rem; color: var(--a-muted); }
+
+    /* Tables (leads) */
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.82rem; }
+    th { text-align: left; padding: 0.6rem 0.75rem; background: var(--a-surface); color: var(--a-muted); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    td { padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--a-border); color: var(--a-text); }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    @media (max-width: 980px) {
+      .admin-grid { grid-template-columns: 1fr; }
+      .admin-pill-row { grid-template-columns: 1fr; }
+      .admin-item { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .mini-stats { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
   <div class="admin-wrap">
     <section class="admin-top">
-      <div class="admin-brand"><img src="assets/logo/LOGO-VC.png" alt="Vishwanath Construction logo" /><div><p class="section-label" style="color:var(--rebar-dim);">Site Control</p><h1>Homepage Admin</h1><p style="color:var(--ink-soft);">Update slogan, trust stats, hero photo, offers, and project gallery.</p></div></div>
+      <div class="admin-brand"><img src="assets/logo/LOGO-VC.png" alt="Vishwanath Construction logo" /><div><p class="section-label" style="color:var(--a-accent);">Site Control</p><h1>Homepage Admin</h1><p style="color:var(--a-muted);">Update slogan, trust stats, hero photo, offers, and project gallery.</p></div></div>
       <div class="admin-actions">
         <a href="#pricing" class="btn btn-secondary">Pricing</a>
         <a href="#materials" class="btn btn-secondary">Materials</a>
@@ -57,16 +176,16 @@
     </section>
 
     <section class="admin-pill-row">
-      <div class="admin-pill"><strong>Hero Control</strong><p style="color:var(--ink-soft);">Set the main house photo, slogan, and trust numbers.</p></div>
-      <div class="admin-pill"><strong>Pricing Control</strong><p style="color:var(--ink-soft);">Change calculator and quotation rates — updates the whole site instantly.</p></div>
-      <div class="admin-pill"><strong>Leads &amp; Quotations</strong><p style="color:var(--ink-soft);">See every quotation request and connect your Google Sheet.</p></div>
+      <div class="admin-pill"><strong>Hero Control</strong><p style="color:var(--a-muted);">Set the main house photo, slogan, and trust numbers.</p></div>
+      <div class="admin-pill"><strong>Pricing Control</strong><p style="color:var(--a-muted);">Change calculator and quotation rates — updates the whole site instantly.</p></div>
+      <div class="admin-pill"><strong>Leads &amp; Quotations</strong><p style="color:var(--a-muted);">See every quotation request and connect your Google Sheet.</p></div>
     </section>
 
     <section class="admin-grid">
       <div class="admin-card">
-        <p class="section-label" style="color:var(--rebar-dim);">Brand Settings</p>
+        <p class="section-label" style="color:var(--a-accent);">Brand Settings</p>
         <h2>Mithila Brand and Trust</h2>
-        <p style="color:var(--ink-soft);">Control the homepage slogan, hero image, and trust numbers.</p>
+        <p style="color:var(--a-muted);">Control the homepage slogan, hero image, and trust numbers.</p>
         <form id="siteSettingsForm">
           <div class="form-grid">
             <label>Notice Title <input id="noticeTitleInput" type="text" placeholder="Important" /></label>
@@ -87,6 +206,7 @@
             <label>Footer Text <input id="footerCopyInput" type="text" placeholder="Footer line" /></label>
             <label>Google Reviews (See All) <input id="googleReviewUrlInput" type="url" placeholder="https://..." /></label>
             <label>Google Review (Add) <input id="googleReviewAddUrlInput" type="url" placeholder="https://..." /></label>
+            <label style="grid-column:span 2;">Quotation Notes (admin se set karo — quotation page pe dikhega) <textarea id="quotationNoteInput" rows="3" style="width:100%;margin-top:0.4rem;padding:0.6rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:inherit;font:inherit;resize:vertical;" placeholder="e.g. Rates valid till 31 July 2026. GST extra on materials."></textarea></label>
           </div>
           <div class="form-grid">
             <label>Facebook <input id="facebookInput" type="text" placeholder="https://facebook.com/..." /></label>
@@ -100,19 +220,19 @@
       </div>
 
       <aside class="preview-card">
-        <p class="section-label" style="color:var(--rebar-dim);">Live Preview</p>
+        <p class="section-label" style="color:var(--a-accent);">Live Preview</p>
         <img id="heroPreview" class="preview-image" alt="Hero preview" />
         <div><h3 id="previewSlogan">We The Home Makers</h3><p id="previewTagline">Building Bihar with Strength</p></div>
         <div class="mini-stats"><div class="mini-stat"><strong id="previewYears">12</strong><span>Years in Bihar</span></div><div class="mini-stat"><strong id="previewProjects">22+</strong><span>Projects Done</span></div></div>
-        <p style="color:var(--ink-soft);">Use home exterior or completed house photos.</p>
+        <p style="color:var(--a-muted);">Use home exterior or completed house photos.</p>
       </aside>
     </section>
 
     <section class="admin-grid">
       <div class="admin-card">
-        <p class="section-label" style="color:var(--rebar-dim);">Content Entry</p>
+        <p class="section-label" style="color:var(--a-accent);">Content Entry</p>
         <h2>Offers and Home Projects</h2>
-        <p style="color:var(--ink-soft);">Add project cards, offers, and reviews.</p>
+        <p style="color:var(--a-muted);">Add project cards, offers, and reviews.</p>
         <form id="adminForm">
           <div class="form-grid">
             <label>Entry Type <select id="entryType"><option value="project">Project Highlight</option><option value="offer">Offer / Promotion</option><option value="festival">Festival / Important</option><option value="review">Customer Review</option></select></label>
@@ -131,7 +251,7 @@
       </div>
 
       <aside class="preview-card">
-        <p class="section-label" style="color:var(--rebar-dim);">Entry Preview</p>
+        <p class="section-label" style="color:var(--a-accent);">Entry Preview</p>
         <img id="entryPreviewImage" class="preview-image" alt="Entry preview" />
         <div class="item-badge" id="entryPreviewType">Project</div>
         <div><h3 id="entryPreviewTitle">Family Home in Patna</h3><p id="entryPreviewMeta">Kankarbagh</p><p id="entryPreviewDescription">Short description will appear here.</p></div>
@@ -139,17 +259,17 @@
     </section>
 
     <section class="admin-card" id="pricing">
-      <div><p class="section-label" style="color:var(--rebar-dim);">Pricing Control</p><h2>Calculator &amp; Quotation Rates</h2><p style="color:var(--ink-soft);">Change these numbers and every price shown on the website — homepage calculator and the quotation tool — updates immediately.</p></div>
+      <div><p class="section-label" style="color:var(--a-accent);">Pricing Control</p><h2>Calculator &amp; Quotation Rates</h2><p style="color:var(--a-muted);">Change these numbers and every price shown on the website — homepage calculator and the quotation tool — updates immediately.</p></div>
 
       <form id="pricingForm">
-        <p class="section-label" style="margin-top:1.2rem;color:var(--rebar-dim);">Homepage Calculator Packages (rate per sq ft)</p>
+        <p class="section-label" style="margin-top:1.2rem;color:var(--a-accent);">Homepage Calculator Packages (rate per sq ft)</p>
         <div class="form-grid">
           <label>Basic Package Rate <input id="rateBasic" type="number" min="0" step="50" /></label>
           <label>Standard Package Rate <input id="rateStandard" type="number" min="0" step="50" /></label>
           <label>Premium Package Rate <input id="ratePremium" type="number" min="0" step="50" /></label>
         </div>
 
-        <p class="section-label" style="margin-top:1.4rem;color:var(--rebar-dim);">Quotation Tool Rates (per sq ft, by work type)</p>
+        <p class="section-label" style="margin-top:1.4rem;color:var(--a-accent);">Quotation Tool Rates (per sq ft, by work type)</p>
         <div class="form-grid">
           <label>Structure — With Material (Low / Mid / High) <input id="structWithLow" type="number" placeholder="Low" /></label>
           <label>&nbsp; <input id="structWithMid" type="number" placeholder="Mid" /></label>
@@ -181,18 +301,18 @@
     </section>
 
     <section class="admin-card" id="materials">
-      <div><p class="section-label" style="color:var(--rebar-dim);">Material Specifications</p><h2>What We Build With, By Package</h2><p style="color:var(--ink-soft);">Each package (Basic / Standard / Premium) shows different brands and specs on the printed quotation. Edit the list below for each package — one line per item as <code>Item Name | Specification text</code>, grouped under a category heading starting with <code>##</code>.</p></div>
+      <div><p class="section-label" style="color:var(--a-accent);">Material Specifications</p><h2>What We Build With, By Package</h2><p style="color:var(--a-muted);">Each package (Basic / Standard / Premium) shows different brands and specs on the printed quotation. Edit the list below for each package — one line per item as <code>Item Name | Specification text</code>, grouped under a category heading starting with <code>##</code>.</p></div>
 
       <form id="materialsForm">
         <div class="form-grid one">
           <label>Basic Package — Materials
-            <textarea id="matLow" rows="10" style="font-family:var(--font-mono);font-size:0.82rem;"></textarea>
+            <textarea id="matLow" rows="10" style="font-family:'JetBrains Mono', monospace;font-size:0.82rem;"></textarea>
           </label>
           <label>Standard Package — Materials
-            <textarea id="matMid" rows="10" style="font-family:var(--font-mono);font-size:0.82rem;"></textarea>
+            <textarea id="matMid" rows="10" style="font-family:'JetBrains Mono', monospace;font-size:0.82rem;"></textarea>
           </label>
           <label>Premium Package — Materials
-            <textarea id="matHigh" rows="10" style="font-family:var(--font-mono);font-size:0.82rem;"></textarea>
+            <textarea id="matHigh" rows="10" style="font-family:'JetBrains Mono', monospace;font-size:0.82rem;"></textarea>
           </label>
         </div>
         <div class="admin-actions">
@@ -204,7 +324,7 @@
     </section>
 
     <section class="admin-card" id="leads">
-      <div><p class="section-label" style="color:var(--rebar-dim);">Leads &amp; Quotations</p><h2>Who Asked for a Quote</h2><p style="color:var(--ink-soft);">Connect your Google Sheet once — every quotation request from the website (and any Google Form share) lands there automatically, so you always know who took a cost estimate.</p></div>
+      <div><p class="section-label" style="color:var(--a-accent);">Leads &amp; Quotations</p><h2>Who Asked for a Quote</h2><p style="color:var(--a-muted);">Connect your Google Sheet once — every quotation request from the website (and any Google Form share) lands there automatically, so you always know who took a cost estimate.</p></div>
 
       <div class="form-grid one">
         <label>Google Sheet Link (paste the SHEET URL from your setup)
@@ -221,13 +341,13 @@
         <a href="quotation/index.html" class="btn btn-secondary">Open Quotation Tool to Print</a>
       </div>
       <div class="status-text" id="leadsStatus"></div>
-      <p style="color:var(--ink-soft);margin-top:0.8rem;">First time setup? Follow <code>google-script/SETUP-README.md</code> in the project files — it generates the Form and Sheet for you in about 5 minutes.</p>
+      <p style="color:var(--a-muted);margin-top:0.8rem;">First time setup? Follow <code>google-script/SETUP-README.md</code> in the project files — it generates the Form and Sheet for you in about 5 minutes.</p>
     </section>
 
     <section class="admin-card">
-      <div><p class="section-label" style="color:var(--rebar-dim);">Saved Content</p><h2>Homepage Entries</h2><p style="color:var(--ink-soft);">These cards appear on the main website using localStorage.</p></div>
+      <div><p class="section-label" style="color:var(--a-accent);">Saved Content</p><h2>Homepage Entries</h2><p style="color:var(--a-muted);">These cards appear on the main website using localStorage.</p></div>
       <div class="admin-list" id="adminList"></div>
-      <p style="color:var(--ink-soft);">Data stored in browser local storage.</p>
+      <p style="color:var(--a-muted);">Data stored in browser local storage.</p>
     </section>
   </div>
   <script src="js/site-data.js"></script>
