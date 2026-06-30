@@ -3,159 +3,219 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Vishwanath Construction | Anish Kumar, Patna, Bihar</title>
-  <meta name="description" content="Vishwanath Construction is a GST-registered house construction company founded by Anish Kumar, based in Khajpura, Patna — serving Patna, Danapur, and Bihar since 2019." />
-  <link rel="canonical" href="https://www.vishwanathconstruction.in/about.html" />
+  <title>About Vishwanath Construction | Anish Kumar, Patna Bihar</title>
+  <meta name="description" content="Vishwanath Construction — GST-registered house construction company founded by Anish Kumar in Patna, Bihar. Transparent billing, engineer supervision since 2014." />
   <link rel="icon" href="assets/logo/LOGO-VC.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body{padding-bottom:60px;}
+    .page-hero{padding:8rem 0 4rem;background:var(--c-bg2);border-bottom:1px solid var(--c-border);}
+    .page-hero h1{font-size:clamp(2rem,4vw,3.2rem);color:#fff;margin-bottom:1rem;line-height:1.08;}
+    .page-hero p{font-size:1.05rem;color:var(--c-muted);max-width:560px;line-height:1.7;}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+    .about-img{border-radius:12px;overflow:hidden;}
+    .about-img img{width:100%;height:480px;object-fit:cover;display:block;}
+    .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+    .value-card{background:var(--c-bg2);border:1px solid var(--c-border);border-radius:12px;padding:1.75rem;transition:border-color 0.3s ease;}
+    .value-card:hover{border-color:var(--c-accent);}
+    .value-icon{font-size:1.8rem;margin-bottom:1rem;}
+    .value-card h3{font-family:'Syne',sans-serif;font-size:1rem;color:#fff;margin-bottom:0.5rem;}
+    .value-card p{font-size:0.83rem;color:var(--c-muted);line-height:1.65;}
+    .gst-box{background:var(--c-bg2);border:1px solid var(--c-border);border-radius:12px;padding:2rem;}
+    .gst-row{display:flex;justify-content:space-between;padding:0.75rem 0;border-bottom:1px solid var(--c-border);font-size:0.88rem;}
+    .gst-row:last-child{border-bottom:none;}
+    .gst-row span:first-child{color:var(--c-muted);}
+    .gst-row span:last-child{color:#fff;font-weight:600;text-align:right;}
+    .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+    .team-card{background:var(--c-bg2);border:1px solid var(--c-border);border-radius:12px;overflow:hidden;}
+    .team-card-img{height:220px;overflow:hidden;}
+    .team-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;}
+    .team-card:hover .team-card-img img{transform:scale(1.05);}
+    .team-card-body{padding:1.5rem;}
+    .team-card-body h3{font-family:'Syne',sans-serif;font-size:1rem;color:#fff;margin-bottom:0.3rem;}
+    .team-card-body p{font-size:0.82rem;color:var(--c-muted);line-height:1.6;}
+    .strip{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;border-radius:12px;overflow:hidden;margin-bottom:5rem;}
+    .strip-item{position:relative;height:200px;overflow:hidden;}
+    .strip-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;}
+    .strip-item:hover img{transform:scale(1.08);}
+    .strip-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(8,10,13,0.9),transparent);padding:0.75rem;font-size:0.72rem;font-family:'JetBrains Mono',monospace;color:var(--c-accent);text-transform:uppercase;letter-spacing:0.1em;}
+    @media(max-width:900px){.about-grid{grid-template-columns:1fr;}.values-grid{grid-template-columns:1fr 1fr;}.team-grid{grid-template-columns:1fr 1fr;}.strip{grid-template-columns:repeat(3,1fr);}}
+    @media(max-width:640px){.values-grid{grid-template-columns:1fr;}.team-grid{grid-template-columns:1fr;}.strip{grid-template-columns:1fr 1fr;}}
+  </style>
 </head>
 <body>
-    <header class="main-header" id="header">
-      <div class="container">
-        <a href="index.html" class="brand" aria-label="Vishwanath Construction Home">
-          <img src="assets/logo/LOGO-VC.png" alt="Vishwanath Construction logo" class="brand-logo" decoding="async" />
-          <span class="brand-copy">
-            <strong>Vishwanath Construction</strong>
-            <small>Reg. Patna &middot; Est. billing transparency</small>
-          </span>
-        </a>
-        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="siteNav">
-          <span></span>
-          <span></span>
-        </button>
-        <nav class="site-nav" id="siteNav" aria-label="Primary">
-          <a href="services.html">Services</a>
-          <a href="projects.html">Projects</a>
-          <a href="index.html#calculator">Cost Estimate</a>
-          <a href="about.html">About</a>
-          <a href="blog/index.html">Blog</a>
-          <a href="quotation/index.html" class="nav-cta">Get Quotation</a>
-        </nav>
-      </div>
-    </header>
 
-  <main class="blog-page">
+<header class="main-header scrolled" id="header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/logo/LOGO-VC.png" alt="VC" class="brand-logo" />
+      <div><span class="brand-name">Vishwanath Construction</span><span class="brand-tag">Patna · Bihar · GST Registered</span></div>
+    </a>
+    <nav class="site-nav" id="siteNav">
+      <a href="index.html#projects">Projects</a>
+      <a href="services.html">Services</a>
+      <a href="about.html" style="color:#fff;">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="quotation/index.html" class="nav-cta">Get Quotation →</a>
+    </nav>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+  <!-- PAGE HERO -->
+  <div class="page-hero">
     <div class="container">
-      <section class="blog-hero">
-        <a href="index.html" class="eyebrow">Back to home</a>
-        <h1>About Vishwanath Construction — engineering trust into every Patna home we build.</h1>
-        <p>Vishwanath Construction is a GST-registered house construction company in Patna, founded by Anish Kumar and built around transparent pricing, disciplined planning, and professional execution for families across Patna, Danapur, and Bihar.</p>
-      </section>
-
-      <div class="photo-strip-row reveal">
-        <div class="photo-strip-item" style="background-image:url('assets/images/stages/stage1-foundation.jpg')"><span>Foundation</span></div>
-        <div class="photo-strip-item" style="background-image:url('assets/images/stages/stage3-brick.jpg')"><span>Brickwork</span></div>
-        <div class="photo-strip-item" style="background-image:url('assets/images/stages/stage4-slab.jpg')"><span>Slab &amp; RCC</span></div>
-        <div class="photo-strip-item" style="background-image:url('assets/images/stages/stage8-flooring.jpg')"><span>Flooring</span></div>
-        <div class="photo-strip-item" style="background-image:url('assets/images/stages/stage10-handover.jpg')"><span>Handover</span></div>
-      </div>
-      <section class="section">
-        <div class="blog-grid">
-          <article class="blog-card">
-            <h2>Who we are</h2>
-            <p>We are positioning Vishwanath Construction as a premium engineering and home building platform, not just a local contractor business.</p>
-            <h3>What we believe</h3>
-            <ul>
-              <li>No hidden costs.</li>
-              <li>No construction confusion.</li>
-              <li>No budget surprises.</li>
-            </ul>
-          </article>
-          <article class="blog-card">
-            <h2>What makes us different</h2>
-            <p>We focus on cost clarity, planning support, site communication, and homeowner confidence before and during execution.</p>
-            <h3>Core strengths</h3>
-            <ul>
-              <li>Engineering-first planning</li>
-              <li>Transparent costing</li>
-              <li>Professional execution flow</li>
-              <li>Progress visibility</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section class="section section-alt">
-        <div class="section-heading">
-          <span class="eyebrow">Our team</span>
-          <h2>The person behind every quotation.</h2>
-        </div>
-        <div class="billing-grid">
-          <article class="billing-card">
-            <h3>Anish Kumar</h3>
-            <p>Proprietor, Vishwanath Construction. Authorizes and signs every quotation issued to clients, and oversees engineering supervision across active sites in Patna and Bihar.</p>
-          </article>
-          <article class="billing-card">
-            <h3>Registered Since 2019</h3>
-            <p>Vishwanath Construction has operated as a GST-registered proprietorship since March 2019, building a track record of stage-wise, accountable execution.</p>
-          </article>
-          <article class="billing-card">
-            <h3>Patna Based, Bihar Wide</h3>
-            <p>Headquartered in Khajpura, Patna, with project delivery experience across residential and apartment construction throughout Bihar.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="section-heading">
-          <span class="eyebrow">GST registration</span>
-          <h2>Formally registered. Fully accountable.</h2>
-          <p>Every invoice and quotation we issue carries our official GST details — not just a promise of transparency, but a paper trail you can verify.</p>
-        </div>
-        <div class="trust-bar-rich">
-          <div><strong>GSTIN</strong><span>10EUFPK3451L1ZQ</span></div>
-          <div><strong>Legal Name</strong><span>Anish Kumar</span></div>
-          <div><strong>Trade Name</strong><span>Vishwanath Construction</span></div>
-          <div><strong>Registered Office</strong><span>Vijay Nagar Main Road, Khajpura, Patna, Bihar, 800014</span></div>
-        </div>
-      </section>
+      <span class="eyebrow">About Us</span>
+      <h1>Engineering trust into<br/>every home we build.</h1>
+      <p>Vishwanath Construction is a GST-registered house construction company founded by Anish Kumar — built on transparent pricing, disciplined planning, and professional execution across Patna, Danapur, and Bihar.</p>
     </div>
-  </main>
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer-grid">
-          <div class="footer-brand">
-            <img src="assets/logo/LOGO-VC.png" alt="Vishwanath Construction logo" class="footer-logo" loading="lazy" decoding="async" />
-            <p>House construction company delivering transparent, stage-wise billing across Patna and Bihar.</p>
-          </div>
-          <div>
-            <h3>Quick Links</h3>
-            <a href="index.html#calculator">House Cost Calculator</a>
-            <a href="index.html#projects">Featured Projects</a>
-            <a href="index.html#billing">Transparent Billing</a>
-            <a href="quotation/index.html">Quotation</a>
-          </div>
-          <div>
-            <h3>More Pages</h3>
-            <a href="services.html">Residential Construction Bihar</a>
-            <a href="projects.html">Building Contractor Patna</a>
-            <a href="about.html">About Us</a>
-            <a href="blog/index.html">Construction Blog</a>
-          </div>
-          <div>
-            <h3>Free Tools</h3>
-            <a href="calculator/house-cost.html">House Cost Calculator</a>
-            <a href="calculator/material-calculator.html">Material Calculator</a>
-            <a href="calculator/emi-calculator.html">Loan EMI Calculator</a>
-          </div>
-          <div>
-            <h3>Contact</h3>
-            <a href="tel:+919934683355">+91 99346 83355</a>
-            <a href="mailto:info.vishwanathconstruction@gmail.com">info.vishwanathconstruction@gmail.com</a>
-            <a href="https://wa.me/919934683355">WhatsApp</a>
-            <a href="contact.html">Contact Page</a>
-          </div>
+  </div>
+
+  <!-- PHOTO STRIP -->
+  <div class="container" style="padding-top:4rem;">
+    <div class="strip reveal">
+      <div class="strip-item"><img src="assets/images/stages/stage1-foundation.jpg" alt="Foundation" loading="lazy"/><div class="strip-label">Foundation</div></div>
+      <div class="strip-item"><img src="assets/images/stages/stage3-brick.jpg" alt="Brickwork" loading="lazy"/><div class="strip-label">Brickwork</div></div>
+      <div class="strip-item"><img src="assets/images/stages/stage4-slab.jpg" alt="Slab" loading="lazy"/><div class="strip-label">RCC Slab</div></div>
+      <div class="strip-item"><img src="assets/images/stages/stage8-flooring.jpg" alt="Flooring" loading="lazy"/><div class="strip-label">Flooring</div></div>
+      <div class="strip-item"><img src="assets/images/stages/stage10-handover.jpg" alt="Handover" loading="lazy"/><div class="strip-label">Handover</div></div>
+    </div>
+  </div>
+
+  <!-- WHO WE ARE -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal-left">
+          <span class="eyebrow">Our Story</span>
+          <h2 class="section-title">Started with one belief —<br/><em>honest construction.</em></h2>
+          <p style="color:var(--c-muted);line-height:1.75;margin-bottom:1.5rem;">Vishwanath Construction was founded with a simple belief: homeowners in Bihar deserve the same construction transparency that large corporate projects get. Every stage should be visible, every rupee trackable, every decision explained.</p>
+          <p style="color:var(--c-muted);line-height:1.75;">Since 2014, we have built homes for families across Patna and Danapur — and every single project has been billed stage-by-stage, with engineer sign-off, with verified materials, and with zero hidden charges.</p>
         </div>
-        <div class="footer-bottom">
-          <span>&copy; 2026 Vishwanath Construction, Patna &amp; Danapur, Bihar</span>
-          <span>GSTIN 10EUFPK3451L1ZQ</span>
+        <div class="about-img reveal-right">
+          <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80&auto=format&fit=crop" alt="Engineer supervising construction" loading="lazy" />
         </div>
       </div>
-    </footer>
+    </div>
+  </section>
 
-  <script src="js/main.js"></script>
+  <!-- VALUES -->
+  <section class="section section-mid">
+    <div class="container">
+      <div class="sec-header center reveal">
+        <span class="eyebrow">What We Believe</span>
+        <h2 class="section-title">The values that drive<br/>every project we take.</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card reveal" data-delay="0"><div class="value-icon">🔍</div><h3>No Hidden Costs</h3><p>Every line item is shown and explained before you sign off. You know exactly what you're paying for.</p></div>
+        <div class="value-card reveal" data-delay="100"><div class="value-icon">🏗️</div><h3>Engineer-First Execution</h3><p>Our engineers are on site regularly — not just at the start. Quality is checked at every stage.</p></div>
+        <div class="value-card reveal" data-delay="200"><div class="value-icon">📋</div><h3>Stage-wise Approval</h3><p>Nothing gets billed until you've seen the work and approved it. Your budget stays in your control.</p></div>
+        <div class="value-card reveal" data-delay="0"><div class="value-icon">🧱</div><h3>Verified Materials</h3><p>We source from certified suppliers only. Cement, steel, tiles — all with brand invoices you can check.</p></div>
+        <div class="value-card reveal" data-delay="100"><div class="value-icon">📸</div><h3>Weekly Updates</h3><p>Photo and video reports from site every week — whether you're in Patna or a different city.</p></div>
+        <div class="value-card reveal" data-delay="200"><div class="value-icon">🧾</div><h3>GST Compliance</h3><p>Every invoice is formal and GST-compliant — critical for home loans, tax records, and peace of mind.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="sec-header center reveal">
+        <span class="eyebrow">Our Team</span>
+        <h2 class="section-title">The people behind<br/><em>every project.</em></h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card reveal" data-delay="0">
+          <div class="team-card-img">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80&auto=format&fit=crop" alt="Anish Kumar - Proprietor" loading="lazy"/>
+          </div>
+          <div class="team-card-body">
+            <h3>Anish Kumar</h3>
+            <p style="color:var(--c-accent);font-size:0.75rem;font-family:'JetBrains Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem;">Proprietor & Site Director</p>
+            <p>Authorizes every quotation issued and oversees engineering supervision across all active sites in Patna and Bihar.</p>
+          </div>
+        </div>
+        <div class="team-card reveal" data-delay="100">
+          <div class="team-card-img">
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80&auto=format&fit=crop" alt="Site engineers" loading="lazy"/>
+          </div>
+          <div class="team-card-body">
+            <h3>Site Engineers</h3>
+            <p style="color:var(--c-accent);font-size:0.75rem;font-family:'JetBrains Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem;">Execution & Quality</p>
+            <p>Qualified civil engineers on site at every stage — ensuring work quality before any stage bill is raised.</p>
+          </div>
+        </div>
+        <div class="team-card reveal" data-delay="200">
+          <div class="team-card-img">
+            <img src="https://images.unsplash.com/photo-1541976590-713941681591?w=600&q=80&auto=format&fit=crop" alt="Construction workers" loading="lazy"/>
+          </div>
+          <div class="team-card-body">
+            <h3>Skilled Workforce</h3>
+            <p style="color:var(--c-accent);font-size:0.75rem;font-family:'JetBrains Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem;">Masons & Specialists</p>
+            <p>Experienced masons, plumbers, electricians, and finishers — trained in quality-first execution.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GST DETAILS -->
+  <section class="section section-mid">
+    <div class="container" style="max-width:800px;">
+      <div class="sec-header center reveal">
+        <span class="eyebrow">GST Registration</span>
+        <h2 class="section-title">Formally registered.<br/><em>Fully accountable.</em></h2>
+        <p class="sec-lead" style="margin:0 auto;">Every invoice carries our official GST details — a paper trail you can verify.</p>
+      </div>
+      <div class="gst-box reveal">
+        <div class="gst-row"><span>GSTIN</span><span>10EUFPK3451L1ZQ</span></div>
+        <div class="gst-row"><span>Legal Name</span><span>Anish Kumar</span></div>
+        <div class="gst-row"><span>Trade Name</span><span>Vishwanath Construction</span></div>
+        <div class="gst-row"><span>Registered Since</span><span>March 2019</span></div>
+        <div class="gst-row"><span>Business Type</span><span>Proprietorship</span></div>
+        <div class="gst-row"><span>Registered Office</span><span>Vijay Nagar Main Road, Khajpura, Patna, Bihar — 800014</span></div>
+        <div class="gst-row"><span>Service Area</span><span>Patna, Danapur & across Bihar</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-section section-dark">
+    <div class="cta-glow"></div>
+    <div class="container" style="position:relative;text-align:center;">
+      <span class="eyebrow reveal">Work With Us</span>
+      <h2 class="reveal" data-delay="100">Ready to build your home?<br/><em>Let's talk.</em></h2>
+      <div class="cta-actions reveal" data-delay="200">
+        <a href="tel:+919934683355" class="btn btn-primary">📞 Call +91 99346 83355</a>
+        <a href="quotation/index.html" class="btn btn-ghost">Get Free Quotation →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="assets/logo/LOGO-VC.png" alt="Vishwanath Construction" class="footer-brand-logo" />
+        <p style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:#fff;margin:0.5rem 0 0.35rem;">Vishwanath Construction</p>
+        <p class="footer-tagline">Stage-wise transparent construction across Patna and Bihar.</p>
+      </div>
+      <div class="footer-col"><h4>Services</h4><a href="services.html">House Construction</a><a href="services.html">Turnkey Projects</a><a href="services.html">RCC Structure</a><a href="services.html">Finishing Works</a></div>
+      <div class="footer-col"><h4>Tools</h4><a href="calculator/house-cost.html">Cost Calculator</a><a href="calculator/material-calculator.html">Material Calculator</a><a href="calculator/emi-calculator.html">EMI Calculator</a><a href="quotation/index.html">Get Quotation</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="tel:+919934683355">+91 99346 83355</a><a href="mailto:info.vishwanathconstruction@gmail.com">Email Us</a><a href="https://wa.me/919934683355">WhatsApp</a><a href="contact.html">Contact Page</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Vishwanath Construction, Patna & Bihar</span><span class="footer-badge">GSTIN 10EUFPK3451L1ZQ</span></div>
+  </div>
+</footer>
+<div class="sticky-bar">
+  <a href="tel:+919934683355" class="sticky-call">📞 Call Now</a>
+  <a href="https://wa.me/919934683355?text=Hello%20Vishwanath%20Construction" class="sticky-wa">💬 WhatsApp</a>
+</div>
+<script src="js/site-data.js"></script><script src="js/main.js"></script>
 </body>
 </html>

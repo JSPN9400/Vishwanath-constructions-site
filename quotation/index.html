@@ -9,8 +9,9 @@
   <link rel="icon" href="../assets/logo/LOGO-VC.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
+  <style>body{padding-bottom:60px;}</style>
   <script src="../js/pricing.js"></script>
   <script src="../js/materials.js"></script>
   <script src="../js/quotation-sync.js" defer></script>
@@ -383,7 +384,7 @@
   // Apply admin quotation note
   (function() {
     try {
-      var raw = localStorage.getItem('vc_site_data');
+      var raw = localStorage.getItem('vishwanathSiteData');
       if (!raw) return;
       var note = JSON.parse(raw).settings?.quotationNote || '';
       if (note.trim()) {
@@ -515,10 +516,7 @@
             2. This quotation is indicative — for planning and budgeting purposes only.<br/>
             3. Material brands and milestone schedule will be finalized before work starts.<br/>
             4. Any material selection above base-rate specifications will be charged extra.<br/>
-            5. GST invoice will be issued at each billing milestone as per GST regulations.<br/>
-            6.IF THE STRUCUREL PLAN IS  LESS THEN G+3 THEN 12 RUPPE PER SQFT WILL BE CHARGED EXTRA FOR STRUCTURE WORK.<br/>
-          
-            
+            5. GST invoice will be issued at each billing milestone as per GST regulations.
           </p>
         </div>
 

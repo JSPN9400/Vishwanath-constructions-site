@@ -1,115 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home Loan EMI Calculator | Vishwanath Construction, Patna</title>
-  <meta name="description" content="Calculate your home construction loan EMI with Vishwanath Construction's free EMI calculator — plan your house building budget in Patna and Bihar." />
-  <link rel="canonical" href="https://www.vishwanathconstruction.in/calculator/emi-calculator.html" />
-  <link rel="icon" href="../assets/logo/LOGO-VC.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Home Loan EMI Calculator | Vishwanath Construction</title>
+<meta name="description" content="Free EMI calculator for home construction loans — plan your monthly payments for Patna & Bihar construction projects." />
+<link rel="icon" href="../assets/logo/LOGO-VC.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/style.css" />
+<style>
+  body{padding-bottom:60px;}
+  .page-hero{padding:8rem 0 3rem;background:var(--c-bg2);border-bottom:1px solid var(--c-border);}
+  .page-hero h1{font-size:clamp(1.8rem,3.5vw,2.6rem);color:#fff;margin-bottom:0.75rem;}
+  .page-hero p{font-size:0.95rem;color:var(--c-muted);max-width:520px;}
+  .tool-layout{display:grid;grid-template-columns:1fr 380px;gap:2rem;padding:3rem 0 5rem;align-items:start;}
+  .tool-card{background:var(--c-bg2);border:1px solid var(--c-border);border-radius:12px;padding:2rem;}
+  .tool-card label{display:block;font-size:0.72rem;color:var(--c-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;margin-top:1.1rem;}
+  .tool-card label:first-child{margin-top:0;}
+  .tool-card input{width:100%;padding:0.75rem 1rem;background:rgba(255,255,255,0.04);border:1px solid var(--c-border);border-radius:6px;color:#fff;font-size:0.9rem;}
+  .tool-result{position:sticky;top:100px;background:var(--c-bg2);border:1px solid var(--c-border);border-radius:12px;padding:2rem;}
+  .res-row{display:flex;justify-content:space-between;padding:0.7rem 0;border-bottom:1px solid var(--c-border);font-size:0.85rem;}
+  .res-row:last-child{border-bottom:none;}
+  .res-row span:first-child{color:var(--c-muted);}
+  .res-row strong{color:#fff;}
+  .tool-result-num{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--c-accent);text-align:center;margin:1rem 0;}
+  @media(max-width:900px){.tool-layout{grid-template-columns:1fr;}.tool-result{position:static;}}
+</style>
 </head>
 <body>
-    <header class="main-header" id="header">
-      <div class="container">
-        <a href="../index.html" class="brand" aria-label="Vishwanath Construction Home">
-          <img src="../assets/logo/LOGO-VC.png" alt="Vishwanath Construction logo" class="brand-logo" decoding="async" />
-          <span class="brand-copy">
-            <strong>Vishwanath Construction</strong>
-            <small>Reg. Patna &middot; Est. billing transparency</small>
-          </span>
-        </a>
-        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="siteNav">
-          <span></span>
-          <span></span>
-        </button>
-        <nav class="site-nav" id="siteNav" aria-label="Primary">
-          <a href="../services.html">Services</a>
-          <a href="../projects.html">Projects</a>
-          <a href="../index.html#calculator">Cost Estimate</a>
-          <a href="../about.html">About</a>
-          <a href="../blog/index.html">Blog</a>
-          <a href="../quotation/index.html" class="nav-cta">Get Quotation</a>
-        </nav>
+<header class="main-header scrolled" id="header">
+  <div class="container">
+    <a href="../index.html" class="brand">
+      <img src="../assets/logo/LOGO-VC.png" alt="VC" class="brand-logo" />
+      <div><span class="brand-name">Vishwanath Construction</span><span class="brand-tag">Patna · Bihar · GST Registered</span></div>
+    </a>
+    <nav class="site-nav" id="siteNav">
+      <a href="../index.html#projects">Projects</a>
+      <a href="../services.html">Services</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../quotation/index.html" class="nav-cta">Get Quotation →</a>
+    </nav>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main>
+  <div class="page-hero"><div class="container">
+    <span class="eyebrow">Free Tool</span>
+    <h1>Home Loan EMI<br/>Calculator</h1>
+    <p>Plan your monthly payments before committing to a construction loan.</p>
+  </div></div>
+  <div class="container">
+    <div class="tool-layout">
+      <div class="tool-card">
+        <label for="loanAmt">Loan Amount (₹)</label>
+        <input id="loanAmt" type="number" value="3000000" min="10000" step="10000" />
+        <label for="loanRate">Interest Rate (% per year)</label>
+        <input id="loanRate" type="number" value="9.5" min="1" max="20" step="0.1" />
+        <label for="loanTenure">Tenure (Years)</label>
+        <input id="loanTenure" type="number" value="15" min="1" max="30" step="1" />
       </div>
-    </header>
-
-  <main class="quote-page">
-    <div class="container">
-      <div class="section-heading">
-        <a href="../index.html" class="eyebrow">Back to home</a>
-        <h1>Home loan EMI calculator — plan your Patna construction budget</h1>
-        <p>Simple EMI estimate for early budget comfort, from Vishwanath Construction.</p>
-      </div>
-      <div class="quote-grid">
-        <section class="quote-card">
-          <form class="quote-form">
-            <label>Loan amount<input id="loanAmt" type="number" value="2000000" /></label>
-            <label>Interest % yearly<input id="loanRate" type="number" value="9" step="0.1" /></label>
-            <label>Years<input id="loanYears" type="number" value="15" /></label>
-            <button class="btn btn-primary" type="button" id="emiBtn">Calculate</button>
-          </form>
-        </section>
-        <section class="quote-summary">
-          <div class="quote-total"><span>Monthly EMI</span><strong id="emiOut">-</strong></div>
-        </section>
+      <div class="tool-result">
+        <div style="font-size:0.72rem;color:var(--c-muted);text-transform:uppercase;letter-spacing:0.08em;text-align:center;">Monthly EMI</div>
+        <div class="tool-result-num" id="emiOut">₹0</div>
+        <div class="res-row"><span>Total Interest</span><strong id="emiInterest">₹0</strong></div>
+        <div class="res-row"><span>Total Payment</span><strong id="emiTotal">₹0</strong></div>
+        <a href="../quotation/index.html" class="btn btn-outline" style="width:100%;margin-top:1.5rem;">Get Construction Quote</a>
       </div>
     </div>
-  </main>
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer-grid">
-          <div class="footer-brand">
-            <img src="../assets/logo/LOGO-VC.png" alt="Vishwanath Construction logo" class="footer-logo" loading="lazy" decoding="async" />
-            <p>House construction company delivering transparent, stage-wise billing across Patna and Bihar.</p>
-          </div>
-          <div>
-            <h3>Quick Links</h3>
-            <a href="../index.html#calculator">House Cost Calculator</a>
-            <a href="../index.html#projects">Featured Projects</a>
-            <a href="../index.html#billing">Transparent Billing</a>
-            <a href="../quotation/index.html">Quotation</a>
-          </div>
-          <div>
-            <h3>More Pages</h3>
-            <a href="../services.html">Residential Construction Bihar</a>
-            <a href="../projects.html">Building Contractor Patna</a>
-            <a href="../about.html">About Us</a>
-            <a href="../blog/index.html">Construction Blog</a>
-          </div>
-          <div>
-            <h3>Free Tools</h3>
-            <a href="../calculator/house-cost.html">House Cost Calculator</a>
-            <a href="../calculator/material-calculator.html">Material Calculator</a>
-            <a href="../calculator/emi-calculator.html">Loan EMI Calculator</a>
-          </div>
-          <div>
-            <h3>Contact</h3>
-            <a href="tel:+919934683355">+91 99346 83355</a>
-            <a href="mailto:info.vishwanathconstruction@gmail.com">info.vishwanathconstruction@gmail.com</a>
-            <a href="https://wa.me/919934683355">WhatsApp</a>
-            <a href="../contact.html">Contact Page</a>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <span>&copy; 2026 Vishwanath Construction, Patna &amp; Danapur, Bihar</span>
-          <span>GSTIN 10EUFPK3451L1ZQ</span>
-        </div>
-      </div>
-    </footer>
-  <script src="../js/main.js"></script>
-
-  <script>
-    document.getElementById("emiBtn").onclick = function () {
-      const p = Number(document.getElementById("loanAmt").value) || 0;
-      const r = (Number(document.getElementById("loanRate").value) || 0) / 1200;
-      const n = (Number(document.getElementById("loanYears").value) || 0) * 12;
-      const emi = r ? (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1) : 0;
-      document.getElementById("emiOut").textContent = "INR " + Math.round(emi).toLocaleString("en-IN");
-    };
-  </script>
+  </div>
+</main>
+<footer class="site-footer"><div class="container">
+  <div class="footer-grid">
+    <div><img src="../assets/logo/LOGO-VC.png" alt="VC" class="footer-brand-logo" /><p style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:#fff;margin:0.5rem 0 0.35rem;">Vishwanath Construction</p><p class="footer-tagline">Stage-wise transparent construction across Patna and Bihar.</p></div>
+    <div class="footer-col"><h4>Services</h4><a href="../services.html">House Construction</a><a href="../services.html">Turnkey Projects</a></div>
+    <div class="footer-col"><h4>Tools</h4><a href="house-cost.html">Cost Calculator</a><a href="material-calculator.html">Material Calculator</a><a href="emi-calculator.html">EMI Calculator</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="tel:+919934683355">+91 99346 83355</a><a href="https://wa.me/919934683355">WhatsApp</a><a href="../contact.html">Contact Page</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Vishwanath Construction, Patna & Bihar</span><span class="footer-badge">GSTIN 10EUFPK3451L1ZQ</span></div>
+</div></footer>
+<div class="sticky-bar">
+  <a href="tel:+919934683355" class="sticky-call">📞 Call Now</a>
+  <a href="https://wa.me/919934683355" class="sticky-wa">💬 WhatsApp</a>
+</div>
+<script src="../js/main.js"></script>
+<script>
+  function calcEMI(){
+    const P = Number(document.getElementById("loanAmt").value)||0;
+    const annualRate = Number(document.getElementById("loanRate").value)||0;
+    const years = Number(document.getElementById("loanTenure").value)||1;
+    const r = annualRate/12/100;
+    const n = years*12;
+    let emi = 0;
+    if (r > 0) emi = (P*r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1);
+    else emi = P/n;
+    const total = emi*n;
+    const interest = total-P;
+    document.getElementById("emiOut").textContent = "₹"+Math.round(emi).toLocaleString("en-IN");
+    document.getElementById("emiInterest").textContent = "₹"+Math.round(interest).toLocaleString("en-IN");
+    document.getElementById("emiTotal").textContent = "₹"+Math.round(total).toLocaleString("en-IN");
+  }
+  ["loanAmt","loanRate","loanTenure"].forEach(id=>document.getElementById(id).addEventListener("input",calcEMI));
+  calcEMI();
+</script>
 </body>
 </html>

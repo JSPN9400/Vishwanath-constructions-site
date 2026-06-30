@@ -1,175 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Construction Cost and Planning Blog | Vishwanath Construction</title>
-  <meta
-    name="description"
-    content="Construction planning, home cost guides, material insights, and Bihar-focused building advice from Vishwanath Construction."
-  />
-  <link rel="canonical" href="https://www.vishwanathconstruction.in/blog/" />
-  <link rel="icon" href="../assets/logo/LOGO-VC.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Construction Cost & Planning Blog | Vishwanath Construction</title>
+<meta name="description" content="Construction planning, home cost guides, material insights, and Bihar-focused building advice from Vishwanath Construction." />
+<link rel="icon" href="../assets/logo/LOGO-VC.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/style.css" />
+<style>
+  body{padding-bottom:60px;}
+  .page-hero{padding:8rem 0 4rem;background:var(--c-bg2);border-bottom:1px solid var(--c-border);}
+  .page-hero h1{font-size:clamp(2rem,4vw,3.2rem);color:#fff;margin-bottom:1rem;}
+  .page-hero p{font-size:1.05rem;color:var(--c-muted);max-width:560px;}
+  .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+  .blog-card{background:var(--c-bg2);border:1px solid var(--c-border);border-radius:12px;overflow:hidden;transition:transform 0.3s ease, border-color 0.3s ease;}
+  .blog-card:hover{transform:translateY(-5px);border-color:var(--c-accent);}
+  .blog-card-img{aspect-ratio:16/10;overflow:hidden;}
+  .blog-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;}
+  .blog-card:hover .blog-card-img img{transform:scale(1.06);}
+  .blog-card-body{padding:1.5rem;}
+  .blog-tag{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--c-accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.6rem;display:block;}
+  .blog-card-body h3{font-family:'Syne',sans-serif;font-size:1rem;color:#fff;margin-bottom:0.5rem;line-height:1.3;}
+  .blog-card-body p{font-size:0.83rem;color:var(--c-muted);line-height:1.6;}
+  @media(max-width:900px){.blog-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:600px){.blog-grid{grid-template-columns:1fr;}}
+</style>
 </head>
 <body>
-    <header class="main-header" id="header">
-      <div class="container">
-        <a href="../index.html" class="brand" aria-label="Vishwanath Construction Home">
-          <img src="../assets/logo/LOGO-VC.png" alt="Vishwanath Construction logo" class="brand-logo" decoding="async" />
-          <span class="brand-copy">
-            <strong>Vishwanath Construction</strong>
-            <small>Reg. Patna &middot; Est. billing transparency</small>
-          </span>
-        </a>
-        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="siteNav">
-          <span></span>
-          <span></span>
-        </button>
-        <nav class="site-nav" id="siteNav" aria-label="Primary">
-          <a href="../services.html">Services</a>
-          <a href="../projects.html">Projects</a>
-          <a href="../index.html#calculator">Cost Estimate</a>
-          <a href="../about.html">About</a>
-          <a href="../blog/index.html">Blog</a>
-          <a href="../quotation/index.html" class="nav-cta">Get Quotation</a>
-        </nav>
-      </div>
-    </header>
-
-  <main class="blog-page">
+<header class="main-header scrolled" id="header">
+  <div class="container">
+    <a href="../index.html" class="brand">
+      <img src="../assets/logo/LOGO-VC.png" alt="VC" class="brand-logo" />
+      <div><span class="brand-name">Vishwanath Construction</span><span class="brand-tag">Patna · Bihar · GST Registered</span></div>
+    </a>
+    <nav class="site-nav" id="siteNav">
+      <a href="../index.html#projects">Projects</a>
+      <a href="../services.html">Services</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../quotation/index.html" class="nav-cta">Get Quotation →</a>
+    </nav>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main>
+  <div class="page-hero"><div class="container">
+    <span class="eyebrow">Knowledge Base</span>
+    <h1>Construction planning<br/>& cost guides.</h1>
+    <p>Practical, Bihar-focused advice on house construction, budgeting, and material planning.</p>
+  </div></div>
+  <section class="section section-dark">
     <div class="container">
-      <section class="blog-hero">
-        <a href="../index.html" class="eyebrow">Back to homepage</a>
-        <h1>Construction insights for families planning homes in Bihar.</h1>
-        <p>The blog should support local SEO, improve trust, and answer the real pre-construction questions that people search before they contact a builder.</p>
-        <div class="blog-hero-actions">
-          <a href="../quotation/index.html" class="btn btn-primary">Get Free Quote</a>
-          <a href="../index.html#contact" class="btn btn-secondary">Book Site Visit</a>
+      <div class="blog-grid">
+        <div class="blog-card reveal" data-delay="0">
+          <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80&auto=format&fit=crop" alt="House cost guide" loading="lazy"/></div>
+          <div class="blog-card-body"><span class="blog-tag">Cost Planning</span><h3>How much does it cost to build a house in Patna?</h3><p>A breakdown of per-sq-ft rates, package differences, and what drives your budget up or down.</p></div>
         </div>
-      </section>
-
-      <section class="section">
-        <div class="section-heading">
-          <span class="eyebrow">Featured article</span>
-          <h2>How to choose the right construction company in Patna.</h2>
-          <p>This sample article is rewritten to support the new premium positioning, cleaner readability, and better conversion flow.</p>
+        <div class="blog-card reveal" data-delay="100">
+          <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&q=80&auto=format&fit=crop" alt="Stage billing" loading="lazy"/></div>
+          <div class="blog-card-body"><span class="blog-tag">Billing</span><h3>Why stage-wise billing protects your money</h3><p>How approving each construction stage before paying keeps your budget under control.</p></div>
         </div>
-
-        <article class="blog-card">
-          <h2>What should families check before selecting a construction company?</h2>
-          <p>Choosing a builder in Patna is not just about getting the lowest quoted number. The stronger decision is to compare how clearly each company explains scope, pricing, execution quality, and reporting.</p>
-
-          <h3>1. Transparent quotation structure</h3>
-          <ul>
-            <li>The quotation should clearly separate structure work, finishing work, or full turnkey delivery.</li>
-            <li>Material mode should be explicitly stated as with material or without material.</li>
-            <li>GST number, billing structure, and exclusions should be visible.</li>
-          </ul>
-
-          <h3>2. Site supervision and reporting</h3>
-          <ul>
-            <li>Ask how often you will receive site updates and who is responsible for communication.</li>
-            <li>Professional builders should explain stage checks for RCC, masonry, waterproofing, finishing, and handover quality.</li>
-          </ul>
-
-          <h3>3. Material quality discussion</h3>
-          <ul>
-            <li>Material brands, specifications, and quantity assumptions should be discussed before execution pressure starts.</li>
-            <li>Without this clarity, even a good starting rate can become expensive later.</li>
-          </ul>
-
-          <h3>4. Timeline and milestone discipline</h3>
-          <ul>
-            <li>Construction planning should include milestone-based payments and time expectations.</li>
-            <li>Good companies talk about process, not just price.</li>
-          </ul>
-
-          <p>Vishwanath Construction is positioning itself around transparent costing, engineering-first planning, and practical homeowner confidence. That is a stronger trust signal than generic contractor language because it matches what customers actually fear: hidden costs, confusion, and poor visibility.</p>
-        </article>
-      </section>
-
-      <section class="section section-alt">
-        <div class="section-heading">
-          <span class="eyebrow">SEO content strategy</span>
-          <h2>100-plus blog directions to grow search traffic and trust.</h2>
-          <p>These topic clusters are the foundation for local SEO pages, informational articles, and lead generation content.</p>
+        <div class="blog-card reveal" data-delay="200">
+          <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&q=80&auto=format&fit=crop" alt="Materials" loading="lazy"/></div>
+          <div class="blog-card-body"><span class="blog-tag">Materials</span><h3>Choosing materials: Basic vs Premium package</h3><p>What actually changes between packages — and where it's worth spending more.</p></div>
         </div>
-
-        <div class="blog-ideas-grid">
-          <article class="blog-idea-card">
-            <h3>Construction costs</h3>
-            <p>Examples: cost to build a 2BHK in Patna, 3 floor house construction cost in Bihar, turnkey vs labour contract pricing.</p>
-          </article>
-          <article class="blog-idea-card">
-            <h3>Materials and quality</h3>
-            <p>Examples: best cement for Bihar climate, TMT bar guide, brick quality checks, waterproofing comparisons.</p>
-          </article>
-          <article class="blog-idea-card">
-            <h3>Home planning</h3>
-            <p>Examples: how to plan plot usage, ventilation tips, Vastu-aware layouts, staircase planning mistakes.</p>
-          </article>
-          <article class="blog-idea-card">
-            <h3>Budget planning</h3>
-            <p>Examples: how to avoid construction overruns, milestone payment planning, budget buffers homeowners need.</p>
-          </article>
-          <article class="blog-idea-card">
-            <h3>Loans and finance</h3>
-            <p>Examples: home construction loan process, EMI planning before starting a house, how banks release stage funds.</p>
-          </article>
-          <article class="blog-idea-card">
-            <h3>Sustainability</h3>
-            <p>Examples: rainwater harvesting, solar-ready roofs, energy efficient design, natural ventilation for Bihar homes.</p>
-          </article>
+        <div class="blog-card reveal" data-delay="0">
+          <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80&auto=format&fit=crop" alt="Foundation" loading="lazy"/></div>
+          <div class="blog-card-body"><span class="blog-tag">Foundation</span><h3>Soil testing — why it matters before you build</h3><p>What happens during soil testing and how it affects your foundation design.</p></div>
         </div>
-      </section>
-    </div>
-  </main>
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer-grid">
-          <div class="footer-brand">
-            <img src="../assets/logo/LOGO-VC.png" alt="Vishwanath Construction logo" class="footer-logo" loading="lazy" decoding="async" />
-            <p>House construction company delivering transparent, stage-wise billing across Patna and Bihar.</p>
-          </div>
-          <div>
-            <h3>Quick Links</h3>
-            <a href="../index.html#calculator">House Cost Calculator</a>
-            <a href="../index.html#projects">Featured Projects</a>
-            <a href="../index.html#billing">Transparent Billing</a>
-            <a href="../quotation/index.html">Quotation</a>
-          </div>
-          <div>
-            <h3>More Pages</h3>
-            <a href="../services.html">Residential Construction Bihar</a>
-            <a href="../projects.html">Building Contractor Patna</a>
-            <a href="../about.html">About Us</a>
-            <a href="../blog/index.html">Construction Blog</a>
-          </div>
-          <div>
-            <h3>Free Tools</h3>
-            <a href="../calculator/house-cost.html">House Cost Calculator</a>
-            <a href="../calculator/material-calculator.html">Material Calculator</a>
-            <a href="../calculator/emi-calculator.html">Loan EMI Calculator</a>
-          </div>
-          <div>
-            <h3>Contact</h3>
-            <a href="tel:+919934683355">+91 99346 83355</a>
-            <a href="mailto:info.vishwanathconstruction@gmail.com">info.vishwanathconstruction@gmail.com</a>
-            <a href="https://wa.me/919934683355">WhatsApp</a>
-            <a href="../contact.html">Contact Page</a>
-          </div>
+        <div class="blog-card reveal" data-delay="100">
+          <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80&auto=format&fit=crop" alt="GST billing" loading="lazy"/></div>
+          <div class="blog-card-body"><span class="blog-tag">GST</span><h3>Why GST-registered contractors matter for home loans</h3><p>How proper GST invoicing helps your bank loan application go smoother.</p></div>
         </div>
-        <div class="footer-bottom">
-          <span>&copy; 2026 Vishwanath Construction, Patna &amp; Danapur, Bihar</span>
-          <span>GSTIN 10EUFPK3451L1ZQ</span>
+        <div class="blog-card reveal" data-delay="200">
+          <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1590725140246-20acddc1ec6d?w=600&q=80&auto=format&fit=crop" alt="Turnkey" loading="lazy"/></div>
+          <div class="blog-card-body"><span class="blog-tag">Turnkey</span><h3>Turnkey vs self-managed construction — which is right for you?</h3><p>Trade-offs between hiring one contractor versus managing multiple vendors.</p></div>
         </div>
       </div>
-    </footer>
-  <script src="../js/main.js"></script>
-
+    </div>
+  </section>
+</main>
+<footer class="site-footer"><div class="container">
+  <div class="footer-grid">
+    <div><img src="../assets/logo/LOGO-VC.png" alt="VC" class="footer-brand-logo" /><p style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:#fff;margin:0.5rem 0 0.35rem;">Vishwanath Construction</p><p class="footer-tagline">Stage-wise transparent construction across Patna and Bihar.</p></div>
+    <div class="footer-col"><h4>Services</h4><a href="../services.html">House Construction</a><a href="../services.html">Turnkey Projects</a></div>
+    <div class="footer-col"><h4>Tools</h4><a href="../calculator/house-cost.html">Cost Calculator</a><a href="../calculator/material-calculator.html">Material Calculator</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="tel:+919934683355">+91 99346 83355</a><a href="https://wa.me/919934683355">WhatsApp</a><a href="../contact.html">Contact Page</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Vishwanath Construction, Patna & Bihar</span><span class="footer-badge">GSTIN 10EUFPK3451L1ZQ</span></div>
+</div></footer>
+<div class="sticky-bar">
+  <a href="tel:+919934683355" class="sticky-call">📞 Call Now</a>
+  <a href="https://wa.me/919934683355" class="sticky-wa">💬 WhatsApp</a>
+</div>
+<script src="../js/main.js"></script>
 </body>
 </html>

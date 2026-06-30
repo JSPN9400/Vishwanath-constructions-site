@@ -1,114 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Construction Material Calculator Patna | Vishwanath Construction</title>
-  <meta name="description" content="Estimate cement, steel, brick, and sand quantities for your construction project in Patna and Bihar with Vishwanath Construction's free material calculator." />
-  <link rel="canonical" href="https://www.vishwanathconstruction.in/calculator/material-calculator.html" />
-  <link rel="icon" href="../assets/logo/LOGO-VC.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Construction Material Calculator | Vishwanath Construction</title>
+<meta name="description" content="Estimate cement, steel, brick, and sand quantities for your house construction project in Patna & Bihar." />
+<link rel="icon" href="../assets/logo/LOGO-VC.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/style.css" />
+<style>
+  body{padding-bottom:60px;}
+  .page-hero{padding:8rem 0 3rem;background:var(--c-bg2);border-bottom:1px solid var(--c-border);}
+  .page-hero h1{font-size:clamp(1.8rem,3.5vw,2.6rem);color:#fff;margin-bottom:0.75rem;}
+  .page-hero p{font-size:0.95rem;color:var(--c-muted);max-width:520px;}
+  .tool-layout{display:grid;grid-template-columns:1fr 380px;gap:2rem;padding:3rem 0 5rem;align-items:start;}
+  .tool-card{background:var(--c-bg2);border:1px solid var(--c-border);border-radius:12px;padding:2rem;}
+  .tool-card label{display:block;font-size:0.72rem;color:var(--c-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;margin-top:1.1rem;}
+  .tool-card label:first-child{margin-top:0;}
+  .tool-card input{width:100%;padding:0.75rem 1rem;background:rgba(255,255,255,0.04);border:1px solid var(--c-border);border-radius:6px;color:#fff;font-size:0.9rem;}
+  .tool-result{position:sticky;top:100px;background:var(--c-bg2);border:1px solid var(--c-border);border-radius:12px;padding:2rem;}
+  .res-row{display:flex;justify-content:space-between;padding:0.7rem 0;border-bottom:1px solid var(--c-border);font-size:0.85rem;}
+  .res-row:last-child{border-bottom:none;}
+  .res-row span:first-child{color:var(--c-muted);}
+  .res-row strong{color:var(--c-accent);font-family:'Syne',sans-serif;}
+  @media(max-width:900px){.tool-layout{grid-template-columns:1fr;}.tool-result{position:static;}}
+</style>
 </head>
 <body>
-    <header class="main-header" id="header">
-      <div class="container">
-        <a href="../index.html" class="brand" aria-label="Vishwanath Construction Home">
-          <img src="../assets/logo/LOGO-VC.png" alt="Vishwanath Construction logo" class="brand-logo" decoding="async" />
-          <span class="brand-copy">
-            <strong>Vishwanath Construction</strong>
-            <small>Reg. Patna &middot; Est. billing transparency</small>
-          </span>
-        </a>
-        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="siteNav">
-          <span></span>
-          <span></span>
-        </button>
-        <nav class="site-nav" id="siteNav" aria-label="Primary">
-          <a href="../services.html">Services</a>
-          <a href="../projects.html">Projects</a>
-          <a href="../index.html#calculator">Cost Estimate</a>
-          <a href="../about.html">About</a>
-          <a href="../blog/index.html">Blog</a>
-          <a href="../quotation/index.html" class="nav-cta">Get Quotation</a>
-        </nav>
+<header class="main-header scrolled" id="header">
+  <div class="container">
+    <a href="../index.html" class="brand">
+      <img src="../assets/logo/LOGO-VC.png" alt="VC" class="brand-logo" />
+      <div><span class="brand-name">Vishwanath Construction</span><span class="brand-tag">Patna · Bihar · GST Registered</span></div>
+    </a>
+    <nav class="site-nav" id="siteNav">
+      <a href="../index.html#projects">Projects</a>
+      <a href="../services.html">Services</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../quotation/index.html" class="nav-cta">Get Quotation →</a>
+    </nav>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main>
+  <div class="page-hero"><div class="container">
+    <span class="eyebrow">Free Tool</span>
+    <h1>Material Quantity<br/>Calculator</h1>
+    <p>Rough estimate of cement, steel, brick & sand needed for your built-up area.</p>
+  </div></div>
+  <div class="container">
+    <div class="tool-layout">
+      <div class="tool-card">
+        <label for="matArea">Built-up Area (sq ft)</label>
+        <input id="matArea" type="number" value="1200" min="300" step="50" />
       </div>
-    </header>
-
-  <main class="quote-page">
-    <div class="container">
-      <div class="section-heading">
-        <a href="../index.html" class="eyebrow">Back to home</a>
-        <h1>Construction material calculator — Patna &amp; Bihar</h1>
-        <p>Quick planning tool for rough material budgeting from Vishwanath Construction.</p>
-      </div>
-      <div class="quote-grid">
-        <section class="quote-card">
-          <form class="quote-form">
-            <label>Built-up area in sq ft<input id="matArea" type="number" value="1000" min="100" /></label>
-            <button class="btn btn-primary" type="button" id="matBtn">Calculate</button>
-          </form>
-        </section>
-        <section class="quote-summary">
-          <div class="summary-row"><span>Cement bags</span><strong id="cementOut">-</strong></div>
-          <div class="summary-row"><span>Steel in kg</span><strong id="steelOut">-</strong></div>
-          <div class="summary-row"><span>Sand in ft3</span><strong id="sandOut">-</strong></div>
-        </section>
+      <div class="tool-result">
+        <div style="font-size:0.72rem;color:var(--c-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem;">Estimated Materials</div>
+        <div class="res-row"><span>Cement (bags)</span><strong id="matCement">0</strong></div>
+        <div class="res-row"><span>Steel (kg)</span><strong id="matSteel">0</strong></div>
+        <div class="res-row"><span>Bricks (nos)</span><strong id="matBrick">0</strong></div>
+        <div class="res-row"><span>Sand (cubic ft)</span><strong id="matSand">0</strong></div>
+        <div class="res-row"><span>Aggregate (cubic ft)</span><strong id="matAgg">0</strong></div>
+        <a href="../quotation/index.html" class="btn btn-outline" style="width:100%;margin-top:1.5rem;">Get Detailed Quote</a>
       </div>
     </div>
-  </main>
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer-grid">
-          <div class="footer-brand">
-            <img src="../assets/logo/LOGO-VC.png" alt="Vishwanath Construction logo" class="footer-logo" loading="lazy" decoding="async" />
-            <p>House construction company delivering transparent, stage-wise billing across Patna and Bihar.</p>
-          </div>
-          <div>
-            <h3>Quick Links</h3>
-            <a href="../index.html#calculator">House Cost Calculator</a>
-            <a href="../index.html#projects">Featured Projects</a>
-            <a href="../index.html#billing">Transparent Billing</a>
-            <a href="../quotation/index.html">Quotation</a>
-          </div>
-          <div>
-            <h3>More Pages</h3>
-            <a href="../services.html">Residential Construction Bihar</a>
-            <a href="../projects.html">Building Contractor Patna</a>
-            <a href="../about.html">About Us</a>
-            <a href="../blog/index.html">Construction Blog</a>
-          </div>
-          <div>
-            <h3>Free Tools</h3>
-            <a href="../calculator/house-cost.html">House Cost Calculator</a>
-            <a href="../calculator/material-calculator.html">Material Calculator</a>
-            <a href="../calculator/emi-calculator.html">Loan EMI Calculator</a>
-          </div>
-          <div>
-            <h3>Contact</h3>
-            <a href="tel:+919934683355">+91 99346 83355</a>
-            <a href="mailto:info.vishwanathconstruction@gmail.com">info.vishwanathconstruction@gmail.com</a>
-            <a href="https://wa.me/919934683355">WhatsApp</a>
-            <a href="../contact.html">Contact Page</a>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <span>&copy; 2026 Vishwanath Construction, Patna &amp; Danapur, Bihar</span>
-          <span>GSTIN 10EUFPK3451L1ZQ</span>
-        </div>
-      </div>
-    </footer>
-  <script src="../js/main.js"></script>
-
-  <script>
-    document.getElementById("matBtn").onclick = function () {
-      const area = Number(document.getElementById("matArea").value) || 0;
-      document.getElementById("cementOut").textContent = Math.round(area * 0.45);
-      document.getElementById("steelOut").textContent = Math.round(area * 4);
-      document.getElementById("sandOut").textContent = Math.round(area * 1.8);
-    };
-  </script>
+  </div>
+</main>
+<footer class="site-footer"><div class="container">
+  <div class="footer-grid">
+    <div><img src="../assets/logo/LOGO-VC.png" alt="VC" class="footer-brand-logo" /><p style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:#fff;margin:0.5rem 0 0.35rem;">Vishwanath Construction</p><p class="footer-tagline">Stage-wise transparent construction across Patna and Bihar.</p></div>
+    <div class="footer-col"><h4>Services</h4><a href="../services.html">House Construction</a><a href="../services.html">Turnkey Projects</a></div>
+    <div class="footer-col"><h4>Tools</h4><a href="house-cost.html">Cost Calculator</a><a href="material-calculator.html">Material Calculator</a><a href="emi-calculator.html">EMI Calculator</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="tel:+919934683355">+91 99346 83355</a><a href="https://wa.me/919934683355">WhatsApp</a><a href="../contact.html">Contact Page</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Vishwanath Construction, Patna & Bihar</span><span class="footer-badge">GSTIN 10EUFPK3451L1ZQ</span></div>
+</div></footer>
+<div class="sticky-bar">
+  <a href="tel:+919934683355" class="sticky-call">📞 Call Now</a>
+  <a href="https://wa.me/919934683355" class="sticky-wa">💬 WhatsApp</a>
+</div>
+<script src="../js/main.js"></script>
+<script>
+  function calcMat(){
+    const area = Number(document.getElementById("matArea").value)||0;
+    document.getElementById("matCement").textContent = Math.round(area*0.4).toLocaleString("en-IN");
+    document.getElementById("matSteel").textContent = Math.round(area*4).toLocaleString("en-IN");
+    document.getElementById("matBrick").textContent = Math.round(area*8).toLocaleString("en-IN");
+    document.getElementById("matSand").textContent = Math.round(area*1.2).toLocaleString("en-IN");
+    document.getElementById("matAgg").textContent = Math.round(area*0.8).toLocaleString("en-IN");
+  }
+  document.getElementById("matArea").addEventListener("input", calcMat);
+  calcMat();
+</script>
 </body>
 </html>

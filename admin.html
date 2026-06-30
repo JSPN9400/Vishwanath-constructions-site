@@ -8,7 +8,7 @@
   <link rel="icon" href="assets/logo/LOGO-VC.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     /* ===== ADMIN PANEL — DARK THEME (matches main site) ===== */
     :root {
@@ -33,7 +33,7 @@
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
     }
-    h1,h2,h3,h4 { font-family: 'Inter', sans-serif; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+    h1,h2,h3,h4 { font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
     a { color: inherit; text-decoration: none; }
 
     /* Wrapper */
@@ -159,6 +159,25 @@
     @media (max-width: 640px) {
       .form-grid { grid-template-columns: 1fr; }
       .mini-stats { grid-template-columns: 1fr; }
+    }
+
+    .btn-outline-gold {
+      background: transparent; color: var(--a-accent);
+      border: 1px solid var(--a-accent); border-radius: 6px;
+      cursor: pointer; font: inherit; transition: background 0.2s ease;
+    }
+    .btn-outline-gold:hover { background: rgba(245,163,0,0.1); }
+    .empty-card {
+      text-align: center; padding: 2rem; color: var(--a-muted);
+      font-size: 0.85rem; background: var(--a-bg2);
+      border: 1px dashed var(--a-border); border-radius: var(--a-radius);
+    }
+    .item-meta { display: flex; flex-direction: column; gap: 0.3rem; }
+    .item-meta h3 { font-size: 0.95rem; color: var(--a-white); margin: 0; }
+    .item-sub { font-size: 0.78rem; color: var(--a-accent); }
+    .item-actions { display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-end; }
+    #entryStatus, #settingsStatus, #pricingStatus, #materialsStatus, #leadsStatus {
+      min-height: 1.4rem; margin-top: 0.6rem; font-size: 0.82rem; color: var(--a-accent);
     }
   </style>
 </head>

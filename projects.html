@@ -3,98 +3,178 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Building Contractor Projects in Patna, Bihar | Vishwanath Construction</title>
+  <title>Construction Projects in Patna & Bihar | Vishwanath Construction</title>
   <meta name="description" content="See completed house construction projects by Vishwanath Construction in Patna, Danapur, and across Bihar — with budget, timeline, and execution highlights." />
-  <link rel="canonical" href="https://www.vishwanathconstruction.in/projects.html" />
   <link rel="icon" href="assets/logo/LOGO-VC.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body{padding-bottom:60px;}
+    .page-hero{padding:8rem 0 4rem;background:var(--c-bg2);border-bottom:1px solid var(--c-border);}
+    .page-hero h1{font-size:clamp(2rem,4vw,3.2rem);color:#fff;margin-bottom:1rem;line-height:1.08;}
+    .page-hero p{font-size:1.05rem;color:var(--c-muted);max-width:560px;line-height:1.7;}
+    .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+    .pcard{background:var(--c-bg2);border:1px solid var(--c-border);border-radius:12px;overflow:hidden;transition:transform 0.3s ease, border-color 0.3s ease;}
+    .pcard:hover{transform:translateY(-5px);border-color:var(--c-accent);}
+    .pcard-img{aspect-ratio:4/3;overflow:hidden;}
+    .pcard-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;}
+    .pcard:hover .pcard-img img{transform:scale(1.06);}
+    .pcard-body{padding:1.5rem;}
+    .pcard-meta{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--c-accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.6rem;}
+    .pcard-body h3{font-family:'Syne',sans-serif;font-size:1.05rem;color:#fff;margin-bottom:0.5rem;}
+    .pcard-body p{font-size:0.83rem;color:var(--c-muted);line-height:1.6;}
+    .pstats{display:flex;gap:1rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--c-border);}
+    .pstat{flex:1;}
+    .pstat strong{display:block;font-family:'Syne',sans-serif;font-size:0.95rem;color:var(--c-accent);}
+    .pstat span{font-size:0.7rem;color:var(--c-muted);}
+    @media(max-width:900px){.pgrid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:600px){.pgrid{grid-template-columns:1fr;}}
+  </style>
 </head>
 <body>
-    <header class="main-header" id="header">
-      <div class="container">
-        <a href="index.html" class="brand" aria-label="Vishwanath Construction Home">
-          <img src="assets/logo/LOGO-VC.png" alt="Vishwanath Construction logo" class="brand-logo" decoding="async" />
-          <span class="brand-copy">
-            <strong>Vishwanath Construction</strong>
-            <small>Reg. Patna &middot; Est. billing transparency</small>
-          </span>
-        </a>
-        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="siteNav">
-          <span></span>
-          <span></span>
-        </button>
-        <nav class="site-nav" id="siteNav" aria-label="Primary">
-          <a href="services.html">Services</a>
-          <a href="projects.html">Projects</a>
-          <a href="index.html#calculator">Cost Estimate</a>
-          <a href="about.html">About</a>
-          <a href="blog/index.html">Blog</a>
-          <a href="quotation/index.html" class="nav-cta">Get Quotation</a>
-        </nav>
-      </div>
-    </header>
 
-  <main class="blog-page">
+<header class="main-header scrolled" id="header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/logo/LOGO-VC.png" alt="VC" class="brand-logo" />
+      <div><span class="brand-name">Vishwanath Construction</span><span class="brand-tag">Patna · Bihar · GST Registered</span></div>
+    </a>
+    <nav class="site-nav" id="siteNav">
+      <a href="projects.html" style="color:#fff;">Projects</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="quotation/index.html" class="nav-cta">Get Quotation →</a>
+    </nav>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+  <div class="page-hero">
     <div class="container">
-      <section class="blog-hero">
-        <a href="index.html" class="eyebrow">Back to home</a>
-        <h1>Building contractor projects in Patna &amp; Bihar — proof of planning discipline.</h1>
-        <p>Each project should help customers understand budget logic, execution quality, and outcome clarity.</p>
-      </section>
-      <section class="section">
-        <div class="project-grid">
-          <article class="project-card"><div class="project-visual visual-one"></div><div class="project-body"><span class="project-tag">Patna | 11 months | INR 52 lakh</span><h3>Kankarbagh residence</h3><p>Premium family home with disciplined finish planning.</p></div></article>
-          <article class="project-card"><div class="project-visual visual-two"></div><div class="project-body"><span class="project-tag">Patna | 14 months | INR 1.2 crore</span><h3>Commercial block</h3><p>Mixed-use building with structured execution planning.</p></div></article>
-          <article class="project-card"><div class="project-visual visual-three"></div><div class="project-body"><span class="project-tag">Danapur | 9 months | INR 38 lakh</span><h3>Modern ventilated home</h3><p>Comfort-focused design with clearer decision support for the owner.</p></div></article>
-        </div>
-      </section>
+      <span class="eyebrow">Our Work</span>
+      <h1>Proof of planning<br/>discipline & quality.</h1>
+      <p>Each project reflects our approach — clear budgets, disciplined execution, and an outcome the family is proud of.</p>
     </div>
-  </main>
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer-grid">
-          <div class="footer-brand">
-            <img src="assets/logo/LOGO-VC.png" alt="Vishwanath Construction logo" class="footer-logo" loading="lazy" decoding="async" />
-            <p>House construction company delivering transparent, stage-wise billing across Patna and Bihar.</p>
-          </div>
-          <div>
-            <h3>Quick Links</h3>
-            <a href="index.html#calculator">House Cost Calculator</a>
-            <a href="index.html#projects">Featured Projects</a>
-            <a href="index.html#billing">Transparent Billing</a>
-            <a href="quotation/index.html">Quotation</a>
-          </div>
-          <div>
-            <h3>More Pages</h3>
-            <a href="services.html">Residential Construction Bihar</a>
-            <a href="projects.html">Building Contractor Patna</a>
-            <a href="about.html">About Us</a>
-            <a href="blog/index.html">Construction Blog</a>
-          </div>
-          <div>
-            <h3>Free Tools</h3>
-            <a href="calculator/house-cost.html">House Cost Calculator</a>
-            <a href="calculator/material-calculator.html">Material Calculator</a>
-            <a href="calculator/emi-calculator.html">Loan EMI Calculator</a>
-          </div>
-          <div>
-            <h3>Contact</h3>
-            <a href="tel:+919934683355">+91 99346 83355</a>
-            <a href="mailto:info.vishwanathconstruction@gmail.com">info.vishwanathconstruction@gmail.com</a>
-            <a href="https://wa.me/919934683355">WhatsApp</a>
-            <a href="contact.html">Contact Page</a>
+  </div>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="pgrid">
+        <div class="pcard reveal" data-delay="0">
+          <div class="pcard-img"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80&auto=format&fit=crop" alt="Kankarbagh residence" loading="lazy"/></div>
+          <div class="pcard-body">
+            <div class="pcard-meta">Patna · Residential</div>
+            <h3>Kankarbagh Residence</h3>
+            <p>Premium 3BHK family home with disciplined finish planning and turnkey delivery.</p>
+            <div class="pstats">
+              <div class="pstat"><strong>11 mo</strong><span>Timeline</span></div>
+              <div class="pstat"><strong>₹52L</strong><span>Budget</span></div>
+            </div>
           </div>
         </div>
-        <div class="footer-bottom">
-          <span>&copy; 2026 Vishwanath Construction, Patna &amp; Danapur, Bihar</span>
-          <span>GSTIN 10EUFPK3451L1ZQ</span>
+        <div class="pcard reveal" data-delay="100">
+          <div class="pcard-img"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80&auto=format&fit=crop" alt="Commercial block" loading="lazy"/></div>
+          <div class="pcard-body">
+            <div class="pcard-meta">Patna · Commercial</div>
+            <h3>Commercial Block</h3>
+            <p>Mixed-use 3-storey building with structured execution planning and modern facade.</p>
+            <div class="pstats">
+              <div class="pstat"><strong>14 mo</strong><span>Timeline</span></div>
+              <div class="pstat"><strong>₹1.2Cr</strong><span>Budget</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pcard reveal" data-delay="200">
+          <div class="pcard-img"><img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=700&q=80&auto=format&fit=crop" alt="Ventilated home" loading="lazy"/></div>
+          <div class="pcard-body">
+            <div class="pcard-meta">Danapur · Residential</div>
+            <h3>Modern Ventilated Home</h3>
+            <p>Comfort-focused design with cross-ventilation and clear decision support for the owner.</p>
+            <div class="pstats">
+              <div class="pstat"><strong>9 mo</strong><span>Timeline</span></div>
+              <div class="pstat"><strong>₹38L</strong><span>Budget</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pcard reveal" data-delay="0">
+          <div class="pcard-img"><img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=700&q=80&auto=format&fit=crop" alt="Duplex house" loading="lazy"/></div>
+          <div class="pcard-body">
+            <div class="pcard-meta">Danapur · Duplex</div>
+            <h3>G+1 Duplex House</h3>
+            <p>Two-floor residential structure with spacious balconies and modern interior layout.</p>
+            <div class="pstats">
+              <div class="pstat"><strong>10 mo</strong><span>Timeline</span></div>
+              <div class="pstat"><strong>₹45L</strong><span>Budget</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pcard reveal" data-delay="100">
+          <div class="pcard-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80&auto=format&fit=crop" alt="Family villa" loading="lazy"/></div>
+          <div class="pcard-body">
+            <div class="pcard-meta">Khagaul · Residential</div>
+            <h3>Modern Family Villa</h3>
+            <p>Spacious single-floor villa designed for a growing family with garden access.</p>
+            <div class="pstats">
+              <div class="pstat"><strong>8 mo</strong><span>Timeline</span></div>
+              <div class="pstat"><strong>₹34L</strong><span>Budget</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pcard reveal" data-delay="200">
+          <div class="pcard-img"><img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=700&q=80&auto=format&fit=crop" alt="Interior renovation" loading="lazy"/></div>
+          <div class="pcard-body">
+            <div class="pcard-meta">Patna · Renovation</div>
+            <h3>Interior Renovation</h3>
+            <p>Complete interior overhaul including flooring, painting, and modular kitchen install.</p>
+            <div class="pstats">
+              <div class="pstat"><strong>3 mo</strong><span>Timeline</span></div>
+              <div class="pstat"><strong>₹12L</strong><span>Budget</span></div>
+            </div>
+          </div>
         </div>
       </div>
-    </footer>
 
-  <script src="js/main.js"></script>
+      <!-- Admin-added projects render here -->
+      <div id="moreProjectsGrid" class="pgrid" style="margin-top:1.5rem;" hidden></div>
+    </div>
+  </section>
+
+  <section class="section cta-section section-mid">
+    <div class="cta-glow"></div>
+    <div class="container" style="position:relative;text-align:center;">
+      <span class="eyebrow reveal">Like What You See?</span>
+      <h2 class="reveal" data-delay="100">Your project could be<br/><em>our next showcase.</em></h2>
+      <div class="cta-actions reveal" data-delay="200">
+        <a href="tel:+919934683355" class="btn btn-primary">📞 Call +91 99346 83355</a>
+        <a href="quotation/index.html" class="btn btn-ghost">Get Free Quotation →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="assets/logo/LOGO-VC.png" alt="Vishwanath Construction" class="footer-brand-logo" />
+        <p style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:#fff;margin:0.5rem 0 0.35rem;">Vishwanath Construction</p>
+        <p class="footer-tagline">Stage-wise transparent construction across Patna and Bihar.</p>
+      </div>
+      <div class="footer-col"><h4>Services</h4><a href="services.html">House Construction</a><a href="services.html">Turnkey Projects</a><a href="services.html">RCC Structure</a><a href="services.html">Finishing Works</a></div>
+      <div class="footer-col"><h4>Tools</h4><a href="calculator/house-cost.html">Cost Calculator</a><a href="calculator/material-calculator.html">Material Calculator</a><a href="calculator/emi-calculator.html">EMI Calculator</a><a href="quotation/index.html">Get Quotation</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="tel:+919934683355">+91 99346 83355</a><a href="mailto:info.vishwanathconstruction@gmail.com">Email Us</a><a href="https://wa.me/919934683355">WhatsApp</a><a href="contact.html">Contact Page</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Vishwanath Construction, Patna & Bihar</span><span class="footer-badge">GSTIN 10EUFPK3451L1ZQ</span></div>
+  </div>
+</footer>
+<div class="sticky-bar">
+  <a href="tel:+919934683355" class="sticky-call">📞 Call Now</a>
+  <a href="https://wa.me/919934683355?text=Hello%20Vishwanath%20Construction" class="sticky-wa">💬 WhatsApp</a>
+</div>
+<script src="js/site-data.js"></script><script src="js/main.js"></script>
 </body>
 </html>

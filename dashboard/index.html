@@ -1,33 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Construction Dashboard | Vishwanath Construction</title>
-  <meta name="robots" content="noindex,nofollow" />
-  <link rel="icon" href="../assets/logo/LOGO-VC.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Construction Intelligence Dashboard | Vishwanath Construction</title>
+<meta name="robots" content="noindex,nofollow" />
+<link rel="icon" href="../assets/logo/LOGO-VC.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/style.css" />
+<style>
+  body{padding-bottom:60px;}
+  .page-hero{padding:8rem 0 4rem;background:var(--c-bg2);border-bottom:1px solid var(--c-border);}
+  .page-hero h1{font-size:clamp(1.8rem,3.5vw,2.6rem);color:#fff;margin-bottom:0.75rem;}
+  .page-hero p{font-size:0.95rem;color:var(--c-muted);max-width:520px;}
+  .insight-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;}
+  .insight-card{background:var(--c-bg2);border:1px solid var(--c-border);border-radius:12px;padding:1.5rem;}
+  .insight-card span{font-size:0.72rem;color:var(--c-muted);text-transform:uppercase;letter-spacing:0.08em;}
+  .insight-card strong{display:block;font-family:'Syne',sans-serif;font-size:1.4rem;color:var(--c-accent);margin:0.5rem 0;}
+  .meter{height:4px;background:rgba(255,255,255,0.08);border-radius:99px;overflow:hidden;margin-bottom:0.75rem;}
+  .meter i{display:block;height:100%;background:var(--c-accent);}
+  .insight-card p{font-size:0.8rem;color:var(--c-muted);line-height:1.5;}
+  @media(max-width:900px){.insight-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:600px){.insight-grid{grid-template-columns:1fr;}}
+</style>
 </head>
 <body>
-  <main class="blog-page">
+<header class="main-header scrolled" id="header">
+  <div class="container">
+    <a href="../index.html" class="brand">
+      <img src="../assets/logo/LOGO-VC.png" alt="VC" class="brand-logo" />
+      <div><span class="brand-name">Vishwanath Construction</span><span class="brand-tag">Patna · Bihar · GST Registered</span></div>
+    </a>
+    <nav class="site-nav" id="siteNav">
+      <a href="../index.html#projects">Projects</a>
+      <a href="../services.html">Services</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../quotation/index.html" class="nav-cta">Get Quotation →</a>
+    </nav>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main>
+  <div class="page-hero"><div class="container">
+    <span class="eyebrow">Market Intelligence</span>
+    <h1>Construction cost<br/>dashboard.</h1>
+    <p>Current material price trends and labour cost indicators for Patna & Bihar.</p>
+  </div></div>
+  <section class="section section-dark">
     <div class="container">
-      <section class="blog-hero">
-        <a href="../index.html" class="eyebrow">Back to home</a>
-        <h1>Construction intelligence dashboard</h1>
-        <p>Sample planning dashboard for steel, cement, labour, and cost trend visibility.</p>
-      </section>
-      <section class="section">
-        <div class="insight-grid insight-grid-four">
-          <article class="insight-card"><span>Steel</span><strong>INR 68 / kg</strong><div class="meter"><i style="width:72%"></i></div><p>Moderately upward trend.</p></article>
-          <article class="insight-card"><span>Cement</span><strong>INR 385 / bag</strong><div class="meter"><i style="width:58%"></i></div><p>Stable with local variation.</p></article>
-          <article class="insight-card"><span>Labour</span><strong>INR 85 / sq ft</strong><div class="meter"><i style="width:44%"></i></div><p>Planning needed for schedule control.</p></article>
-          <article class="insight-card"><span>Cost forecast</span><strong>124.6 index</strong><div class="meter"><i style="width:88%"></i></div><p>Lock package decisions early.</p></article>
-        </div>
-      </section>
+      <div class="insight-grid">
+        <article class="insight-card"><span>Steel</span><strong>₹68 / kg</strong><div class="meter"><i style="width:72%"></i></div><p>Moderately upward trend.</p></article>
+        <article class="insight-card"><span>Cement</span><strong>₹385 / bag</strong><div class="meter"><i style="width:58%"></i></div><p>Stable with local variation.</p></article>
+        <article class="insight-card"><span>Labour</span><strong>₹85 / sq ft</strong><div class="meter"><i style="width:44%"></i></div><p>Planning needed for schedule control.</p></article>
+        <article class="insight-card"><span>Cost Index</span><strong>124.6</strong><div class="meter"><i style="width:88%"></i></div><p>Lock package decisions early.</p></article>
+      </div>
     </div>
-  </main>
+  </section>
+</main>
+<footer class="site-footer"><div class="container">
+  <div class="footer-grid">
+    <div><img src="../assets/logo/LOGO-VC.png" alt="VC" class="footer-brand-logo" /><p style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:#fff;margin:0.5rem 0 0.35rem;">Vishwanath Construction</p><p class="footer-tagline">Stage-wise transparent construction across Patna and Bihar.</p></div>
+    <div class="footer-col"><h4>Tools</h4><a href="../calculator/house-cost.html">Cost Calculator</a><a href="../calculator/material-calculator.html">Material Calculator</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="tel:+919934683355">+91 99346 83355</a><a href="https://wa.me/919934683355">WhatsApp</a><a href="../contact.html">Contact Page</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Vishwanath Construction, Patna & Bihar</span><span class="footer-badge">GSTIN 10EUFPK3451L1ZQ</span></div>
+</div></footer>
+<script src="../js/main.js"></script>
 </body>
 </html>
